@@ -24,24 +24,74 @@ namespace PDFCompare
             dataGridView1.Visible = false;            
             webResult.Visible = false;
             labelErrorMessage.Visible = false;            
-            label4.Text = $"© {DateTime.Now.Year} COFORGE | www.Coforge.com";
+            //label4.Text = $"© {DateTime.Now.Year} COFORGE | www.Coforge.com";
         }
-         
+
+
+
+        private Dictionary<string, WebBrowser> multipleWebResults = new Dictionary<string, WebBrowser>();
+        
+
         private void btnCompare_Click(object sender, EventArgs e)
         {
+            
+            multipleWebResults.Clear();
+
+            // Set whether it will use webresult or image
+
+
+            string[] sourceFiles = txtSource.Text.Split(';');
+            string[] targetFiles = txtTarget.Text.Split(';');
+
+            int minNoOfComarisons = Math.Min(sourceFiles.Length, targetFiles.Length);
+
+            for (int i = 0; i < minNoOfComarisons; i++)
+            {
+                if (text_OR_imageBtn.Checked)    // Image comparison
+                {
+
+                }
+
+                else    // Text comparison
+                {
+                    WebBrowser webResult = new WebBrowser
+                    {
+                        Dock = DockStyle.Fill,
+                        Location = new Point(0, i * 300),
+                        MinimumSize = new Size(30, 31),
+                        Margin = new System.Windows.Forms.Padding(4, 5, 4, 5),
+                        Name = $"webResult_{i}",
+
+                    };
+
+                    resultTabPage.Controls.Add(webResult);
+                    // Store the WebBrowser in the Dictionary with its unique name
+                    multipleWebResults.Add(webResult.Name, webResult);
+                }
+
+                string sourceFile = sourceFiles[i].Trim();
+                string targetFile = targetFiles[i].Trim();
+                CompareFiles(sourceFile, targetFile, i);
+            }
+
+
+
+        }
+
+
+
+        private void CompareFiles(string File1diff, string File2diff, int i)
+        { 
             var currentDrive = Path.GetPathRoot(System.Reflection.Assembly.GetEntryAssembly().Location);
             var ComparisonReportFile = Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"ComparisonReport.xls");
             //"Q:\\Automation & Performance\\Functional Automation\\DCRegression\\Results\\Excess-Data\\PDF-Diff_Excel-Reports\\PDF_Comparator_Results\\ComparisonReport.xls";
 
 
-            string File1diff = txtSource.Text;
-            string File2diff = txtTarget.Text;
-
             string sourcePageRange = string.Empty;
-            sourcePageRange = txtComparingPagesNumber.Text;
+            //sourcePageRange = txtComparingPagesNumber.Text;
 
             string targetPageRange = string.Empty;
-            targetPageRange = targetRangeTextBox.Text;
+            //targetPageRange = targetRangeTextBox.Text;
 
             
             webResult.Visible = false;
@@ -49,10 +99,14 @@ namespace PDFCompare
             dataGridView1.DataSource = null;
             labelErrorMessage.Text = string.Empty;
             labelErrorMessage.Visible = false;
-                        
+
+
+
+            //if (text_OR_imageToggle.Checked)
             if (rdbImageCompare.Checked)
-            {
-                try
+
+                {
+                    try
                 {
                     if (!string.IsNullOrEmpty(File1diff.Trim()) && !string.IsNullOrEmpty(File2diff.Trim()))
                     {
@@ -284,20 +338,30 @@ namespace PDFCompare
         {
             OpenFileDialog fileChooser = new OpenFileDialog();
             fileChooser.Filter = "Pdf Files|*.pdf";
+            fileChooser.Multiselect = true;
+            fileChooser.Title = "Select Source File(s)";
+
             if (fileChooser.ShowDialog() == DialogResult.OK)
             {
-                txtSource.Text = fileChooser.FileName;
+                //txtSource.Text = fileChooser.FileName;
+                txtSource.Text = string.Join(";", fileChooser.FileNames);
             }
+
         }
 
         private void btnbrwTarget_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileChooser = new OpenFileDialog();
             fileChooser.Filter = "Pdf Files|*.pdf";
+            fileChooser.Multiselect = true;
+            fileChooser.Title = "Select Target File(s)";
+
             if (fileChooser.ShowDialog() == DialogResult.OK)
             {
-                txtTarget.Text = fileChooser.FileName;
+                //txtTarget.Text = fileChooser.FileName;
+                txtTarget.Text = string.Join(";", fileChooser.FileNames);
             }
+            Console.WriteLine(txtTarget.Text);
         }
 
         private void rdbTextCompare_CheckedChanged(object sender, EventArgs e)
@@ -361,6 +425,16 @@ namespace PDFCompare
                     }
                 }
             }
+        }
+
+        private void reviewButton_Click(object sender, EventArgs e)
+        {
+            materialTabControl1.SelectedTab = reviewTabPage;
+
+            // Add no. of source and target dropdowns as selected in SelectTab
+            
+            
+
         }
     }
 }

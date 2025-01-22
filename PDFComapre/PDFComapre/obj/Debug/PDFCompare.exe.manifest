@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>yiTFBnwvHj7BPrLe+AKigIPZcBp3xuxUEVTh/D8LkeQ=</dsig:DigestValue>
+        <dsig:DigestValue>PGBX0J2t0OD7TbWu9GQcWGBn9zpNBPuy5+KbO2KK8Bw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -97,7 +97,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0hIzLo2HV6HeY/mnAW59VfI1efHaXXrKojglzx+SkRY=</dsig:DigestValue>
+        <dsig:DigestValue>4oOWDMnbcyromcOWdQzlLavLtix110KuQs4umm+x+AE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -110,6 +110,54 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>Eo7eyeKrHLTPfoA/oI0+hKQOPblNRzi+Qws4FyBiedM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MaterialWinforms.dll" size="801280">
+      <assemblyIdentity name="MaterialWinforms" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>XOgZQxZ+waUp3ictijU+Xj3bwtPHup3Q7woJtcPuZKk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MetroFramework.dll" size="353280">
+      <assemblyIdentity name="MetroFramework" version="1.4.0.0" publicKeyToken="5F91A84759BF584A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>wsEtMbSETineMVlPyWMqNypVNjHeCgoEyK+RZo43z0k=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MetroFramework.Design.dll" size="16896">
+      <assemblyIdentity name="MetroFramework.Design" version="1.4.0.0" publicKeyToken="5F91A84759BF584A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>CkqWCC4ldn5GlwM2SbFsdqZS4SB1eizsq4CSrQ1xa2U=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MetroFramework.Fonts.dll" size="672256">
+      <assemblyIdentity name="MetroFramework.Fonts" version="1.4.0.0" publicKeyToken="5F91A84759BF584A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>yEOGmqylE1wtRylphfNcccqK9EMSiNBNSBxORsyT7iY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -162,14 +210,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PDFCompare.exe" size="56832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PDFCompare.exe" size="57856">
       <assemblyIdentity name="PDFCompare" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UthGNkDc3opGUxwc7rf4bmYYlUR0d4zqrtn7mtwXShk=</dsig:DigestValue>
+        <dsig:DigestValue>xEd5H8/Bwe4pvxWMTmUC2VGHj7IUyFsrY3N9mBg9FyI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -218,13 +266,13 @@
       <dsig:DigestValue>3ZkURwJhxVVb4BXiBzHRXo8aljst97e3XngqH2Lud2w=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PDFCompare.exe.config" size="3580">
+  <file name="PDFCompare.exe.config" size="3609">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>el/X6L14JBfn1I20yJidb/SifIePuaUS5kle09sZRf4=</dsig:DigestValue>
+      <dsig:DigestValue>1a/gXuhs2OV9xcMQP+4IBObO39JKq6kY/DXWCiyUrwg=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -60,3 +60,15 @@ C:\Users\AKumar02\Desktop\LatestCodePdfCompare_19_12_2018\LatestCodePdfCompare_3
 C:\Users\AKumar02\Desktop\LatestCodePdfCompare_19_12_2018\LatestCodePdfCompare_30_11_2018\27-11-2018 - Copy\27-11-2018 - Copy\PDFComapre\ImageDiff\obj\Debug\ImageDiff.csproj.CoreCompileInputs.cache
 C:\Users\AKumar02\Desktop\LatestCodePdfCompare_19_12_2018\LatestCodePdfCompare_30_11_2018\27-11-2018 - Copy\27-11-2018 - Copy\PDFComapre\ImageDiff\obj\Debug\ImageDiff.dll
 C:\Users\AKumar02\Desktop\LatestCodePdfCompare_19_12_2018\LatestCodePdfCompare_30_11_2018\27-11-2018 - Copy\27-11-2018 - Copy\PDFComapre\ImageDiff\obj\Debug\ImageDiff.pdb
+C:\Users\pocuser\Desktop\PDFCompare Project\PDFCompare\PDFComapre\ImageDiff\bin\Debug\ImageDiff.dll
+C:\Users\pocuser\Desktop\PDFCompare Project\PDFCompare\PDFComapre\ImageDiff\bin\Debug\ImageDiff.pdb
+C:\Users\pocuser\Desktop\PDFCompare Project\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.csproj.AssemblyReference.cache
+C:\Users\pocuser\Desktop\PDFCompare Project\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.csproj.CoreCompileInputs.cache
+C:\Users\pocuser\Desktop\PDFCompare Project\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.dll
+C:\Users\pocuser\Desktop\PDFCompare Project\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.pdb
+C:\Users\pocuser\Desktop\dotnet\PDFCompare\PDFComapre\ImageDiff\bin\Debug\ImageDiff.dll
+C:\Users\pocuser\Desktop\dotnet\PDFCompare\PDFComapre\ImageDiff\bin\Debug\ImageDiff.pdb
+C:\Users\pocuser\Desktop\dotnet\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.csproj.AssemblyReference.cache
+C:\Users\pocuser\Desktop\dotnet\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.csproj.CoreCompileInputs.cache
+C:\Users\pocuser\Desktop\dotnet\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.dll
+C:\Users\pocuser\Desktop\dotnet\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.pdb

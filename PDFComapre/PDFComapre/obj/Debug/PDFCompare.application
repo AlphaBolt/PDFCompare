@@ -4,17 +4,17 @@
   <description asmv2:publisher="PDFCompare" asmv2:product="PDFCompare" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="PDFCompare.exe.manifest" size="12710">
+    <dependentAssembly dependencyType="install" codebase="PDFCompare.exe.manifest" size="15429">
       <assemblyIdentity name="PDFCompare.exe" version="1.0.0.8" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2xI2/ztTuJn0FQrF5bm0LB6GM+JWAMNkIo3LYQQBvtI=</dsig:DigestValue>
+        <dsig:DigestValue>mwNYBkEJi9KnpgEmSjCQoRIMUjBx2OsU6NpBJmhYaIk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
