@@ -44,16 +44,21 @@ namespace PDFCompare
             this.btnbrwTarget = new System.Windows.Forms.Button();
             this.btnbrwSource = new System.Windows.Forms.Button();
             this.reviewTabPage = new MaterialWinforms.Controls.MaterialTabPage();
+            this.reviewContentPanel = new MaterialWinforms.Controls.MaterialPanel();
             this.btnCompare = new System.Windows.Forms.Button();
             this.resultTabPage = new MaterialWinforms.Controls.MaterialTabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.previousResult = new System.Windows.Forms.Button();
+            this.nextResult = new System.Windows.Forms.Button();
+            this.resultContentPanel = new MaterialWinforms.Controls.MaterialPanel();
             this.labelErrorMessage = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.webResult = new System.Windows.Forms.WebBrowser();
             this.materialTabControl1.SuspendLayout();
             this.selectFilesTabPage.SuspendLayout();
             this.reviewTabPage.SuspendLayout();
             this.resultTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabSelector1
@@ -85,7 +90,7 @@ namespace PDFCompare
             this.materialTabControl1.Location = new System.Drawing.Point(0, 35);
             this.materialTabControl1.MouseState = MaterialWinforms.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 1;
+            this.materialTabControl1.SelectedIndex = 2;
             this.materialTabControl1.Size = new System.Drawing.Size(1034, 473);
             this.materialTabControl1.TabIndex = 4;
             this.materialTabControl1.TabsAreClosable = true;
@@ -235,6 +240,7 @@ namespace PDFCompare
             // 
             this.reviewTabPage.AutoScroll = true;
             this.reviewTabPage.Closable = false;
+            this.reviewTabPage.Controls.Add(this.reviewContentPanel);
             this.reviewTabPage.Controls.Add(this.btnCompare);
             this.reviewTabPage.Depth = 0;
             this.reviewTabPage.Location = new System.Drawing.Point(4, 29);
@@ -244,12 +250,25 @@ namespace PDFCompare
             this.reviewTabPage.TabIndex = 1;
             this.reviewTabPage.Text = "Review";
             // 
+            // reviewContentPanel
+            // 
+            this.reviewContentPanel.AutoScroll = true;
+            this.reviewContentPanel.Depth = 0;
+            this.reviewContentPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.reviewContentPanel.Location = new System.Drawing.Point(0, 0);
+            this.reviewContentPanel.MouseState = MaterialWinforms.MouseState.HOVER;
+            this.reviewContentPanel.Name = "reviewContentPanel";
+            this.reviewContentPanel.Size = new System.Drawing.Size(1026, 338);
+            this.reviewContentPanel.TabIndex = 1;
+            this.reviewContentPanel.Text = "materialPanel1";
+            // 
             // btnCompare
             // 
-            this.btnCompare.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCompare.Location = new System.Drawing.Point(841, 367);
+            this.btnCompare.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCompare.Location = new System.Drawing.Point(33, 344);
             this.btnCompare.Name = "btnCompare";
-            this.btnCompare.Size = new System.Drawing.Size(124, 45);
+            this.btnCompare.Size = new System.Drawing.Size(939, 63);
             this.btnCompare.TabIndex = 0;
             this.btnCompare.Text = "Compare";
             this.btnCompare.UseVisualStyleBackColor = true;
@@ -258,9 +277,9 @@ namespace PDFCompare
             // resultTabPage
             // 
             this.resultTabPage.Closable = false;
-            this.resultTabPage.Controls.Add(this.labelErrorMessage);
-            this.resultTabPage.Controls.Add(this.dataGridView1);
-            this.resultTabPage.Controls.Add(this.webResult);
+            this.resultTabPage.Controls.Add(this.resultContentPanel);
+            this.resultTabPage.Controls.Add(this.panel2);
+            this.resultTabPage.Controls.Add(this.panel1);
             this.resultTabPage.Depth = 0;
             this.resultTabPage.Location = new System.Drawing.Point(4, 29);
             this.resultTabPage.MouseState = MaterialWinforms.MouseState.HOVER;
@@ -269,44 +288,64 @@ namespace PDFCompare
             this.resultTabPage.TabIndex = 2;
             this.resultTabPage.Text = "Result";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.previousResult);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(50, 440);
+            this.panel1.TabIndex = 6;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.labelErrorMessage);
+            this.panel2.Controls.Add(this.nextResult);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(976, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(50, 440);
+            this.panel2.TabIndex = 7;
+            // 
+            // previousResult
+            // 
+            this.previousResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.previousResult.Location = new System.Drawing.Point(9, 204);
+            this.previousResult.Name = "previousResult";
+            this.previousResult.Size = new System.Drawing.Size(38, 43);
+            this.previousResult.TabIndex = 0;
+            this.previousResult.Text = "<";
+            this.previousResult.UseVisualStyleBackColor = true;
+            this.previousResult.Click += new System.EventHandler(this.previousResult_Click);
+            // 
+            // nextResult
+            // 
+            this.nextResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.nextResult.Location = new System.Drawing.Point(6, 204);
+            this.nextResult.Name = "nextResult";
+            this.nextResult.Size = new System.Drawing.Size(39, 43);
+            this.nextResult.TabIndex = 0;
+            this.nextResult.Text = ">";
+            this.nextResult.UseVisualStyleBackColor = true;
+            this.nextResult.Click += new System.EventHandler(this.nextResult_Click);
+            // 
+            // resultContentPanel
+            // 
+            this.resultContentPanel.AutoScroll = true;
+            this.resultContentPanel.Depth = 0;
+            this.resultContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resultContentPanel.Location = new System.Drawing.Point(50, 0);
+            this.resultContentPanel.MouseState = MaterialWinforms.MouseState.HOVER;
+            this.resultContentPanel.Name = "resultContentPanel";
+            this.resultContentPanel.Size = new System.Drawing.Size(926, 440);
+            this.resultContentPanel.TabIndex = 8;
+            // 
             // labelErrorMessage
             // 
-            this.labelErrorMessage.Location = new System.Drawing.Point(336, 0);
+            this.labelErrorMessage.Location = new System.Drawing.Point(-25, 98);
             this.labelErrorMessage.Name = "labelErrorMessage";
-            this.labelErrorMessage.Size = new System.Drawing.Size(100, 20);
-            this.labelErrorMessage.TabIndex = 5;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.ShowCellErrors = false;
-            this.dataGridView1.ShowCellToolTips = false;
-            this.dataGridView1.ShowEditingIcon = false;
-            this.dataGridView1.ShowRowErrors = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1026, 440);
-            this.dataGridView1.TabIndex = 4;
-            // 
-            // webResult
-            // 
-            this.webResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webResult.Location = new System.Drawing.Point(0, 0);
-            this.webResult.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.webResult.MinimumSize = new System.Drawing.Size(30, 31);
-            this.webResult.Name = "webResult";
-            this.webResult.Size = new System.Drawing.Size(1026, 440);
-            this.webResult.TabIndex = 2;
+            this.labelErrorMessage.Size = new System.Drawing.Size(100, 26);
+            this.labelErrorMessage.TabIndex = 6;
             // 
             // comparePDF
             // 
@@ -325,8 +364,9 @@ namespace PDFCompare
             this.selectFilesTabPage.PerformLayout();
             this.reviewTabPage.ResumeLayout(false);
             this.resultTabPage.ResumeLayout(false);
-            this.resultTabPage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -348,9 +388,13 @@ namespace PDFCompare
         private System.Windows.Forms.Button btnbrwSource;
         private MaterialWinforms.Controls.MaterialTabPage reviewTabPage;
         private MaterialWinforms.Controls.MaterialTabPage resultTabPage;
-        private System.Windows.Forms.TextBox labelErrorMessage;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.WebBrowser webResult;
         private System.Windows.Forms.Button btnCompare;
+        private MaterialWinforms.Controls.MaterialPanel reviewContentPanel;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
+        private MaterialWinforms.Controls.MaterialPanel resultContentPanel;
+        private System.Windows.Forms.TextBox labelErrorMessage;
+        private System.Windows.Forms.Button nextResult;
+        private System.Windows.Forms.Button previousResult;
     }
 }

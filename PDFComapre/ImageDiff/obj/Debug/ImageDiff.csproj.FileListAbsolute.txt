@@ -72,3 +72,9 @@ C:\Users\pocuser\Desktop\dotnet\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageD
 C:\Users\pocuser\Desktop\dotnet\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.csproj.CoreCompileInputs.cache
 C:\Users\pocuser\Desktop\dotnet\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.dll
 C:\Users\pocuser\Desktop\dotnet\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.pdb
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - different branch\PDFComapre\ImageDiff\bin\Debug\ImageDiff.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - different branch\PDFComapre\ImageDiff\bin\Debug\ImageDiff.pdb
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - different branch\PDFComapre\ImageDiff\obj\Debug\ImageDiff.csproj.AssemblyReference.cache
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - different branch\PDFComapre\ImageDiff\obj\Debug\ImageDiff.csproj.CoreCompileInputs.cache
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - different branch\PDFComapre\ImageDiff\obj\Debug\ImageDiff.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - different branch\PDFComapre\ImageDiff\obj\Debug\ImageDiff.pdb
