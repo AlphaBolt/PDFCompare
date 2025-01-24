@@ -21,13 +21,16 @@ namespace PDFCompare
         public comparePDF()
         {
             InitializeComponent();
-            labelErrorMessage.Visible = false;            
+            labelErrorMessage.Visible = false;
             //label4.Text = $"© {DateTime.Now.Year} COFORGE | www.Coforge.com";
         }
 
-        
-        private Dictionary<string, ComboBox> multipleSourceComboBox= new Dictionary<string, ComboBox>();
+
+        private Dictionary<string, ComboBox> multipleSourceComboBox = new Dictionary<string, ComboBox>();
         private Dictionary<string, ComboBox> multipleTargetComboBox = new Dictionary<string, ComboBox>();
+        private Dictionary<string, TextBox> multipleSourceRangeTextBox = new Dictionary<string, TextBox>();
+        private Dictionary<string, TextBox> multipleTargetRangeTextBox = new Dictionary<string, TextBox>();
+
 
         private Dictionary<string, WebBrowser> multipleWebResults = new Dictionary<string, WebBrowser>();
         private Dictionary<string, DataGridView> multipleDatagridViews = new Dictionary<string, DataGridView>();
@@ -44,18 +47,11 @@ namespace PDFCompare
                 multipleWebResults.Clear();
                 multipleDatagridViews.Clear();
                 resultContentPanel.Controls.Clear();
-                // Set whether it will use webresult or image
-
-
-
-                //string[] sourceFiles = txtSource.Text.Split(';');
-                //string[] targetFiles = txtTarget.Text.Split(';');
-
 
                 for (int i = 0; i < multipleSourceComboBox.Count; i++)
                 {
                     // Image comparison
-                    if (text_OR_imageBtn.Checked)    
+                    if (text_OR_imageBtn.Checked)
                     {
                         DataGridView datagridview = new DataGridView
                         {
@@ -105,21 +101,22 @@ namespace PDFCompare
                         multipleWebResults.Add(webResult.Name, webResult);
                     }
 
-                    CompareFiles(i);
+                    //CompareFiles(i);
+
                 }
 
                 ShowResult(0);
 
+                materialTabControl1.SelectedTab = resultTabPage;
+                btnCompare.Enabled = true;
             }
 
-            materialTabControl1.SelectedTab = resultTabPage;
-            btnCompare.Enabled = true;
         }
 
 
 
         private void CompareFiles(int i)
-        { 
+        {
             var currentDrive = Path.GetPathRoot(System.Reflection.Assembly.GetEntryAssembly().Location);
             var ComparisonReportFile = Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"ComparisonReport.xls");
             //"Q:\\Automation & Performance\\Functional Automation\\DCRegression\\Results\\Excess-Data\\PDF-Diff_Excel-Reports\\PDF_Comparator_Results\\ComparisonReport.xls";
@@ -129,11 +126,9 @@ namespace PDFCompare
             string File2diff = multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem.ToString();
 
 
-            string sourcePageRange = string.Empty;
-            //sourcePageRange = txtComparingPagesNumber.Text;
+            string sourcePageRange = multipleSourceRangeTextBox[$"sourceRangeTextBox_{i}"].Text;
 
-            string targetPageRange = string.Empty;
-            //targetPageRange = targetRangeTextBox.Text;
+            string targetPageRange = multipleTargetRangeTextBox[$"targetRangeTextBox_{i}"].Text;
 
 
             //multipleWebResults[$"webResult_{i}"].Visible = false;
@@ -154,10 +149,10 @@ namespace PDFCompare
 
                         var result = Program.fnPDFDiff_FormTemplate(File1diff, File2diff, ComparisonReportFile, sourcePageRange, targetPageRange, true);
 
-                        if (result.Message.Split('|')[1] != "Page Numbers are Not Same" && result.Message.Split('|')[1] != "Both PDF are same." && result.Message.Split('|')[1]!= "Please provide source and target same range to compare due to different number of pages.")
+                        if (result.Message.Split('|')[1] != "Page Numbers are Not Same" && result.Message.Split('|')[1] != "Both PDF are same." && result.Message.Split('|')[1] != "Please provide source and target same range to compare due to different number of pages.")
                         {
                             string resultImage = Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"Reports");
-                          //"Q:\\Automation & Performance\\Functional Automation\\DCRegression\\Results\\Excess-Data\\PDF-Diff_Excel-Reports\\PDF_Comparator_Results\\Reports";
+                            //"Q:\\Automation & Performance\\Functional Automation\\DCRegression\\Results\\Excess-Data\\PDF-Diff_Excel-Reports\\PDF_Comparator_Results\\Reports";
 
                             DirectoryInfo resultfolder = new DirectoryInfo(resultImage);
                             DirectoryInfo latestdir = resultfolder.GetDirectories().OrderByDescending(f => f.CreationTime).FirstOrDefault();
@@ -167,17 +162,18 @@ namespace PDFCompare
 
                             if (Directory.Exists(imagePath))
                             {
-                                    string[] filePaths = Directory.GetFiles(imagePath, "*.jpg").Where(x => x.Contains("CombinedDiff")).ToArray();
-                                ShowImages(filePaths, i);                           
-                            }                           
+                                string[] filePaths = Directory.GetFiles(imagePath, "*.jpg").Where(x => x.Contains("CombinedDiff")).ToArray();
+                                ShowImages(filePaths, i);
+                            }
                         }
 
-                        if (result.Message.Split('|')[1] == "Please provide source and target same range to compare due to different number of pages.") {
+                        if (result.Message.Split('|')[1] == "Please provide source and target same range to compare due to different number of pages.")
+                        {
                             labelErrorMessage.Text = "Please provide source and target same range to compare due to different number of pages.";
                             labelErrorMessage.BackColor = Color.Red;
                             labelErrorMessage.Visible = true;
-                            
-                        }                        
+
+                        }
 
                         if (result.Message.Split('|')[2] != string.Empty && result.Message.Split('|')[2] == "True" && result.Message.Split('|')[1] != "Please provide source and target same range to compare due to different number of pages.")
                         {
@@ -214,7 +210,7 @@ namespace PDFCompare
                     if (!string.IsNullOrEmpty(File1diff.Trim()) && !string.IsNullOrEmpty(File2diff.Trim()))
                     {
 
-                        
+
                         PDFComaprer pdfcompare = new PDFComaprer();
                         //List<int> list = Common.PagesToCompare(pagesToCompare);
 
@@ -247,7 +243,8 @@ namespace PDFCompare
                             multipleWebResults[$"webResult_{i}"].DocumentText = res;
                         }
                     }
-                    else {
+                    else
+                    {
                         labelErrorMessage.Text = "Files does not exist.";
                         labelErrorMessage.BackColor = Color.Red;
                         labelErrorMessage.Visible = true;
@@ -289,7 +286,8 @@ namespace PDFCompare
                 //multipleDatagridViews[$"datagridview_{i}"].Columns[0].Width = 900;
                 multipleDatagridViews[$"datagridview_{i}"].DataSource = table;
             }
-            else {
+            else
+            {
                 multipleDatagridViews[$"datagridview_{i}"].Visible = false;
             }
 
@@ -386,6 +384,9 @@ namespace PDFCompare
             {
                 //txtSource.Text = fileChooser.FileName;
                 txtSource.Text = string.Join(";", fileChooser.FileNames);
+                btnbrwSource.Enabled = false;
+                btnbrwSource.BackColor = Color.Gray;
+                btnbrwSource.Text = "Files  Selected!";
             }
 
         }
@@ -401,6 +402,9 @@ namespace PDFCompare
             {
                 //txtTarget.Text = fileChooser.FileName;
                 txtTarget.Text = string.Join(";", fileChooser.FileNames);
+                btnbrwTarget.Enabled = false;
+                btnbrwTarget.BackColor = Color.Gray;
+                btnbrwTarget.Text = "Files  Selected!";
             }
             Console.WriteLine(txtTarget.Text);
         }
@@ -440,7 +444,7 @@ namespace PDFCompare
             AllowOnlyNumbersToPressWithCommaAndDashSeparation(e);
         }
 
-       
+
 
         private void targetRangeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -471,8 +475,9 @@ namespace PDFCompare
 
         private void reviewButton_Click(object sender, EventArgs e)
         {
-            
+
             materialTabControl1.SelectedTab = reviewTabPage;
+
 
             // Clear existing controls
             reviewContentPanel.Controls.Clear();
@@ -529,6 +534,7 @@ namespace PDFCompare
 
                 TextBox sourceRangeTextBox = new TextBox
                 {
+                    Name = $"sourceRangeTextBox_{i}",
                     Location = new Point(100, 40),
                     Size = new Size(250, 21)
                 };
@@ -568,6 +574,7 @@ namespace PDFCompare
 
                 TextBox targetRangeTextBox = new TextBox
                 {
+                    Name = $"targetRangeTextBox_{i}",
                     Location = new Point(500, 40),
                     Size = new Size(250, 21)
                 };
@@ -587,9 +594,12 @@ namespace PDFCompare
 
                 // Store the ComboBoxes in the Dictionary with their unique names
                 multipleSourceComboBox.Add(sourceComboBox.Name, sourceComboBox);
+                multipleSourceRangeTextBox.Add(sourceRangeTextBox.Name, sourceRangeTextBox);
+
                 multipleTargetComboBox.Add(targetComboBox.Name, targetComboBox);
+                multipleTargetRangeTextBox.Add(targetRangeTextBox.Name, targetRangeTextBox);
             }
-            
+
         }
 
         // Event handler for Select files in reviewtab
@@ -673,5 +683,38 @@ namespace PDFCompare
                 }
             }
         }
+
+
+        // Reseting everything
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            txtSource.Text = string.Empty;
+            txtTarget.Text = string.Empty;
+            btnbrwSource.Enabled = true;
+            btnbrwSource.BackColor = Color.FromArgb(255, 255, 255);
+            btnbrwSource.Text = "Select Source File(s)";
+            btnbrwTarget.Enabled = true;
+            btnbrwTarget.BackColor = Color.FromArgb(255, 255, 255);
+            btnbrwTarget.Text = "Select Target File(s)";
+
+            text_OR_imageBtn.Checked = false;
+
+            reviewContentPanel.Controls.Clear();
+            resultContentPanel.Controls.Clear();
+            materialTabControl1.SelectedTab = selectFilesTabPage;
+
+            multipleDatagridViews.Clear();
+            multipleWebResults.Clear();
+
+            multipleSourceComboBox.Clear();
+            multipleTargetComboBox.Clear();
+            multipleSourceRangeTextBox.Clear();
+            multipleTargetRangeTextBox.Clear();
+
+
+        }
+
+
+
     }
 }
