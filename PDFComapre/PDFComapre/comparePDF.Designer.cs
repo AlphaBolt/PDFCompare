@@ -45,6 +45,7 @@ namespace PDFCompare
             this.btnbrwTarget = new System.Windows.Forms.Button();
             this.btnbrwSource = new System.Windows.Forms.Button();
             this.reviewTabPage = new MaterialWinforms.Controls.MaterialTabPage();
+            this.reviewContentPanel = new System.Windows.Forms.Panel();
             this.progressBarPanel = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -56,7 +57,7 @@ namespace PDFCompare
             this.nextResult = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.previousResult = new System.Windows.Forms.Button();
-            this.reviewContentPanel = new System.Windows.Forms.Panel();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.materialTabControl1.SuspendLayout();
             this.selectFilesTabPage.SuspendLayout();
             this.selectFilesContentPanel.SuspendLayout();
@@ -253,6 +254,14 @@ namespace PDFCompare
             this.reviewTabPage.TabIndex = 1;
             this.reviewTabPage.Text = "Review";
             // 
+            // reviewContentPanel
+            // 
+            this.reviewContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reviewContentPanel.Location = new System.Drawing.Point(0, 0);
+            this.reviewContentPanel.Name = "reviewContentPanel";
+            this.reviewContentPanel.Size = new System.Drawing.Size(910, 240);
+            this.reviewContentPanel.TabIndex = 2;
+            // 
             // progressBarPanel
             // 
             this.progressBarPanel.BackColor = System.Drawing.SystemColors.Control;
@@ -272,7 +281,7 @@ namespace PDFCompare
             this.progressBar1.Size = new System.Drawing.Size(824, 23);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 0;
-            this.progressBar1.Visible = false;
+            this.progressBar1.Value = 100;
             // 
             // panel3
             // 
@@ -375,13 +384,11 @@ namespace PDFCompare
             this.previousResult.UseVisualStyleBackColor = true;
             this.previousResult.Click += new System.EventHandler(this.previousResult_Click);
             // 
-            // reviewContentPanel
+            // backgroundWorker1
             // 
-            this.reviewContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reviewContentPanel.Location = new System.Drawing.Point(0, 0);
-            this.reviewContentPanel.Name = "reviewContentPanel";
-            this.reviewContentPanel.Size = new System.Drawing.Size(910, 240);
-            this.reviewContentPanel.TabIndex = 2;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.background_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.background_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.background_RunWorkerCompleted);
             // 
             // comparePDF
             // 
@@ -438,5 +445,6 @@ namespace PDFCompare
         private System.Windows.Forms.Button btnbrwTarget;
         private System.Windows.Forms.Button btnbrwSource;
         private System.Windows.Forms.Panel reviewContentPanel;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

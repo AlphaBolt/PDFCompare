@@ -13,6 +13,7 @@ using System.Configuration;
 using System.Text.RegularExpressions;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
+using System.Threading;
 
 namespace PDFCompare
 {
@@ -21,8 +22,18 @@ namespace PDFCompare
         public comparePDF()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
+            materialTabControl1.SelectedTab = selectFilesTabPage;
             labelErrorMessage.Visible = false;
+            progressBar1.Visible = false;
             //label4.Text = $"© {DateTime.Now.Year} COFORGE | www.Coforge.com";
+
+            // Initialize BackgroundWorker event handlers
+            backgroundWorker1.DoWork += new DoWorkEventHandler(background_DoWork);
+            backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(background_ProgressChanged);
+            backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(background_RunWorkerCompleted);
+            backgroundWorker1.WorkerReportsProgress = true;
+
         }
 
 
@@ -43,10 +54,13 @@ namespace PDFCompare
             if (!string.IsNullOrEmpty(txtSource.Text) && !string.IsNullOrEmpty(txtTarget.Text))
             {
                 btnCompare.Enabled = false;
-
+                progressBar1.Visible = true; //show the progress bar
                 multipleWebResults.Clear();
                 multipleDatagridViews.Clear();
                 resultContentPanel.Controls.Clear();
+
+                //backgroundWorker1.WorkerReportsProgress = true;
+                backgroundWorker1.RunWorkerAsync();
 
                 for (int i = 0; i < multipleSourceComboBox.Count; i++)
                 {
@@ -102,9 +116,7 @@ namespace PDFCompare
                     }
 
                     CompareFiles(i);
-
                 }
-
                 ShowResult(0);
 
                 materialTabControl1.SelectedTab = resultTabPage;
@@ -117,6 +129,11 @@ namespace PDFCompare
 
         private void CompareFiles(int i)
         {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => CompareFiles(i)));
+                return;
+            }
             var currentDrive = Path.GetPathRoot(System.Reflection.Assembly.GetEntryAssembly().Location);
             var ComparisonReportFile = Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"ComparisonReport.xls");
             //"Q:\\Automation & Performance\\Functional Automation\\DCRegression\\Results\\Excess-Data\\PDF-Diff_Excel-Reports\\PDF_Comparator_Results\\ComparisonReport.xls";
@@ -124,6 +141,7 @@ namespace PDFCompare
 
             string File1diff = multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem.ToString();
             string File2diff = multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem.ToString();
+
 
 
             string sourcePageRange = multipleSourceRangeTextBox[$"sourceRangeTextBox_{i}"].Text;
@@ -208,8 +226,6 @@ namespace PDFCompare
                 {
                     if (!string.IsNullOrEmpty(File1diff.Trim()) && !string.IsNullOrEmpty(File2diff.Trim()))
                     {
-
-
                         PDFComaprer pdfcompare = new PDFComaprer();
                         //List<int> list = Common.PagesToCompare(pagesToCompare);
 
@@ -254,6 +270,9 @@ namespace PDFCompare
                     multipleWebResults[$"webResult_{i}"].Visible = false;
                 }
             }
+
+            //Progress Bar
+            //backgroundWorker1.ReportProgress((i + 1) * 100 / multipleSourceComboBox.Count);
         }
 
         private void ShowImages(string[] files, int i)
@@ -716,7 +735,24 @@ namespace PDFCompare
 
         }
 
+        private void background_DoWork(object sender, DoWorkEventArgs e)
+        {
+            for (int i = 0; i < multipleSourceComboBox.Count; i++)
+            {
+                CompareFiles(i);
+                Thread.Sleep(10);
+                backgroundWorker1.ReportProgress((i + 1) * 100 / multipleSourceComboBox.Count);
+            }
+        }
 
+        private void background_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+        }
 
+        private void background_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            progressBar1.Visible = false;
+        }
     }
 }
