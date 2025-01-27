@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\PDFCompare\\PDFComapre\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|d:\\pdfcompare\\pdfcomapre\\pdfcomapre\\comparepdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|solutionrelative:pdfcomapre\\comparepdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|D:\\PDFCompare\\PDFComapre\\pdfcomapre\\comparepdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|solutionrelative:pdfcomapre\\comparepdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|D:\\PDFCompare\\PDFComapre\\pdfcomapre\\comparepdf.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|solutionrelative:pdfcomapre\\comparepdf.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{507377A9-2375-43C8-BCDC-5D6492ECE25A}|CompareUtility\\CompareUtility.csproj|D:\\PDFCompare\\PDFComapre\\compareutility\\comparisonreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{507377A9-2375-43C8-BCDC-5D6492ECE25A}|CompareUtility\\CompareUtility.csproj|solutionrelative:compareutility\\comparisonreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "comparePDF.cs [Design]",
+              "DocumentMoniker": "D:\\PDFCompare\\PDFComapre\\PDFComapre\\comparePDF.cs",
+              "RelativeDocumentMoniker": "PDFComapre\\comparePDF.cs",
+              "ToolTip": "D:\\PDFCompare\\PDFComapre\\PDFComapre\\comparePDF.cs [Design]",
+              "RelativeToolTip": "PDFComapre\\comparePDF.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-21T05:35:03.612Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ComparisonReport.cs",
+              "DocumentMoniker": "D:\\PDFCompare\\PDFComapre\\CompareUtility\\ComparisonReport.cs",
+              "RelativeDocumentMoniker": "CompareUtility\\ComparisonReport.cs",
+              "ToolTip": "D:\\PDFCompare\\PDFComapre\\CompareUtility\\ComparisonReport.cs",
+              "RelativeToolTip": "CompareUtility\\ComparisonReport.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAwwBoAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-24T10:30:45.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "comparePDF.cs",
+              "DocumentMoniker": "D:\\PDFCompare\\PDFComapre\\PDFComapre\\comparePDF.cs",
+              "RelativeDocumentMoniker": "PDFComapre\\comparePDF.cs",
+              "ToolTip": "D:\\PDFCompare\\PDFComapre\\PDFComapre\\comparePDF.cs",
+              "RelativeToolTip": "PDFComapre\\comparePDF.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAqwPQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T07:05:30.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "comparePDF.Designer.cs",
+              "DocumentMoniker": "D:\\PDFCompare\\PDFComapre\\PDFComapre\\comparePDF.Designer.cs",
+              "RelativeDocumentMoniker": "PDFComapre\\comparePDF.Designer.cs",
+              "ToolTip": "D:\\PDFCompare\\PDFComapre\\PDFComapre\\comparePDF.Designer.cs",
+              "RelativeToolTip": "PDFComapre\\comparePDF.Designer.cs",
+              "ViewState": "AgIAAHoBAAAAAAAAAAAswIEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-22T07:05:40.353Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
