@@ -144,6 +144,11 @@ namespace PDFCompare
 
         private void CompareFiles(int i)
         {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => CompareFiles(i)));
+                return;
+            }
 
             var currentDrive = Path.GetPathRoot(System.Reflection.Assembly.GetEntryAssembly().Location);
             var ComparisonReportFile = Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"ComparisonReport.xls");

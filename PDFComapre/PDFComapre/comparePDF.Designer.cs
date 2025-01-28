@@ -47,9 +47,10 @@ namespace PDFCompare
             this.btnbrwSource = new System.Windows.Forms.Button();
             this.reviewTabPage = new MaterialWinforms.Controls.MaterialTabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnCompare = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.reviewContentPanel = new System.Windows.Forms.Panel();
             this.resultTabPage = new MaterialWinforms.Controls.MaterialTabPage();
             this.resultContentPanel = new System.Windows.Forms.Panel();
@@ -57,16 +58,15 @@ namespace PDFCompare
             this.previousResult = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelErrorMessage = new System.Windows.Forms.TextBox();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.materialTabControl1.SuspendLayout();
             this.selectFilesTabPage.SuspendLayout();
             this.selectFilesContentPanel.SuspendLayout();
             this.reviewTabPage.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.resultTabPage.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // backgroundWorker1
@@ -120,7 +120,7 @@ namespace PDFCompare
             this.selectFilesTabPage.Location = new System.Drawing.Point(4, 29);
             this.selectFilesTabPage.MouseState = MaterialWinforms.MouseState.HOVER;
             this.selectFilesTabPage.Name = "selectFilesTabPage";
-            this.selectFilesTabPage.Size = new System.Drawing.Size(1003, 481);
+            this.selectFilesTabPage.Size = new System.Drawing.Size(1093, 481);
             this.selectFilesTabPage.TabIndex = 0;
             this.selectFilesTabPage.Text = "Select File(s)";
             // 
@@ -138,7 +138,7 @@ namespace PDFCompare
             this.selectFilesContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectFilesContentPanel.Location = new System.Drawing.Point(0, 0);
             this.selectFilesContentPanel.Name = "selectFilesContentPanel";
-            this.selectFilesContentPanel.Size = new System.Drawing.Size(1003, 481);
+            this.selectFilesContentPanel.Size = new System.Drawing.Size(1093, 481);
             this.selectFilesContentPanel.TabIndex = 0;
             // 
             // button1
@@ -272,6 +272,26 @@ namespace PDFCompare
             this.panel2.Size = new System.Drawing.Size(1093, 481);
             this.panel2.TabIndex = 0;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.progressBar1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 448);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1093, 33);
+            this.panel4.TabIndex = 2;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.BackColor = System.Drawing.Color.White;
+            this.progressBar1.ForeColor = System.Drawing.Color.LawnGreen;
+            this.progressBar1.Location = new System.Drawing.Point(47, 6);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(1009, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 2;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnCompare);
@@ -296,16 +316,6 @@ namespace PDFCompare
             this.btnCompare.UseVisualStyleBackColor = false;
             this.btnCompare.Click += new System.EventHandler(this.btnCompare_Click);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.BackColor = System.Drawing.Color.White;
-            this.progressBar1.Location = new System.Drawing.Point(47, 6);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1009, 23);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.TabIndex = 2;
-            // 
             // reviewContentPanel
             // 
             this.reviewContentPanel.AutoScroll = true;
@@ -327,7 +337,7 @@ namespace PDFCompare
             this.resultTabPage.Location = new System.Drawing.Point(4, 29);
             this.resultTabPage.MouseState = MaterialWinforms.MouseState.HOVER;
             this.resultTabPage.Name = "resultTabPage";
-            this.resultTabPage.Size = new System.Drawing.Size(1003, 481);
+            this.resultTabPage.Size = new System.Drawing.Size(1093, 481);
             this.resultTabPage.TabIndex = 2;
             this.resultTabPage.Text = "Result";
             // 
@@ -336,7 +346,7 @@ namespace PDFCompare
             this.resultContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultContentPanel.Location = new System.Drawing.Point(70, 0);
             this.resultContentPanel.Name = "resultContentPanel";
-            this.resultContentPanel.Size = new System.Drawing.Size(863, 481);
+            this.resultContentPanel.Size = new System.Drawing.Size(953, 481);
             this.resultContentPanel.TabIndex = 1;
             // 
             // nextResult
@@ -345,7 +355,7 @@ namespace PDFCompare
             this.nextResult.FlatAppearance.BorderSize = 0;
             this.nextResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextResult.Font = new System.Drawing.Font("Cooper Black", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextResult.Location = new System.Drawing.Point(933, 0);
+            this.nextResult.Location = new System.Drawing.Point(1023, 0);
             this.nextResult.Name = "nextResult";
             this.nextResult.Size = new System.Drawing.Size(70, 481);
             this.nextResult.TabIndex = 0;
@@ -387,15 +397,6 @@ namespace PDFCompare
             this.labelErrorMessage.TabIndex = 7;
             this.labelErrorMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.progressBar1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 448);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1093, 33);
-            this.panel4.TabIndex = 2;
-            // 
             // comparePDF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -416,11 +417,11 @@ namespace PDFCompare
             this.reviewTabPage.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.resultTabPage.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

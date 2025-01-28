@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\PDFCompare - Git\\PDFCompare\\PDFComapre\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|D:\\PDFCompare - Git\\PDFCompare\\PDFComapre\\pdfcomapre\\comparepdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|solutionrelative:pdfcomapre\\comparepdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|d:\\pdfcompare - git\\pdfcompare\\pdfcomapre\\pdfcomapre\\comparepdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|solutionrelative:pdfcomapre\\comparepdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|D:\\PDFCompare - Git\\PDFCompare\\PDFComapre\\pdfcomapre\\comparepdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|solutionrelative:pdfcomapre\\comparepdf.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}|PDFComapre\\PDFComapre.csproj|D:\\PDFCompare - Git\\PDFCompare\\PDFComapre\\pdfcomapre\\comparepdf.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,27 +43,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "comparePDF.cs",
+              "DocumentMoniker": "D:\\PDFCompare - Git\\PDFCompare\\PDFComapre\\PDFComapre\\comparePDF.cs",
+              "RelativeDocumentMoniker": "PDFComapre\\comparePDF.cs",
+              "ToolTip": "D:\\PDFCompare - Git\\PDFCompare\\PDFComapre\\PDFComapre\\comparePDF.cs",
+              "RelativeToolTip": "PDFComapre\\comparePDF.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAYwJUAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-28T08:11:23.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "comparePDF.cs [Design]",
               "DocumentMoniker": "D:\\PDFCompare - Git\\PDFCompare\\PDFComapre\\PDFComapre\\comparePDF.cs",
               "RelativeDocumentMoniker": "PDFComapre\\comparePDF.cs",
               "ToolTip": "D:\\PDFCompare - Git\\PDFCompare\\PDFComapre\\PDFComapre\\comparePDF.cs [Design]",
               "RelativeToolTip": "PDFComapre\\comparePDF.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T05:35:03.612Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "comparePDF.cs",
-              "DocumentMoniker": "D:\\PDFCompare - Git\\PDFCompare\\PDFComapre\\PDFComapre\\comparePDF.cs",
-              "RelativeDocumentMoniker": "PDFComapre\\comparePDF.cs",
-              "ToolTip": "D:\\PDFCompare - Git\\PDFCompare\\PDFComapre\\PDFComapre\\comparePDF.cs",
-              "RelativeToolTip": "PDFComapre\\comparePDF.cs",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAgwJgAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-28T08:11:23.107Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-21T05:35:03.612Z"
             },
             {
               "$type": "Document",
@@ -75,8 +74,7 @@
               "RelativeToolTip": "PDFComapre\\comparePDF.Designer.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAgwBcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T12:47:05.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-27T12:47:05.113Z"
             }
           ]
         }
