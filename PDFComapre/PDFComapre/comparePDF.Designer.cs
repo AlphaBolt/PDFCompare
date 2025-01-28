@@ -46,25 +46,27 @@ namespace PDFCompare
             this.btnbrwTarget = new System.Windows.Forms.Button();
             this.btnbrwSource = new System.Windows.Forms.Button();
             this.reviewTabPage = new MaterialWinforms.Controls.MaterialTabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnCompare = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.reviewContentPanel = new System.Windows.Forms.Panel();
             this.resultTabPage = new MaterialWinforms.Controls.MaterialTabPage();
             this.resultContentPanel = new System.Windows.Forms.Panel();
             this.nextResult = new System.Windows.Forms.Button();
             this.previousResult = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelErrorMessage = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.reviewContentPanel = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btnCompare = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.materialTabControl1.SuspendLayout();
             this.selectFilesTabPage.SuspendLayout();
             this.selectFilesContentPanel.SuspendLayout();
             this.reviewTabPage.SuspendLayout();
-            this.resultTabPage.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.resultTabPage.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // backgroundWorker1
@@ -89,7 +91,7 @@ namespace PDFCompare
             this.materialTabSelector1.Name = "materialTabSelector1";
             graphicsPath1.FillMode = System.Drawing.Drawing2D.FillMode.Alternate;
             this.materialTabSelector1.ShadowBorder = graphicsPath1;
-            this.materialTabSelector1.Size = new System.Drawing.Size(1011, 35);
+            this.materialTabSelector1.Size = new System.Drawing.Size(1101, 35);
             this.materialTabSelector1.TabIndex = 0;
             this.materialTabSelector1.TabPadding = 24;
             this.materialTabSelector1.Text = "materialTabSelector1";
@@ -104,8 +106,8 @@ namespace PDFCompare
             this.materialTabControl1.Location = new System.Drawing.Point(0, 35);
             this.materialTabControl1.MouseState = MaterialWinforms.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(1011, 514);
+            this.materialTabControl1.SelectedIndex = 1;
+            this.materialTabControl1.Size = new System.Drawing.Size(1101, 514);
             this.materialTabControl1.TabIndex = 5;
             this.materialTabControl1.TabsAreClosable = true;
             // 
@@ -255,9 +257,65 @@ namespace PDFCompare
             this.reviewTabPage.Location = new System.Drawing.Point(4, 29);
             this.reviewTabPage.MouseState = MaterialWinforms.MouseState.HOVER;
             this.reviewTabPage.Name = "reviewTabPage";
-            this.reviewTabPage.Size = new System.Drawing.Size(1003, 481);
+            this.reviewTabPage.Size = new System.Drawing.Size(1093, 481);
             this.reviewTabPage.TabIndex = 1;
             this.reviewTabPage.Text = "Review";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.reviewContentPanel);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1093, 481);
+            this.panel2.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btnCompare);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1093, 140);
+            this.panel3.TabIndex = 1;
+            // 
+            // btnCompare
+            // 
+            this.btnCompare.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCompare.BackColor = System.Drawing.Color.LightGray;
+            this.btnCompare.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnCompare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompare.Location = new System.Drawing.Point(401, 37);
+            this.btnCompare.Name = "btnCompare";
+            this.btnCompare.Size = new System.Drawing.Size(297, 63);
+            this.btnCompare.TabIndex = 3;
+            this.btnCompare.Text = "Compare";
+            this.btnCompare.UseVisualStyleBackColor = false;
+            this.btnCompare.Click += new System.EventHandler(this.btnCompare_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.BackColor = System.Drawing.Color.White;
+            this.progressBar1.Location = new System.Drawing.Point(47, 6);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(1009, 23);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 2;
+            // 
+            // reviewContentPanel
+            // 
+            this.reviewContentPanel.AutoScroll = true;
+            this.reviewContentPanel.AutoSize = true;
+            this.reviewContentPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.reviewContentPanel.Location = new System.Drawing.Point(0, 0);
+            this.reviewContentPanel.MaximumSize = new System.Drawing.Size(0, 800);
+            this.reviewContentPanel.Name = "reviewContentPanel";
+            this.reviewContentPanel.Size = new System.Drawing.Size(1093, 0);
+            this.reviewContentPanel.TabIndex = 0;
             // 
             // resultTabPage
             // 
@@ -316,7 +374,7 @@ namespace PDFCompare
             this.panel1.Location = new System.Drawing.Point(0, 549);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1011, 46);
+            this.panel1.Size = new System.Drawing.Size(1101, 46);
             this.panel1.TabIndex = 1;
             // 
             // labelErrorMessage
@@ -325,65 +383,18 @@ namespace PDFCompare
             this.labelErrorMessage.Location = new System.Drawing.Point(0, 13);
             this.labelErrorMessage.Multiline = true;
             this.labelErrorMessage.Name = "labelErrorMessage";
-            this.labelErrorMessage.Size = new System.Drawing.Size(1011, 33);
+            this.labelErrorMessage.Size = new System.Drawing.Size(1101, 33);
             this.labelErrorMessage.TabIndex = 7;
             this.labelErrorMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // panel2
+            // panel4
             // 
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.reviewContentPanel);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1003, 481);
-            this.panel2.TabIndex = 0;
-            // 
-            // reviewContentPanel
-            // 
-            this.reviewContentPanel.AutoScroll = true;
-            this.reviewContentPanel.AutoSize = true;
-            this.reviewContentPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.reviewContentPanel.Location = new System.Drawing.Point(0, 0);
-            this.reviewContentPanel.MaximumSize = new System.Drawing.Size(0, 800);
-            this.reviewContentPanel.Name = "reviewContentPanel";
-            this.reviewContentPanel.Size = new System.Drawing.Size(1003, 0);
-            this.reviewContentPanel.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btnCompare);
-            this.panel3.Controls.Add(this.progressBar1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1003, 140);
-            this.panel3.TabIndex = 1;
-            // 
-            // btnCompare
-            // 
-            this.btnCompare.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCompare.BackColor = System.Drawing.Color.LightGray;
-            this.btnCompare.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnCompare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCompare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCompare.Location = new System.Drawing.Point(371, 70);
-            this.btnCompare.Name = "btnCompare";
-            this.btnCompare.Size = new System.Drawing.Size(297, 63);
-            this.btnCompare.TabIndex = 3;
-            this.btnCompare.Text = "Compare";
-            this.btnCompare.UseVisualStyleBackColor = false;
-            this.btnCompare.Click += new System.EventHandler(this.btnCompare_Click);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.BackColor = System.Drawing.Color.White;
-            this.progressBar1.Location = new System.Drawing.Point(43, 28);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(916, 23);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.TabIndex = 2;
+            this.panel4.Controls.Add(this.progressBar1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 448);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1093, 33);
+            this.panel4.TabIndex = 2;
             // 
             // comparePDF
             // 
@@ -391,7 +402,7 @@ namespace PDFCompare
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1011, 595);
+            this.ClientSize = new System.Drawing.Size(1101, 595);
             this.Controls.Add(this.materialTabControl1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.materialTabSelector1);
@@ -403,12 +414,13 @@ namespace PDFCompare
             this.selectFilesContentPanel.ResumeLayout(false);
             this.selectFilesContentPanel.PerformLayout();
             this.reviewTabPage.ResumeLayout(false);
-            this.resultTabPage.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.resultTabPage.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -441,5 +453,6 @@ namespace PDFCompare
         private System.Windows.Forms.Button btnCompare;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Panel reviewContentPanel;
+        private System.Windows.Forms.Panel panel4;
     }
 }
