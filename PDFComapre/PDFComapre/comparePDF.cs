@@ -28,12 +28,6 @@ namespace PDFCompare
             progressBar1.Visible = false;
             //label4.Text = $"© {DateTime.Now.Year} COFORGE | www.Coforge.com";
 
-            // Initialize BackgroundWorker event handlers
-            backgroundWorker1.DoWork += new DoWorkEventHandler(background_DoWork);
-            backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(background_ProgressChanged);
-            backgroundWorker1.RunWorkerCompleted += new RunWorkerCompletedEventHandler(background_RunWorkerCompleted);
-            backgroundWorker1.WorkerReportsProgress = true;
-
         }
 
 
@@ -42,28 +36,48 @@ namespace PDFCompare
         private Dictionary<string, TextBox> multipleSourceRangeTextBox = new Dictionary<string, TextBox>();
         private Dictionary<string, TextBox> multipleTargetRangeTextBox = new Dictionary<string, TextBox>();
 
-
+        private Dictionary<string, TextBox> multipleResultStatus = new Dictionary<string, TextBox>();
         private Dictionary<string, WebBrowser> multipleWebResults = new Dictionary<string, WebBrowser>();
         private Dictionary<string, DataGridView> multipleDatagridViews = new Dictionary<string, DataGridView>();
+
 
         private int currentResultIndex = 0;
 
         private void btnCompare_Click(object sender, EventArgs e)
         {
             // Start comparing only if there is some file selected
-            if (!string.IsNullOrEmpty(txtSource.Text) && !string.IsNullOrEmpty(txtTarget.Text))
+            if (!backgroundWorker1.IsBusy && !string.IsNullOrEmpty(txtSource.Text) && !string.IsNullOrEmpty(txtTarget.Text))
             {
                 btnCompare.Enabled = false;
+                btnCompare.Cursor = Cursors.No;
                 progressBar1.Visible = true; //show the progress bar
+                progressBar1.Value = 0;
                 multipleWebResults.Clear();
                 multipleDatagridViews.Clear();
                 resultContentPanel.Controls.Clear();
 
-                //backgroundWorker1.WorkerReportsProgress = true;
-                backgroundWorker1.RunWorkerAsync();
 
+                //Create datagridview or webbrowser to be used in background worker's DoWork event
                 for (int i = 0; i < multipleSourceComboBox.Count; i++)
                 {
+                    // Create textbox for status message
+                    TextBox resultStatus = new TextBox
+                    {
+                        Name = $"resultStatus_{i}",
+                        ReadOnly = true,
+                        BorderStyle = BorderStyle.None,
+                        //Size = new Size(30, 100),
+                        Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
+                        TextAlign = HorizontalAlignment.Center,
+                        Visible = false,
+                    };
+
+                    resultContentPanel.Controls.Add(resultStatus);
+                    resultStatus.Dock = DockStyle.Top;
+                    // Store the result textbox in the Dictionary with its unique name
+                    multipleResultStatus.Add(resultStatus.Name, resultStatus);
+
+
                     // Image comparison
                     if (text_OR_imageBtn.Checked)
                     {
@@ -117,10 +131,11 @@ namespace PDFCompare
 
                     CompareFiles(i);
                 }
-                ShowResult(0);
 
-                materialTabControl1.SelectedTab = resultTabPage;
-                btnCompare.Enabled = true;
+                backgroundWorker1.RunWorkerAsync();
+
+                
+
             }
 
         }
@@ -129,11 +144,7 @@ namespace PDFCompare
 
         private void CompareFiles(int i)
         {
-            if (InvokeRequired)
-            {
-                Invoke(new Action(() => CompareFiles(i)));
-                return;
-            }
+
             var currentDrive = Path.GetPathRoot(System.Reflection.Assembly.GetEntryAssembly().Location);
             var ComparisonReportFile = Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"ComparisonReport.xls");
             //"Q:\\Automation & Performance\\Functional Automation\\DCRegression\\Results\\Excess-Data\\PDF-Diff_Excel-Reports\\PDF_Comparator_Results\\ComparisonReport.xls";
@@ -194,15 +205,15 @@ namespace PDFCompare
 
                         if (result.Message.Split('|')[2] != string.Empty && result.Message.Split('|')[2] == "True" && result.Message.Split('|')[1] != "Please provide source and target same range to compare due to different number of pages.")
                         {
-                            labelErrorMessage.Text = "Pass";
-                            labelErrorMessage.BackColor = Color.Green;
-                            labelErrorMessage.Visible = true;
+                            multipleResultStatus[$"resultStatus_{i}"].Text = "Pass";
+                            multipleResultStatus[$"resultStatus_{i}"].BackColor = Color.Green;
+                            multipleResultStatus[$"resultStatus_{i}"].Visible = true;
                         }
                         else if (result.Message.Split('|')[2] != string.Empty && result.Message.Split('|')[2] == "False" && result.Message.Split('|')[1] != "Please provide source and target same range to compare due to different number of pages.")
                         {
-                            labelErrorMessage.Text = "Fail";
-                            labelErrorMessage.BackColor = Color.Red;
-                            labelErrorMessage.Visible = true;
+                            multipleResultStatus[$"resultStatus_{i}"].Text = "Fail";
+                            multipleResultStatus[$"resultStatus_{i}"].BackColor = Color.Red;
+                            multipleResultStatus[$"resultStatus_{i}"].Visible = true;
                         }
 
                     }
@@ -235,15 +246,15 @@ namespace PDFCompare
                         multipleWebResults[$"webResult_{i}"].Visible = true;
                         if (result.Message.Split('|')[2] != string.Empty && result.Message.Split('|')[2] == "True")
                         {
-                            labelErrorMessage.Text = "Pass";
-                            labelErrorMessage.BackColor = Color.Green;
-                            labelErrorMessage.Visible = true;
+                            multipleResultStatus[$"resultStatus_{i}"].Text = "Pass";
+                            multipleResultStatus[$"resultStatus_{i}"].BackColor = Color.Green;
+                            multipleResultStatus[$"resultStatus_{i}"].Visible = true;
                         }
                         else if (result.Message.Split('|')[2] != string.Empty && result.Message.Split('|')[2] == "False")
                         {
-                            labelErrorMessage.Text = "Fail";
-                            labelErrorMessage.BackColor = Color.Red;
-                            labelErrorMessage.Visible = true;
+                            multipleResultStatus[$"resultStatus_{i}"].Text = "Fail";
+                            multipleResultStatus[$"resultStatus_{i}"].BackColor = Color.Red;
+                            multipleResultStatus[$"resultStatus_{i}"].Visible = true;
                         }
 
                         if (res == "Files does not exist." || res == "Fail")
@@ -649,10 +660,10 @@ namespace PDFCompare
         //************** Carousel Feature **************//
         private void ShowResult(int index)
         {
-            //foreach (var key in multipleErrorLabels.Keys)
-            //{
-            //    multipleErrorLabels[key].Visible = false;
-            //}
+            foreach (var key in multipleResultStatus.Keys)
+            {
+                multipleResultStatus[key].Visible = false;
+            }
             foreach (var key in multipleWebResults.Keys)
             {
                 multipleWebResults[key].Visible = false;
@@ -662,10 +673,10 @@ namespace PDFCompare
                 multipleDatagridViews[key].Visible = false;
             }
 
-            //if (multipleErrorLabels.ContainsKey($"errorLabel_{index}"))
-            //{
-            //    multipleErrorLabels[$"errorLabel_{index}"].Visible = true;
-            //}
+            if (multipleResultStatus.ContainsKey($"resultStatus_{index}"))
+            {
+                multipleResultStatus[$"resultStatus_{index}"].Visible = true;
+            }
             if (multipleWebResults.ContainsKey($"webResult_{index}"))
             {
                 multipleWebResults[$"webResult_{index}"].Visible = true;
@@ -731,18 +742,21 @@ namespace PDFCompare
             multipleTargetComboBox.Clear();
             multipleSourceRangeTextBox.Clear();
             multipleTargetRangeTextBox.Clear();
-
+            multipleResultStatus.Clear();
 
         }
 
+        // Main logic to compare files inside do_work
         private void background_DoWork(object sender, DoWorkEventArgs e)
         {
+            Console.WriteLine("Background Worker Started");
+
             for (int i = 0; i < multipleSourceComboBox.Count; i++)
             {
                 CompareFiles(i);
-                Thread.Sleep(10);
                 backgroundWorker1.ReportProgress((i + 1) * 100 / multipleSourceComboBox.Count);
             }
+
         }
 
         private void background_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -752,7 +766,12 @@ namespace PDFCompare
 
         private void background_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            progressBar1.Visible = false;
+            //progressBar1.Visible = false;
+            ShowResult(0);
+
+            materialTabControl1.SelectedTab = resultTabPage;
+            btnCompare.Enabled = true;
+            btnCompare.Cursor = Cursors.Default;
         }
     }
 }
