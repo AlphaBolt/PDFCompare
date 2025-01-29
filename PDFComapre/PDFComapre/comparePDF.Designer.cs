@@ -58,6 +58,9 @@ namespace PDFCompare
             this.previousResult = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelErrorMessage = new System.Windows.Forms.TextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.copyrightLabel = new System.Windows.Forms.Label();
             this.materialTabControl1.SuspendLayout();
             this.selectFilesTabPage.SuspendLayout();
             this.selectFilesContentPanel.SuspendLayout();
@@ -67,6 +70,8 @@ namespace PDFCompare
             this.panel3.SuspendLayout();
             this.resultTabPage.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // backgroundWorker1
@@ -91,7 +96,7 @@ namespace PDFCompare
             this.materialTabSelector1.Name = "materialTabSelector1";
             graphicsPath1.FillMode = System.Drawing.Drawing2D.FillMode.Alternate;
             this.materialTabSelector1.ShadowBorder = graphicsPath1;
-            this.materialTabSelector1.Size = new System.Drawing.Size(1101, 35);
+            this.materialTabSelector1.Size = new System.Drawing.Size(1260, 35);
             this.materialTabSelector1.TabIndex = 0;
             this.materialTabSelector1.TabPadding = 24;
             this.materialTabSelector1.Text = "materialTabSelector1";
@@ -106,8 +111,8 @@ namespace PDFCompare
             this.materialTabControl1.Location = new System.Drawing.Point(0, 35);
             this.materialTabControl1.MouseState = MaterialWinforms.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 1;
-            this.materialTabControl1.Size = new System.Drawing.Size(1101, 514);
+            this.materialTabControl1.SelectedIndex = 0;
+            this.materialTabControl1.Size = new System.Drawing.Size(1260, 617);
             this.materialTabControl1.TabIndex = 5;
             this.materialTabControl1.TabsAreClosable = true;
             // 
@@ -120,7 +125,7 @@ namespace PDFCompare
             this.selectFilesTabPage.Location = new System.Drawing.Point(4, 29);
             this.selectFilesTabPage.MouseState = MaterialWinforms.MouseState.HOVER;
             this.selectFilesTabPage.Name = "selectFilesTabPage";
-            this.selectFilesTabPage.Size = new System.Drawing.Size(1093, 481);
+            this.selectFilesTabPage.Size = new System.Drawing.Size(1252, 584);
             this.selectFilesTabPage.TabIndex = 0;
             this.selectFilesTabPage.Text = "Select File(s)";
             // 
@@ -138,29 +143,31 @@ namespace PDFCompare
             this.selectFilesContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.selectFilesContentPanel.Location = new System.Drawing.Point(0, 0);
             this.selectFilesContentPanel.Name = "selectFilesContentPanel";
-            this.selectFilesContentPanel.Size = new System.Drawing.Size(1093, 481);
+            this.selectFilesContentPanel.Size = new System.Drawing.Size(1252, 584);
             this.selectFilesContentPanel.TabIndex = 0;
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(730, 328);
+            this.button1.Location = new System.Drawing.Point(830, 460);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.button1.Size = new System.Drawing.Size(75, 77);
+            this.button1.Size = new System.Drawing.Size(40, 40);
             this.button1.TabIndex = 18;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // reviewButton
             // 
+            this.reviewButton.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.reviewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reviewButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reviewButton.Location = new System.Drawing.Point(376, 328);
+            this.reviewButton.Location = new System.Drawing.Point(572, 438);
             this.reviewButton.Name = "reviewButton";
-            this.reviewButton.Size = new System.Drawing.Size(158, 68);
+            this.reviewButton.Size = new System.Drawing.Size(196, 78);
             this.reviewButton.TabIndex = 17;
             this.reviewButton.Text = "Review";
             this.reviewButton.UseVisualStyleBackColor = true;
@@ -168,38 +175,41 @@ namespace PDFCompare
             // 
             // textBox2
             // 
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox2.BackColor = System.Drawing.SystemColors.Control;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox2.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.ForeColor = System.Drawing.Color.Black;
-            this.textBox2.Location = new System.Drawing.Point(570, 54);
+            this.textBox2.Location = new System.Drawing.Point(773, 82);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(136, 40);
+            this.textBox2.Size = new System.Drawing.Size(136, 54);
             this.textBox2.TabIndex = 16;
             this.textBox2.Text = "IMAGE";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox1.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(195, 54);
+            this.textBox1.Location = new System.Drawing.Point(412, 82);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 40);
+            this.textBox1.Size = new System.Drawing.Size(100, 54);
             this.textBox1.TabIndex = 15;
             this.textBox1.Text = "TEXT";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // text_OR_imageBtn
             // 
+            this.text_OR_imageBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.text_OR_imageBtn.Depth = 0;
             this.text_OR_imageBtn.EllipseBorderColor = "#3b73d1";
             this.text_OR_imageBtn.EllipseColor = "#508ef5";
-            this.text_OR_imageBtn.Location = new System.Drawing.Point(416, 65);
+            this.text_OR_imageBtn.Location = new System.Drawing.Point(645, 101);
             this.text_OR_imageBtn.MouseState = MaterialWinforms.MouseState.HOVER;
             this.text_OR_imageBtn.Name = "text_OR_imageBtn";
             this.text_OR_imageBtn.Size = new System.Drawing.Size(47, 19);
@@ -208,8 +218,9 @@ namespace PDFCompare
             // 
             // txtTarget
             // 
+            this.txtTarget.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtTarget.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTarget.Location = new System.Drawing.Point(588, 242);
+            this.txtTarget.Location = new System.Drawing.Point(878, 366);
             this.txtTarget.Name = "txtTarget";
             this.txtTarget.Size = new System.Drawing.Size(100, 27);
             this.txtTarget.TabIndex = 13;
@@ -217,8 +228,9 @@ namespace PDFCompare
             // 
             // txtSource
             // 
+            this.txtSource.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtSource.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSource.Location = new System.Drawing.Point(164, 242);
+            this.txtSource.Location = new System.Drawing.Point(351, 365);
             this.txtSource.Name = "txtSource";
             this.txtSource.Size = new System.Drawing.Size(100, 27);
             this.txtSource.TabIndex = 12;
@@ -226,26 +238,32 @@ namespace PDFCompare
             // 
             // btnbrwTarget
             // 
+            this.btnbrwTarget.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnbrwTarget.BackColor = System.Drawing.SystemColors.Control;
             this.btnbrwTarget.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnbrwTarget.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbrwTarget.Location = new System.Drawing.Point(558, 177);
+            this.btnbrwTarget.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbrwTarget.ForeColor = System.Drawing.Color.DimGray;
+            this.btnbrwTarget.Location = new System.Drawing.Point(757, 205);
             this.btnbrwTarget.Name = "btnbrwTarget";
-            this.btnbrwTarget.Size = new System.Drawing.Size(148, 58);
+            this.btnbrwTarget.Size = new System.Drawing.Size(221, 162);
             this.btnbrwTarget.TabIndex = 11;
             this.btnbrwTarget.Text = "Select Target File(s)";
-            this.btnbrwTarget.UseVisualStyleBackColor = true;
+            this.btnbrwTarget.UseVisualStyleBackColor = false;
             this.btnbrwTarget.Click += new System.EventHandler(this.btnbrwTarget_Click);
             // 
             // btnbrwSource
             // 
+            this.btnbrwSource.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnbrwSource.BackColor = System.Drawing.SystemColors.Control;
             this.btnbrwSource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnbrwSource.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnbrwSource.Location = new System.Drawing.Point(164, 177);
+            this.btnbrwSource.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnbrwSource.ForeColor = System.Drawing.Color.DimGray;
+            this.btnbrwSource.Location = new System.Drawing.Point(351, 205);
             this.btnbrwSource.Name = "btnbrwSource";
-            this.btnbrwSource.Size = new System.Drawing.Size(164, 58);
+            this.btnbrwSource.Size = new System.Drawing.Size(222, 162);
             this.btnbrwSource.TabIndex = 10;
             this.btnbrwSource.Text = "Select Source File(s)";
-            this.btnbrwSource.UseVisualStyleBackColor = true;
+            this.btnbrwSource.UseVisualStyleBackColor = false;
             this.btnbrwSource.Click += new System.EventHandler(this.btnbrwSource_Click);
             // 
             // reviewTabPage
@@ -257,7 +275,7 @@ namespace PDFCompare
             this.reviewTabPage.Location = new System.Drawing.Point(4, 29);
             this.reviewTabPage.MouseState = MaterialWinforms.MouseState.HOVER;
             this.reviewTabPage.Name = "reviewTabPage";
-            this.reviewTabPage.Size = new System.Drawing.Size(1093, 481);
+            this.reviewTabPage.Size = new System.Drawing.Size(1252, 584);
             this.reviewTabPage.TabIndex = 1;
             this.reviewTabPage.Text = "Review";
             // 
@@ -269,16 +287,16 @@ namespace PDFCompare
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1093, 481);
+            this.panel2.Size = new System.Drawing.Size(1252, 584);
             this.panel2.TabIndex = 0;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.progressBar1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 448);
+            this.panel4.Location = new System.Drawing.Point(0, 552);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1093, 33);
+            this.panel4.Size = new System.Drawing.Size(1252, 32);
             this.panel4.TabIndex = 2;
             // 
             // progressBar1
@@ -286,9 +304,9 @@ namespace PDFCompare
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar1.BackColor = System.Drawing.Color.White;
             this.progressBar1.ForeColor = System.Drawing.Color.LawnGreen;
-            this.progressBar1.Location = new System.Drawing.Point(47, 6);
+            this.progressBar1.Location = new System.Drawing.Point(46, 6);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(1009, 23);
+            this.progressBar1.Size = new System.Drawing.Size(1168, 23);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 2;
             // 
@@ -298,7 +316,7 @@ namespace PDFCompare
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1093, 140);
+            this.panel3.Size = new System.Drawing.Size(1252, 102);
             this.panel3.TabIndex = 1;
             // 
             // btnCompare
@@ -308,7 +326,7 @@ namespace PDFCompare
             this.btnCompare.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnCompare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCompare.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCompare.Location = new System.Drawing.Point(401, 37);
+            this.btnCompare.Location = new System.Drawing.Point(484, 20);
             this.btnCompare.Name = "btnCompare";
             this.btnCompare.Size = new System.Drawing.Size(297, 63);
             this.btnCompare.TabIndex = 3;
@@ -322,9 +340,9 @@ namespace PDFCompare
             this.reviewContentPanel.AutoSize = true;
             this.reviewContentPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.reviewContentPanel.Location = new System.Drawing.Point(0, 0);
-            this.reviewContentPanel.MaximumSize = new System.Drawing.Size(0, 800);
+            this.reviewContentPanel.MaximumSize = new System.Drawing.Size(0, 700);
             this.reviewContentPanel.Name = "reviewContentPanel";
-            this.reviewContentPanel.Size = new System.Drawing.Size(1093, 0);
+            this.reviewContentPanel.Size = new System.Drawing.Size(1252, 0);
             this.reviewContentPanel.TabIndex = 0;
             // 
             // resultTabPage
@@ -337,7 +355,7 @@ namespace PDFCompare
             this.resultTabPage.Location = new System.Drawing.Point(4, 29);
             this.resultTabPage.MouseState = MaterialWinforms.MouseState.HOVER;
             this.resultTabPage.Name = "resultTabPage";
-            this.resultTabPage.Size = new System.Drawing.Size(1093, 481);
+            this.resultTabPage.Size = new System.Drawing.Size(1252, 584);
             this.resultTabPage.TabIndex = 2;
             this.resultTabPage.Text = "Result";
             // 
@@ -346,7 +364,7 @@ namespace PDFCompare
             this.resultContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultContentPanel.Location = new System.Drawing.Point(70, 0);
             this.resultContentPanel.Name = "resultContentPanel";
-            this.resultContentPanel.Size = new System.Drawing.Size(953, 481);
+            this.resultContentPanel.Size = new System.Drawing.Size(1112, 584);
             this.resultContentPanel.TabIndex = 1;
             // 
             // nextResult
@@ -355,9 +373,9 @@ namespace PDFCompare
             this.nextResult.FlatAppearance.BorderSize = 0;
             this.nextResult.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nextResult.Font = new System.Drawing.Font("Cooper Black", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextResult.Location = new System.Drawing.Point(1023, 0);
+            this.nextResult.Location = new System.Drawing.Point(1182, 0);
             this.nextResult.Name = "nextResult";
-            this.nextResult.Size = new System.Drawing.Size(70, 481);
+            this.nextResult.Size = new System.Drawing.Size(70, 584);
             this.nextResult.TabIndex = 0;
             this.nextResult.Text = ">";
             this.nextResult.UseVisualStyleBackColor = true;
@@ -371,7 +389,7 @@ namespace PDFCompare
             this.previousResult.Font = new System.Drawing.Font("Cooper Black", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previousResult.Location = new System.Drawing.Point(0, 0);
             this.previousResult.Name = "previousResult";
-            this.previousResult.Size = new System.Drawing.Size(70, 481);
+            this.previousResult.Size = new System.Drawing.Size(70, 584);
             this.previousResult.TabIndex = 0;
             this.previousResult.Text = "<";
             this.previousResult.UseVisualStyleBackColor = true;
@@ -380,22 +398,53 @@ namespace PDFCompare
             // panel1
             // 
             this.panel1.Controls.Add(this.labelErrorMessage);
+            this.panel1.Controls.Add(this.panel6);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 549);
+            this.panel1.Location = new System.Drawing.Point(0, 652);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1101, 46);
+            this.panel1.Size = new System.Drawing.Size(1260, 93);
             this.panel1.TabIndex = 1;
             // 
             // labelErrorMessage
             // 
-            this.labelErrorMessage.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.labelErrorMessage.Location = new System.Drawing.Point(0, 13);
+            this.labelErrorMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelErrorMessage.Location = new System.Drawing.Point(0, 0);
             this.labelErrorMessage.Multiline = true;
             this.labelErrorMessage.Name = "labelErrorMessage";
-            this.labelErrorMessage.Size = new System.Drawing.Size(1101, 33);
-            this.labelErrorMessage.TabIndex = 7;
+            this.labelErrorMessage.Size = new System.Drawing.Size(1260, 30);
+            this.labelErrorMessage.TabIndex = 9;
             this.labelErrorMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.pictureBox1);
+            this.panel6.Controls.Add(this.copyrightLabel);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 30);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1260, 63);
+            this.panel6.TabIndex = 8;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(126, 63);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // copyrightLabel
+            // 
+            this.copyrightLabel.AutoSize = true;
+            this.copyrightLabel.Location = new System.Drawing.Point(616, 34);
+            this.copyrightLabel.Name = "copyrightLabel";
+            this.copyrightLabel.Size = new System.Drawing.Size(48, 20);
+            this.copyrightLabel.TabIndex = 0;
+            this.copyrightLabel.Text = "Label";
             // 
             // comparePDF
             // 
@@ -403,7 +452,7 @@ namespace PDFCompare
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1101, 595);
+            this.ClientSize = new System.Drawing.Size(1260, 745);
             this.Controls.Add(this.materialTabControl1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.materialTabSelector1);
@@ -422,6 +471,9 @@ namespace PDFCompare
             this.resultTabPage.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -447,7 +499,6 @@ namespace PDFCompare
         private MaterialWinforms.Controls.MaterialTabPage resultTabPage;
         private System.Windows.Forms.Button nextResult;
         private System.Windows.Forms.Button previousResult;
-        private System.Windows.Forms.TextBox labelErrorMessage;
         private System.Windows.Forms.Panel resultContentPanel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
@@ -455,5 +506,9 @@ namespace PDFCompare
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Panel reviewContentPanel;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox labelErrorMessage;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label copyrightLabel;
     }
 }

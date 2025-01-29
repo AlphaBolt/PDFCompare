@@ -26,7 +26,7 @@ namespace PDFCompare
             materialTabControl1.SelectedTab = selectFilesTabPage;
             labelErrorMessage.Visible = false;
             progressBar1.Visible = false;
-            //label4.Text = $"© {DateTime.Now.Year} COFORGE | www.Coforge.com";
+            copyrightLabel.Text = $"© {DateTime.Now.Year} COFORGE | www.Coforge.com";
 
         }
 
@@ -54,6 +54,7 @@ namespace PDFCompare
                 progressBar1.Value = 0;
                 multipleWebResults.Clear();
                 multipleDatagridViews.Clear();
+                multipleResultStatus.Clear();
                 resultContentPanel.Controls.Clear();
 
 
@@ -129,7 +130,6 @@ namespace PDFCompare
                         multipleWebResults.Add(webResult.Name, webResult);
                     }
 
-                    CompareFiles(i);
                 }
 
                 backgroundWorker1.RunWorkerAsync();
@@ -169,7 +169,6 @@ namespace PDFCompare
             //multipleDatagridViews[$"datagridview_{i}"].DataSource = null;
             //labelErrorMessage.Text = string.Empty;
             //labelErrorMessage.Visible = false;
-
 
 
             //if (rdbImageCompare.Checked)
@@ -512,7 +511,6 @@ namespace PDFCompare
 
             materialTabControl1.SelectedTab = reviewTabPage;
 
-
             // Clear existing controls
             reviewContentPanel.Controls.Clear();
 
@@ -530,7 +528,7 @@ namespace PDFCompare
                 Panel panel = new Panel
                 {
                     Size = new Size(800, 80),
-                    Location = new Point(200, i * 160),
+                    Location = new Point(200, i * 100),
                     Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
                 };
 
@@ -566,7 +564,6 @@ namespace PDFCompare
                     Location = new Point(10, 40),
                     AutoSize = true,
                 };
-
 
 
                 TextBox sourceRangeTextBox = new TextBox
@@ -722,7 +719,7 @@ namespace PDFCompare
         }
 
 
-        // Reseting everything
+        // Reset everything
         private void resetButton_Click(object sender, EventArgs e)
         {
             txtSource.Text = string.Empty;
@@ -771,7 +768,7 @@ namespace PDFCompare
 
         private void background_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //progressBar1.Visible = false;
+            progressBar1.Visible = false;
             ShowResult(0);
 
             materialTabControl1.SelectedTab = resultTabPage;
