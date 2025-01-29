@@ -115,6 +115,7 @@ namespace PDFCompare
             this.materialTabControl1.Size = new System.Drawing.Size(1260, 617);
             this.materialTabControl1.TabIndex = 5;
             this.materialTabControl1.TabsAreClosable = true;
+            this.materialTabControl1.SelectedIndexChanged += new System.EventHandler(this.materialTabControl1_SelectedIndexChanged);
             // 
             // selectFilesTabPage
             // 

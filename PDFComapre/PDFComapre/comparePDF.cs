@@ -134,8 +134,6 @@ namespace PDFCompare
 
                 backgroundWorker1.RunWorkerAsync();
 
-                
-
             }
 
         }
@@ -719,8 +717,9 @@ namespace PDFCompare
         }
 
 
-        // Reset everything
-        private void resetButton_Click(object sender, EventArgs e)
+        private bool isUserInitiated = true;
+
+        private void ResetSourceAndTargetFiles()
         {
             txtSource.Text = string.Empty;
             txtTarget.Text = string.Empty;
@@ -745,8 +744,39 @@ namespace PDFCompare
             multipleSourceRangeTextBox.Clear();
             multipleTargetRangeTextBox.Clear();
             multipleResultStatus.Clear();
+        }
+        // Reset everything
+        private void resetButton_Click(object sender, EventArgs e)
+        {
+            ResetSourceAndTargetFiles();
+
+            //txtSource.Text = string.Empty;
+            //txtTarget.Text = string.Empty;
+            //btnbrwSource.Enabled = true;
+            //btnbrwSource.BackColor = Color.FromArgb(255, 255, 255);
+            //btnbrwSource.Text = "Select Source File(s)";
+            //btnbrwTarget.Enabled = true;
+            //btnbrwTarget.BackColor = Color.FromArgb(255, 255, 255);
+            //btnbrwTarget.Text = "Select Target File(s)";
+
+            //text_OR_imageBtn.Checked = false;
+
+            //reviewContentPanel.Controls.Clear();
+            //resultContentPanel.Controls.Clear();
+            //materialTabControl1.SelectedTab = selectFilesTabPage;
+
+            //multipleDatagridViews.Clear();
+            //multipleWebResults.Clear();
+
+            //multipleSourceComboBox.Clear();
+            //multipleTargetComboBox.Clear();
+            //multipleSourceRangeTextBox.Clear();
+            //multipleTargetRangeTextBox.Clear();
+            //multipleResultStatus.Clear();
 
         }
+
+
 
         // Main logic to compare files inside do_work
         private void background_DoWork(object sender, DoWorkEventArgs e)
@@ -774,6 +804,14 @@ namespace PDFCompare
             materialTabControl1.SelectedTab = resultTabPage;
             btnCompare.Enabled = true;
             btnCompare.Cursor = Cursors.Default;
+        }
+
+        private void materialTabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (isUserInitiated && materialTabControl1.SelectedTab == selectFilesTabPage)
+            {
+                ResetSourceAndTargetFiles();
+            }
         }
     }
 }
