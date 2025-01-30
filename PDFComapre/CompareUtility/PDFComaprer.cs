@@ -514,12 +514,14 @@ namespace CompareUtility
         {
             if (String.IsNullOrEmpty(reportDirectoryName) && String.IsNullOrEmpty(ReportDirectoryPath))
             {
-                string name = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
+                string name = DateTime.Now.Year.ToString() +  DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() +"_"+ DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString();
+                //string name = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
                 return Directory.CreateDirectory("Reports\\" + name).FullName;
             }
             else
             {
-                string name = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
+                string name = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + "_" + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString();
+                //string name = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + DateTime.Now.Day.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString();
                 return Directory.CreateDirectory(ReportDirectoryPath + "\\" + reportDirectoryName + "\\" + name).FullName;
             }
         }

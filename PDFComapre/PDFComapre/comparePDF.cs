@@ -750,30 +750,6 @@ namespace PDFCompare
         {
             ResetSourceAndTargetFiles();
 
-            //txtSource.Text = string.Empty;
-            //txtTarget.Text = string.Empty;
-            //btnbrwSource.Enabled = true;
-            //btnbrwSource.BackColor = Color.FromArgb(255, 255, 255);
-            //btnbrwSource.Text = "Select Source File(s)";
-            //btnbrwTarget.Enabled = true;
-            //btnbrwTarget.BackColor = Color.FromArgb(255, 255, 255);
-            //btnbrwTarget.Text = "Select Target File(s)";
-
-            //text_OR_imageBtn.Checked = false;
-
-            //reviewContentPanel.Controls.Clear();
-            //resultContentPanel.Controls.Clear();
-            //materialTabControl1.SelectedTab = selectFilesTabPage;
-
-            //multipleDatagridViews.Clear();
-            //multipleWebResults.Clear();
-
-            //multipleSourceComboBox.Clear();
-            //multipleTargetComboBox.Clear();
-            //multipleSourceRangeTextBox.Clear();
-            //multipleTargetRangeTextBox.Clear();
-            //multipleResultStatus.Clear();
-
         }
 
 
@@ -785,8 +761,9 @@ namespace PDFCompare
 
             for (int i = 0; i < multipleSourceComboBox.Count; i++)
             {
-                CompareFiles(i);
                 backgroundWorker1.ReportProgress((i + 1) * 100 / multipleSourceComboBox.Count);
+                CompareFiles(i);
+                
             }
 
         }
