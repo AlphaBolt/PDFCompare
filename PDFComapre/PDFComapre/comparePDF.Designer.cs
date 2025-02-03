@@ -410,10 +410,11 @@ namespace PDFCompare
             // labelErrorMessage
             // 
             this.labelErrorMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelErrorMessage.Location = new System.Drawing.Point(0, 0);
             this.labelErrorMessage.Multiline = true;
             this.labelErrorMessage.Name = "labelErrorMessage";
-            this.labelErrorMessage.Size = new System.Drawing.Size(1260, 30);
+            this.labelErrorMessage.Size = new System.Drawing.Size(1260, 42);
             this.labelErrorMessage.TabIndex = 9;
             this.labelErrorMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -422,9 +423,9 @@ namespace PDFCompare
             this.panel6.Controls.Add(this.pictureBox1);
             this.panel6.Controls.Add(this.copyrightLabel);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, 30);
+            this.panel6.Location = new System.Drawing.Point(0, 42);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1260, 63);
+            this.panel6.Size = new System.Drawing.Size(1260, 51);
             this.panel6.TabIndex = 8;
             // 
             // pictureBox1
@@ -433,7 +434,7 @@ namespace PDFCompare
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(126, 63);
+            this.pictureBox1.Size = new System.Drawing.Size(126, 51);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -443,7 +444,7 @@ namespace PDFCompare
             this.copyrightLabel.AutoSize = true;
             this.copyrightLabel.Location = new System.Drawing.Point(616, 34);
             this.copyrightLabel.Name = "copyrightLabel";
-            this.copyrightLabel.Size = new System.Drawing.Size(48, 20);
+            this.copyrightLabel.Size = new System.Drawing.Size(33, 13);
             this.copyrightLabel.TabIndex = 0;
             this.copyrightLabel.Text = "Label";
             // 

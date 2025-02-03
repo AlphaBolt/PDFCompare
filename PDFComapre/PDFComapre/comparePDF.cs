@@ -48,8 +48,8 @@ namespace PDFCompare
             // Start comparing only if there is some file selected
             if (!backgroundWorker1.IsBusy && !string.IsNullOrEmpty(txtSource.Text) && !string.IsNullOrEmpty(txtTarget.Text))
             {
-                btnCompare.Enabled = false;
                 btnCompare.Cursor = Cursors.No;
+                btnCompare.Enabled = false;
                 progressBar1.Visible = true; //show the progress bar
                 progressBar1.Value = 0;
                 multipleWebResults.Clear();
@@ -630,9 +630,56 @@ namespace PDFCompare
 
                 multipleTargetComboBox.Add(targetComboBox.Name, targetComboBox);
                 multipleTargetRangeTextBox.Add(targetRangeTextBox.Name, targetRangeTextBox);
+
+                sourceComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
+                targetComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
             }
 
+            ValidateSourceAndTarget();
+
         }
+
+        private void combobox_SelectedIndexChanged()
+        {
+            ValidateSourceAndTarget();
+        }
+
+        private void ValidateSourceAndTarget()
+        {
+            bool srcTrgtSame = false;
+
+            for (int i = 0; i < multipleSourceComboBox.Count; i++)
+            {
+                if (multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem.ToString() == multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem.ToString())
+                {
+                    srcTrgtSame = true;
+                    multipleSourceComboBox[$"sourceComboBox_{i}"].ForeColor = Color.Red;
+                    multipleTargetComboBox[$"targetComboBox_{i}"].ForeColor = Color.Red;
+                }
+                else
+                {
+                    multipleSourceComboBox[$"sourceComboBox_{i}"].ForeColor = Color.Black;
+                    multipleTargetComboBox[$"targetComboBox_{i}"].ForeColor = Color.Black;
+                }
+            }
+            if (srcTrgtSame) 
+            {
+                labelErrorMessage.Text = "Source and target cannot be same!!!";
+                labelErrorMessage.BackColor = Color.Red;
+                labelErrorMessage.Visible = true;
+                btnCompare.Enabled = false;
+
+            }
+            else
+            {
+                labelErrorMessage.Text = string.Empty;
+                labelErrorMessage.Visible = false;
+                btnCompare.Enabled = true;
+            }
+        }
+
+
+
 
         // Event handler for Select files in reviewtab
         private void OpenFileDialogForComboBox(ComboBox comboBox)
