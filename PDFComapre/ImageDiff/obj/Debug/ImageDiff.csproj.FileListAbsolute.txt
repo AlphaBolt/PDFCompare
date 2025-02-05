@@ -90,3 +90,9 @@ C:\Users\pocuser\Desktop\dotnet\PDFCompare - Git\PDFCompare\PDFComapre\ImageDiff
 C:\Users\pocuser\Desktop\dotnet\PDFCompare - Git\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.csproj.CoreCompileInputs.cache
 C:\Users\pocuser\Desktop\dotnet\PDFCompare - Git\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.dll
 C:\Users\pocuser\Desktop\dotnet\PDFCompare - Git\PDFCompare\PDFComapre\ImageDiff\obj\Debug\ImageDiff.pdb
+D:\PDFCompare - Git\PDFComapre\ImageDiff\bin\Debug\ImageDiff.dll
+D:\PDFCompare - Git\PDFComapre\ImageDiff\bin\Debug\ImageDiff.pdb
+D:\PDFCompare - Git\PDFComapre\ImageDiff\obj\Debug\ImageDiff.csproj.AssemblyReference.cache
+D:\PDFCompare - Git\PDFComapre\ImageDiff\obj\Debug\ImageDiff.csproj.CoreCompileInputs.cache
+D:\PDFCompare - Git\PDFComapre\ImageDiff\obj\Debug\ImageDiff.dll
+D:\PDFCompare - Git\PDFComapre\ImageDiff\obj\Debug\ImageDiff.pdb

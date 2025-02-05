@@ -24,6 +24,7 @@ namespace PDFCompare
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             materialTabControl1.SelectedTab = selectFilesTabPage;
+            materialTabSelector1.BaseTabControl = materialTabControl1;
             labelErrorMessage.Visible = false;
             progressBar1.Visible = false;
             copyrightLabel.Text = $"© {DateTime.Now.Year} COFORGE | www.Coforge.com";
@@ -45,6 +46,11 @@ namespace PDFCompare
 
         private void btnCompare_Click(object sender, EventArgs e)
         {
+            //labelResultPath.Text = string.Empty;
+            var resultPath = ConfigurationManager.AppSettings["ResultPath"].ToString();
+            
+            labelResultPath.Text = $"Results will be saved at: {resultPath}";
+ 
             // Start comparing only if there is some file selected
             if (!backgroundWorker1.IsBusy && !string.IsNullOrEmpty(txtSource.Text) && !string.IsNullOrEmpty(txtTarget.Text))
             {
@@ -152,21 +158,11 @@ namespace PDFCompare
             var ComparisonReportFile = Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"ComparisonReport.xls");
             //"Q:\\Automation & Performance\\Functional Automation\\DCRegression\\Results\\Excess-Data\\PDF-Diff_Excel-Reports\\PDF_Comparator_Results\\ComparisonReport.xls";
 
-
             string File1diff = multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem.ToString();
             string File2diff = multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem.ToString();
 
-
-
             string sourcePageRange = multipleSourceRangeTextBox[$"sourceRangeTextBox_{i}"].Text;
             string targetPageRange = multipleTargetRangeTextBox[$"targetRangeTextBox_{i}"].Text;
-
-
-            //multipleWebResults[$"webResult_{i}"].Visible = false;
-            //multipleDatagridViews[$"datagridview_{i}"].Visible = false;
-            //multipleDatagridViews[$"datagridview_{i}"].DataSource = null;
-            //labelErrorMessage.Text = string.Empty;
-            //labelErrorMessage.Visible = false;
 
 
             //if (rdbImageCompare.Checked)
@@ -182,7 +178,6 @@ namespace PDFCompare
                         if (result.Message.Split('|')[1] != "Page Numbers are Not Same" && result.Message.Split('|')[1] != "Both PDF are same." && result.Message.Split('|')[1] != "Please provide source and target same range to compare due to different number of pages.")
                         {
                             string resultImage = Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"Reports");
-                            //"Q:\\Automation & Performance\\Functional Automation\\DCRegression\\Results\\Excess-Data\\PDF-Diff_Excel-Reports\\PDF_Comparator_Results\\Reports";
 
                             DirectoryInfo resultfolder = new DirectoryInfo(resultImage);
                             DirectoryInfo latestdir = resultfolder.GetDirectories().OrderByDescending(f => f.CreationTime).FirstOrDefault();
@@ -202,6 +197,7 @@ namespace PDFCompare
                             labelErrorMessage.Text = "Please provide source and target same range to compare due to different number of pages.";
                             labelErrorMessage.BackColor = Color.Red;
                             labelErrorMessage.Visible = true;
+                            labelResultPath.Visible = false;
 
                         }
 
@@ -224,13 +220,15 @@ namespace PDFCompare
                         labelErrorMessage.Text = "Files does not exist.";
                         labelErrorMessage.BackColor = Color.Red;
                         labelErrorMessage.Visible = true;
+                        labelResultPath.Visible = false;
                     }
 
                 }
                 catch (Exception ex)
                 {
-                    //labelErrorMessage.Text = "Failure";
-                    //labelErrorMessage.Visible = true;
+                    labelErrorMessage.Text = "Failure";
+                    labelErrorMessage.Visible = true;
+                    labelResultPath.Visible = false;
                 }
             }
             else
@@ -265,6 +263,7 @@ namespace PDFCompare
                             labelErrorMessage.Text = res;
                             labelErrorMessage.BackColor = Color.Red;
                             labelErrorMessage.Visible = true;
+                            labelResultPath.Visible = false;
                         }
                         else
                         {
@@ -276,6 +275,7 @@ namespace PDFCompare
                         labelErrorMessage.Text = "Files does not exist.";
                         labelErrorMessage.BackColor = Color.Red;
                         labelErrorMessage.Visible = true;
+                        labelResultPath.Visible = false;
                     }
                 }
                 catch (Exception ex)
@@ -679,8 +679,6 @@ namespace PDFCompare
         }
 
 
-
-
         // Event handler for Select files in reviewtab
         private void OpenFileDialogForComboBox(ComboBox comboBox)
         {
@@ -701,7 +699,6 @@ namespace PDFCompare
                 comboBox.SelectedItem = selectedFile;
             }
         }
-
 
 
         //************** Carousel Feature **************//
@@ -735,7 +732,6 @@ namespace PDFCompare
 
             currentResultIndex = index;
         }
-
 
 
         private void previousResult_Click(object sender, EventArgs e)
@@ -791,6 +787,8 @@ namespace PDFCompare
             multipleSourceRangeTextBox.Clear();
             multipleTargetRangeTextBox.Clear();
             multipleResultStatus.Clear();
+            labelErrorMessage.Clear();
+            labelErrorMessage.Visible = false;
         }
         // Reset everything
         private void resetButton_Click(object sender, EventArgs e)
@@ -798,8 +796,6 @@ namespace PDFCompare
             ResetSourceAndTargetFiles();
 
         }
-
-
 
         // Main logic to compare files inside do_work
         private void background_DoWork(object sender, DoWorkEventArgs e)
@@ -835,6 +831,28 @@ namespace PDFCompare
             if (isUserInitiated && materialTabControl1.SelectedTab == selectFilesTabPage)
             {
                 ResetSourceAndTargetFiles();
+            }
+
+            if (materialTabControl1.SelectedTab == resultTabPage)
+            {
+                labelResultPath.Visible = true;
+            }
+            else
+            {
+                labelResultPath.Visible = false;
+            }
+        }
+
+        private void labelResultPath_Click(object sender, EventArgs e)
+        {
+            var resultPath = ConfigurationManager.AppSettings["ResultPath"].ToString();
+            if (Directory.Exists(resultPath))
+            {
+                System.Diagnostics.Process.Start("explorer.exe", resultPath);
+            }
+            else
+            {
+                MessageBox.Show("The specified folder does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
