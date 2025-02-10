@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Threading;
+using NPOI.SS.Formula.Functions;
 
 namespace PDFCompare
 {
@@ -52,7 +53,7 @@ namespace PDFCompare
             labelResultPath.Text = $"Results will be saved at: {resultPath}";
  
             // Start comparing only if there is some file selected
-            if (!backgroundWorker1.IsBusy && !string.IsNullOrEmpty(txtSource.Text) && !string.IsNullOrEmpty(txtTarget.Text))
+            if (!backgroundWorker1.IsBusy && (multipleSourceComboBox.Count > 0 && multipleTargetComboBox.Count > 0))
             {
                 btnCompare.Cursor = Cursors.No;
                 btnCompare.Enabled = false;
@@ -440,42 +441,11 @@ namespace PDFCompare
             Console.WriteLine(txtTarget.Text);
         }
 
-        //private void rdbTextCompare_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (((System.Windows.Forms.RadioButton)(sender)).Checked)
-        //    {
-        //        webResult.DocumentText = string.Empty;
-        //        //picResult.Image = null;
-        //        //picResult.Visible = false;
-        //        webResult.Visible = false;
-        //        labelErrorMessage.Text = string.Empty;
-        //        labelErrorMessage.Visible = false;
-        //        dataGridView1.Visible = false;
-        //        dataGridView1.DataSource = null;
-        //    }
-        //}
-
-        //private void rdbImageCompare_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (((System.Windows.Forms.RadioButton)(sender)).Checked)
-        //    {
-        //        webResult.DocumentText = string.Empty;
-        //        //picResult.Image = null;
-        //        //picResult.Visible = false;
-        //        webResult.Visible = false;
-        //        labelErrorMessage.Text = string.Empty;
-        //        labelErrorMessage.Visible = false;
-        //        dataGridView1.Visible = false;
-        //        dataGridView1.DataSource = null;
-        //    }
-        //}
 
         private void txtComparingPagesNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             AllowOnlyNumbersToPressWithCommaAndDashSeparation(e);
         }
-
-
 
         private void targetRangeTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -504,8 +474,13 @@ namespace PDFCompare
         }
 
 
+        // Event handler for review button click
         private void reviewButton_Click(object sender, EventArgs e)
         {
+            if(txtSource.Text == string.Empty || txtTarget.Text == string.Empty)
+            {
+                return;
+            }
 
             materialTabControl1.SelectedTab = reviewTabPage;
 
@@ -521,135 +496,187 @@ namespace PDFCompare
             string[] targetFiles = txtTarget.Text.Split(';');
             int minNoOfComarisons = Math.Min(sourceFiles.Length, targetFiles.Length);
 
-            for (int i = 0; i < minNoOfComarisons; i++)
+            Console.WriteLine(sourceFiles.Length);
+            Console.WriteLine(targetFiles.Length);
+
+            if (minNoOfComarisons > 0)
             {
-                Panel panel = new Panel
+                for (int i = 0; i < minNoOfComarisons; i++)
                 {
-                    Size = new Size(800, 80),
-                    Location = new Point(200, i * 100),
-                    Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right
-                };
+                    AddNewPanel(i, sourceFiles, targetFiles);
+                }
 
-                //************ Source ************//
-                Label sourceLabel = new Label
-                {
-                    Text = "Source:",
-                    Location = new Point(10, 10),
-                    AutoSize = true
-                };
-
-                ComboBox sourceComboBox = new ComboBox
-                {
-                    Name = $"sourceComboBox_{i}",
-                    Location = new Point(100, 10),
-                    Size = new Size(250, 21),
-                    DropDownStyle = ComboBoxStyle.DropDownList,
-                };
-                sourceComboBox.Items.AddRange(sourceFiles);
-                sourceComboBox.SelectedIndex = i;
-
-                Button sourceButton = new Button
-                {
-                    Text = "...",
-                    Location = new Point(360, 10),
-                    Size = new Size(30, 21)
-                };
-                sourceButton.Click += (s, ev) => OpenFileDialogForComboBox(sourceComboBox);
-
-                Label sourceRangeLabel = new Label
-                {
-                    Text = "Select Range:",
-                    Location = new Point(10, 40),
-                    AutoSize = true,
-                };
-
-
-                TextBox sourceRangeTextBox = new TextBox
-                {
-                    Name = $"sourceRangeTextBox_{i}",
-                    Location = new Point(100, 40),
-                    Size = new Size(250, 21)
-                };
-
-                //************ Target ************//
-                Label targetLabel = new Label
-                {
-                    Text = "Target:",
-                    Location = new Point(410, 10),
-                    AutoSize = true
-                };
-
-                ComboBox targetComboBox = new ComboBox
-                {
-                    Name = $"targetComboBox_{i}",
-                    Location = new Point(500, 10),
-                    Size = new Size(250, 21),
-                    DropDownStyle = ComboBoxStyle.DropDownList
-                };
-                targetComboBox.Items.AddRange(targetFiles);
-                targetComboBox.SelectedIndex = i;
-
-                Button targetButton = new Button
-                {
-                    Text = "...",
-                    Location = new Point(760, 10),
-                    Size = new Size(30, 21)
-                };
-                targetButton.Click += (s, ev) => OpenFileDialogForComboBox(targetComboBox);
-
-                Label targetRangeLabel = new Label
-                {
-                    Text = "Select Range:",
-                    Location = new Point(410, 40),
-                    AutoSize = true
-                };
-
-                TextBox targetRangeTextBox = new TextBox
-                {
-                    Name = $"targetRangeTextBox_{i}",
-                    Location = new Point(500, 40),
-                    Size = new Size(250, 21)
-                };
-
-                panel.Controls.Add(sourceLabel);
-                panel.Controls.Add(sourceComboBox);
-                panel.Controls.Add(sourceButton);
-                panel.Controls.Add(sourceRangeLabel);
-                panel.Controls.Add(sourceRangeTextBox);
-                panel.Controls.Add(targetLabel);
-                panel.Controls.Add(targetComboBox);
-                panel.Controls.Add(targetButton);
-                panel.Controls.Add(targetRangeLabel);
-                panel.Controls.Add(targetRangeTextBox);
-
-                reviewContentPanel.Controls.Add(panel);
-
-                // Store the ComboBoxes in the Dictionary with their unique names
-                multipleSourceComboBox.Add(sourceComboBox.Name, sourceComboBox);
-                multipleSourceRangeTextBox.Add(sourceRangeTextBox.Name, sourceRangeTextBox);
-
-                multipleTargetComboBox.Add(targetComboBox.Name, targetComboBox);
-                multipleTargetRangeTextBox.Add(targetRangeTextBox.Name, targetRangeTextBox);
-
-                sourceComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
-                targetComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
+                ValidateSourceAndTarget();
             }
-
-            ValidateSourceAndTarget();
 
         }
 
+
+        //Function to create new section/panel in the review tab
+        private void AddNewPanel(int i, string[] sourceFiles, string[] targetFiles)
+        {
+            Panel panel = new Panel
+            {
+                //Size = new Size(1000, 80),
+                //Location = new Point(200, i * 100),
+                //Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
+                Dock = DockStyle.Top,
+            };
+
+            //************ Source ************//
+            Label sourceLabel = new Label
+            {
+                Text = "Source:",
+                Location = new Point(210, 10),
+                AutoSize = true
+            };
+
+            ComboBox sourceComboBox = new ComboBox
+            {
+                Name = $"sourceComboBox_{i}",
+                Location = new Point(300, 10),
+                Size = new Size(250, 21),
+                DropDownStyle = ComboBoxStyle.DropDownList,
+            };
+            sourceComboBox.Items.AddRange(sourceFiles);
+
+            Button sourceButton = new Button
+            {
+                Text = "...",
+                Location = new Point(560, 10),
+                Size = new Size(30, 21)
+            };
+            sourceButton.Click += (s, ev) => OpenFileDialogForComboBox(sourceComboBox);
+
+            Label sourceRangeLabel = new Label
+            {
+                Text = "Select Range:",
+                Location = new Point(210, 40),
+                AutoSize = true,
+            };
+
+
+            TextBox sourceRangeTextBox = new TextBox
+            {
+                Name = $"sourceRangeTextBox_{i}",
+                Location = new Point(300, 40),
+                Size = new Size(250, 21)
+            };
+
+            //************ Target ************//
+            Label targetLabel = new Label
+            {
+                Text = "Target:",
+                Location = new Point(610, 10),
+                AutoSize = true
+            };
+
+            ComboBox targetComboBox = new ComboBox
+            {
+                Name = $"targetComboBox_{i}",
+                Location = new Point(700, 10),
+                Size = new Size(250, 21),
+                DropDownStyle = ComboBoxStyle.DropDownList
+            };
+            targetComboBox.Items.AddRange(targetFiles);
+
+            if (sourceFiles.Length > 0 && targetFiles.Length > 0)
+            {
+                sourceComboBox.SelectedIndex = i;
+                targetComboBox.SelectedIndex = i;
+            }
+
+
+            Button targetButton = new Button
+            {
+                Text = "...",
+                Location = new Point(960, 10),
+                Size = new Size(30, 21)
+            };
+            targetButton.Click += (s, ev) => OpenFileDialogForComboBox(targetComboBox);
+
+            Label targetRangeLabel = new Label
+            {
+                Text = "Select Range:",
+                Location = new Point(610, 40),
+                AutoSize = true
+            };
+
+            TextBox targetRangeTextBox = new TextBox
+            {
+                Name = $"targetRangeTextBox_{i}",
+                Location = new Point(700, 40),
+                Size = new Size(250, 21)
+            };
+
+            Button deleteButton = new Button
+            {
+                Size = new Size(30, 30),
+                Text = "X",
+                ForeColor = Color.Red,
+                FlatStyle = FlatStyle.Flat,
+                Location = new Point(1050, 10),
+            };
+
+            //deleteButton.BackgroundImage = ;
+            //deleteButton.BackgroundImageLayout = ImageLayout.Zoom;
+            deleteButton.Click += (s, e) => DeletePanelButton_Click(panel, i);
+
+
+            panel.Controls.Add(sourceLabel);
+            panel.Controls.Add(sourceComboBox);
+            panel.Controls.Add(sourceButton);
+            panel.Controls.Add(sourceRangeLabel);
+            panel.Controls.Add(sourceRangeTextBox);
+            panel.Controls.Add(targetLabel);
+            panel.Controls.Add(targetComboBox);
+            panel.Controls.Add(targetButton);
+            panel.Controls.Add(targetRangeLabel);
+            panel.Controls.Add(targetRangeTextBox);
+            panel.Controls.Add(deleteButton);
+
+            reviewContentPanel.Controls.Add(panel);
+
+            // Store the ComboBoxes in the Dictionary with their unique names
+            multipleSourceComboBox.Add(sourceComboBox.Name, sourceComboBox);
+            multipleSourceRangeTextBox.Add(sourceRangeTextBox.Name, sourceRangeTextBox);
+
+            multipleTargetComboBox.Add(targetComboBox.Name, targetComboBox);
+            multipleTargetRangeTextBox.Add(targetRangeTextBox.Name, targetRangeTextBox);
+
+            sourceComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
+            targetComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
+        }
+
+        
+        //Event handler for addSection button click
+        private void addSectionButton_Click(object sender, EventArgs e)
+        {
+            string[] dummy = new string[] {};
+            AddNewPanel(multipleSourceComboBox.Count, dummy, dummy);
+        }
+
+
+        //Event handler for comboboxes selected index changed
         private void combobox_SelectedIndexChanged()
         {
             ValidateSourceAndTarget();
         }
 
+
+        //Function to check whether source and target are same or not
         private void ValidateSourceAndTarget()
         {
+
             bool srcTrgtSame = false;
 
             for (int i = 0; i < multipleSourceComboBox.Count; i++)
             {
+                if (multipleSourceComboBox[$"sourceComboBox_{i}"].Items.Count == 0 || multipleTargetComboBox[$"targetComboBox_{i}"].Items.Count == 0)
+                {
+                    return;
+                }
+
                 if (multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem.ToString() == multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem.ToString())
                 {
                     srcTrgtSame = true;
@@ -698,6 +725,21 @@ namespace PDFCompare
                 }
                 comboBox.SelectedItem = selectedFile;
             }
+        }
+
+
+        // Event handler for delete button in review tab
+        private void DeletePanelButton_Click(Panel panel, int i)
+        {
+            // Remove the panel from the form
+            panel.Controls.Clear();
+            reviewContentPanel.Controls.Remove(panel);
+
+            // Remove the associated controls from the dictionaries
+            multipleSourceComboBox.Remove($"sourceComboBox_{i}");
+            multipleTargetComboBox.Remove($"targetComboBox_{i}");
+            multipleSourceRangeTextBox.Remove($"sourceRangeTextBox_{i}");
+            multipleTargetRangeTextBox.Remove($"targetRangeTextBox_{i}");
         }
 
 
