@@ -68,6 +68,11 @@ namespace PDFCompare
                 //Create datagridview or webbrowser to be used in background worker's DoWork event
                 for (int i = 0; i < multipleSourceComboBox.Count; i++)
                 {
+                    if (multipleSourceComboBox[$"sourceComboBox_{i}"] == null || multipleTargetComboBox[$"targetComboBox_{i}"] == null)
+                    {
+                        continue;
+                    }
+
                     // Create textbox for status message
                     TextBox resultStatus = new TextBox
                     {
@@ -636,6 +641,7 @@ namespace PDFCompare
             panel.Controls.Add(deleteButton);
 
             reviewContentPanel.Controls.Add(panel);
+            reviewContentPanel.Controls.SetChildIndex(panel, 0);
 
             // Store the ComboBoxes in the Dictionary with their unique names
             multipleSourceComboBox.Add(sourceComboBox.Name, sourceComboBox);
@@ -672,7 +678,9 @@ namespace PDFCompare
 
             for (int i = 0; i < multipleSourceComboBox.Count; i++)
             {
-                if (multipleSourceComboBox[$"sourceComboBox_{i}"].Items.Count == 0 || multipleTargetComboBox[$"targetComboBox_{i}"].Items.Count == 0)
+
+                if (multipleSourceComboBox[$"sourceComboBox_{i}"] == null || multipleTargetComboBox[$"targetComboBox_{i}"] == null || 
+                    multipleSourceComboBox[$"sourceComboBox_{i}"].Items.Count == 0 || multipleTargetComboBox[$"targetComboBox_{i}"].Items.Count == 0)
                 {
                     return;
                 }
@@ -735,17 +743,23 @@ namespace PDFCompare
             panel.Controls.Clear();
             reviewContentPanel.Controls.Remove(panel);
 
-            // Remove the associated controls from the dictionaries
-            multipleSourceComboBox.Remove($"sourceComboBox_{i}");
-            multipleTargetComboBox.Remove($"targetComboBox_{i}");
-            multipleSourceRangeTextBox.Remove($"sourceRangeTextBox_{i}");
-            multipleTargetRangeTextBox.Remove($"targetRangeTextBox_{i}");
+            // Make the associated controls from the dictionaries null
+            multipleSourceComboBox[$"sourceComboBox_{i}"] = null;
+            multipleTargetComboBox[$"targetComboBox_{i}"] = null;
+            multipleSourceRangeTextBox[$"sourceRangeTextBox_{i}"] = null;
+            multipleTargetRangeTextBox[$"targetRangeTextBox_{i}"] = null;
+
         }
 
 
         //************** Carousel Feature **************//
         private void ShowResult(int index)
         {
+            if (multipleSourceComboBox[$"sourceComboBox_{index}"] == null || multipleTargetComboBox[$"targetComboBox_{index}"] == null)
+            {
+                return;
+            }
+
             foreach (var key in multipleResultStatus.Keys)
             {
                 multipleResultStatus[key].Visible = false;
@@ -779,26 +793,47 @@ namespace PDFCompare
         private void previousResult_Click(object sender, EventArgs e)
         {
             //Button works only if file is present
-            if (multipleSourceComboBox.Count > 1 && multipleTargetComboBox.Count > 1)
+            //if (multipleSourceComboBox.Count > 1 && multipleTargetComboBox.Count > 1)
+            //{
+            //    if (currentResultIndex > 0)
+            //    {
+            //        ShowResult(currentResultIndex - 1);
+            //    }
+            //}
+            do
             {
-                if (currentResultIndex > 0)
+                currentResultIndex--;
+                if (currentResultIndex < 0)
                 {
-                    ShowResult(currentResultIndex - 1);
+                    currentResultIndex = multipleSourceComboBox.Count - 1;
                 }
-            }
+            } while (multipleSourceComboBox[$"sourceComboBox_{currentResultIndex}"] == null || multipleTargetComboBox[$"targetComboBox_{currentResultIndex}"] == null);
+
+            ShowResult(currentResultIndex);
 
         }
 
         private void nextResult_Click(object sender, EventArgs e)
         {
             //Button works only if file is present
-            if (multipleSourceComboBox.Count > 1 && multipleTargetComboBox.Count > 1)
+            //if (multipleSourceComboBox.Count > 1 && multipleTargetComboBox.Count > 1)
+            //{
+            //    if (currentResultIndex < multipleSourceComboBox.Count - 1)
+            //    {
+            //        ShowResult(currentResultIndex + 1);
+            //    }
+            //}
+
+            do
             {
-                if (currentResultIndex < multipleSourceComboBox.Count - 1)
+                currentResultIndex++;
+                if (currentResultIndex >= multipleSourceComboBox.Count)
                 {
-                    ShowResult(currentResultIndex + 1);
+                    currentResultIndex = 0;
                 }
-            }
+            } while (multipleSourceComboBox[$"sourceComboBox_{currentResultIndex}"] == null || multipleTargetComboBox[$"targetComboBox_{currentResultIndex}"] == null);
+
+            ShowResult(currentResultIndex);
         }
 
 
@@ -846,6 +881,10 @@ namespace PDFCompare
 
             for (int i = 0; i < multipleSourceComboBox.Count; i++)
             {
+                if (multipleSourceComboBox[$"sourceComboBox_{i}"] == null || multipleTargetComboBox[$"targetComboBox_{i}"] == null)
+                {
+                    continue;
+                }
                 backgroundWorker1.ReportProgress((i + 1) * 100 / multipleSourceComboBox.Count);
                 CompareFiles(i);
                 
