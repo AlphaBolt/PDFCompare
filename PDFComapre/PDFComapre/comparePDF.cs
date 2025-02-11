@@ -789,6 +789,11 @@ namespace PDFCompare
             currentResultIndex = index;
         }
 
+        private void UpdateCarouselButtons()
+        {
+            previousResult.Enabled = currentResultIndex > 0;
+            nextResult.Enabled = currentResultIndex < multipleSourceComboBox.Count - 1;
+        }
 
         private void previousResult_Click(object sender, EventArgs e)
         {
@@ -800,16 +805,27 @@ namespace PDFCompare
             //        ShowResult(currentResultIndex - 1);
             //    }
             //}
-            do
-            {
-                currentResultIndex--;
-                if (currentResultIndex < 0)
-                {
-                    currentResultIndex = multipleSourceComboBox.Count - 1;
-                }
-            } while (multipleSourceComboBox[$"sourceComboBox_{currentResultIndex}"] == null || multipleTargetComboBox[$"targetComboBox_{currentResultIndex}"] == null);
 
-            ShowResult(currentResultIndex);
+            //do
+            //{
+            //    currentResultIndex--;
+            //    if (currentResultIndex < 0)
+            //    {
+            //        currentResultIndex = multipleSourceComboBox.Count - 1;
+            //    }
+            //} while (multipleSourceComboBox[$"sourceComboBox_{currentResultIndex}"] == null || multipleTargetComboBox[$"targetComboBox_{currentResultIndex}"] == null);
+
+            //ShowResult(currentResultIndex);
+            if (currentResultIndex > 0)
+            {
+                do
+                {
+                    currentResultIndex--;
+                }
+                while (currentResultIndex >= 0 && (multipleSourceComboBox[$"sourceComboBox_{currentResultIndex}"] == null || multipleTargetComboBox[$"targetComboBox_{currentResultIndex}"] == null));
+                ShowResult(currentResultIndex);
+            }
+            UpdateCarouselButtons();
 
         }
 
@@ -824,16 +840,27 @@ namespace PDFCompare
             //    }
             //}
 
-            do
-            {
-                currentResultIndex++;
-                if (currentResultIndex >= multipleSourceComboBox.Count)
-                {
-                    currentResultIndex = 0;
-                }
-            } while (multipleSourceComboBox[$"sourceComboBox_{currentResultIndex}"] == null || multipleTargetComboBox[$"targetComboBox_{currentResultIndex}"] == null);
+            //do
+            //{
+            //    currentResultIndex++;
+            //    if (currentResultIndex >= multipleSourceComboBox.Count)
+            //    {
+            //        currentResultIndex = 0;
+            //    }
+            //} while (multipleSourceComboBox[$"sourceComboBox_{currentResultIndex}"] == null || multipleTargetComboBox[$"targetComboBox_{currentResultIndex}"] == null);
 
-            ShowResult(currentResultIndex);
+            //ShowResult(currentResultIndex);
+
+            if (currentResultIndex < multipleSourceComboBox.Count - 1)
+            {
+                do
+                {
+                    currentResultIndex++;
+                } while (currentResultIndex < multipleSourceComboBox.Count && (multipleSourceComboBox[$"sourceComboBox_{currentResultIndex}"] == null || multipleTargetComboBox[$"targetComboBox_{currentResultIndex}"] == null));
+
+                ShowResult(currentResultIndex);
+            }
+            UpdateCarouselButtons();
         }
 
 
