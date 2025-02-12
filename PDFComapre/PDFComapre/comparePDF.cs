@@ -47,6 +47,18 @@ namespace PDFCompare
 
         private void btnCompare_Click(object sender, EventArgs e)
         {
+            // Dont start comparing if source or target in combobox is not selected
+            for (int i = 0; i < multipleSourceComboBox.Count; i++)
+            {
+                if (multipleSourceComboBox[$"sourceComboBox_{i}"] != null && 
+                    (multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem == null || 
+                    multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem == null))
+                {
+                    return;
+                }
+            }
+
+
             //labelResultPath.Text = string.Empty;
             var resultPath = ConfigurationManager.AppSettings["ResultPath"].ToString();
             
@@ -63,7 +75,6 @@ namespace PDFCompare
                 multipleDatagridViews.Clear();
                 multipleResultStatus.Clear();
                 resultContentPanel.Controls.Clear();
-
 
                 //Create datagridview or webbrowser to be used in background worker's DoWork event
                 for (int i = 0; i < multipleSourceComboBox.Count; i++)
@@ -522,9 +533,6 @@ namespace PDFCompare
         {
             Panel panel = new Panel
             {
-                //Size = new Size(1000, 80),
-                //Location = new Point(200, i * 100),
-                //Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
                 Dock = DockStyle.Top,
             };
 
@@ -797,25 +805,6 @@ namespace PDFCompare
 
         private void previousResult_Click(object sender, EventArgs e)
         {
-            //Button works only if file is present
-            //if (multipleSourceComboBox.Count > 1 && multipleTargetComboBox.Count > 1)
-            //{
-            //    if (currentResultIndex > 0)
-            //    {
-            //        ShowResult(currentResultIndex - 1);
-            //    }
-            //}
-
-            //do
-            //{
-            //    currentResultIndex--;
-            //    if (currentResultIndex < 0)
-            //    {
-            //        currentResultIndex = multipleSourceComboBox.Count - 1;
-            //    }
-            //} while (multipleSourceComboBox[$"sourceComboBox_{currentResultIndex}"] == null || multipleTargetComboBox[$"targetComboBox_{currentResultIndex}"] == null);
-
-            //ShowResult(currentResultIndex);
             if (currentResultIndex > 0)
             {
                 do
@@ -831,26 +820,6 @@ namespace PDFCompare
 
         private void nextResult_Click(object sender, EventArgs e)
         {
-            //Button works only if file is present
-            //if (multipleSourceComboBox.Count > 1 && multipleTargetComboBox.Count > 1)
-            //{
-            //    if (currentResultIndex < multipleSourceComboBox.Count - 1)
-            //    {
-            //        ShowResult(currentResultIndex + 1);
-            //    }
-            //}
-
-            //do
-            //{
-            //    currentResultIndex++;
-            //    if (currentResultIndex >= multipleSourceComboBox.Count)
-            //    {
-            //        currentResultIndex = 0;
-            //    }
-            //} while (multipleSourceComboBox[$"sourceComboBox_{currentResultIndex}"] == null || multipleTargetComboBox[$"targetComboBox_{currentResultIndex}"] == null);
-
-            //ShowResult(currentResultIndex);
-
             if (currentResultIndex < multipleSourceComboBox.Count - 1)
             {
                 do
