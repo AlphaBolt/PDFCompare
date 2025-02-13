@@ -210,14 +210,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PDFCompare.exe" size="84480">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PDFCompare.exe" size="84992">
       <assemblyIdentity name="PDFCompare" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EYTr8Qhq1tOi1Dnb3IYG+rWDul2NytLX22B5ZK9ZkWk=</dsig:DigestValue>
+        <dsig:DigestValue>7BqmQNmJoAs8DSxrs+xkUFoVLiJyAWuMO2RUbDfi3zQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

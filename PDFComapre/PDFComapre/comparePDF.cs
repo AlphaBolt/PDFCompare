@@ -660,6 +660,8 @@ namespace PDFCompare
 
             sourceComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
             targetComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
+
+            ValidateSourceAndTarget();
         }
 
         
@@ -683,6 +685,7 @@ namespace PDFCompare
         {
 
             bool srcTrgtSame = false;
+            bool allComboBoxesFilled = true;
 
             for (int i = 0; i < multipleSourceComboBox.Count; i++)
             {
@@ -690,7 +693,13 @@ namespace PDFCompare
                 if (multipleSourceComboBox[$"sourceComboBox_{i}"] == null || multipleTargetComboBox[$"targetComboBox_{i}"] == null || 
                     multipleSourceComboBox[$"sourceComboBox_{i}"].Items.Count == 0 || multipleTargetComboBox[$"targetComboBox_{i}"].Items.Count == 0)
                 {
-                    return;
+                    allComboBoxesFilled = false;
+                    continue;
+                }
+
+                if (multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem == null || multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem == null)
+                {
+                    allComboBoxesFilled = false;
                 }
 
                 if (multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem.ToString() == multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem.ToString())
@@ -712,6 +721,13 @@ namespace PDFCompare
                 labelErrorMessage.Visible = true;
                 btnCompare.Enabled = false;
 
+            }
+            else if (!allComboBoxesFilled)
+            {
+                labelErrorMessage.Text = "Please select files for all comparisons.";
+                labelErrorMessage.BackColor = Color.Red;
+                labelErrorMessage.Visible = true;
+                btnCompare.Enabled = false;
             }
             else
             {
