@@ -44,6 +44,8 @@ namespace PDFCompare
 
 
         private int currentResultIndex = 0;
+        private int initialResultIndex = 0;
+        private int lastResultIndex = 0;
 
         private void btnCompare_Click(object sender, EventArgs e)
         {
@@ -301,8 +303,6 @@ namespace PDFCompare
                 }
             }
 
-            //Progress Bar
-            //backgroundWorker1.ReportProgress((i + 1) * 100 / multipleSourceComboBox.Count);
         }
 
         private void ShowImages(string[] files, int i)
@@ -779,6 +779,7 @@ namespace PDFCompare
         //************** Carousel Feature **************//
         private void ShowResult(int index)
         {
+            Console.WriteLine(index);
             if (multipleSourceComboBox[$"sourceComboBox_{index}"] == null || multipleTargetComboBox[$"targetComboBox_{index}"] == null)
             {
                 return;
@@ -815,8 +816,10 @@ namespace PDFCompare
 
         private void UpdateCarouselButtons()
         {
-            previousResult.Enabled = currentResultIndex > 0;
-            nextResult.Enabled = currentResultIndex < multipleSourceComboBox.Count - 1;
+            previousResult.Enabled = !(currentResultIndex == initialResultIndex);
+            nextResult.Enabled = !(currentResultIndex == lastResultIndex);
+            //previousResult.Enabled = currentResultIndex > 0;
+            //nextResult.Enabled = currentResultIndex < multipleSourceComboBox.Count - 1;
         }
 
         private void previousResult_Click(object sender, EventArgs e)
@@ -912,11 +915,28 @@ namespace PDFCompare
         private void background_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             progressBar1.Visible = false;
-            ShowResult(0);
+            currentResultIndex = 0;
+
+            while(multipleSourceComboBox[$"sourceComboBox_{currentResultIndex}"] == null)
+            {
+                currentResultIndex += 1;
+            }
+
+            initialResultIndex = currentResultIndex;
+            ShowResult(currentResultIndex);
 
             materialTabControl1.SelectedTab = resultTabPage;
             btnCompare.Enabled = true;
             btnCompare.Cursor = Cursors.Default;
+
+            lastResultIndex = multipleSourceComboBox.Count - 1;
+            while (multipleSourceComboBox[$"sourceComboBox_{lastResultIndex}"] == null)
+            {
+                lastResultIndex -= 1;
+            }
+
+            previousResult.Enabled = false;
+            nextResult.Enabled = !(initialResultIndex == lastResultIndex);
         }
 
         private void materialTabControl1_SelectedIndexChanged(object sender, EventArgs e)
