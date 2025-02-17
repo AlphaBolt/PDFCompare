@@ -96,6 +96,7 @@ namespace PDFCompare
                         Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
                         TextAlign = HorizontalAlignment.Center,
                         Visible = false,
+                        
                     };
 
                     resultContentPanel.Controls.Add(resultStatus);
@@ -162,8 +163,6 @@ namespace PDFCompare
             }
 
         }
-
-
 
         private void CompareFiles(int i)
         {
@@ -522,7 +521,7 @@ namespace PDFCompare
                     AddNewPanel(i, sourceFiles, targetFiles);
                 }
 
-                ValidateSourceAndTarget();
+                //ValidateSourceAndTarget();
             }
 
         }
@@ -560,7 +559,7 @@ namespace PDFCompare
                 Size = new Size(30, 21)
             };
             sourceButton.Click += (s, ev) => OpenFileDialogForComboBox(sourceComboBox);
-
+            sourceButton.Click += (s, ev) => OpenFileDialogForComboBox_Validating(sourceComboBox, null);
             Label sourceRangeLabel = new Label
             {
                 Text = "Select Range:",
@@ -607,7 +606,7 @@ namespace PDFCompare
                 Size = new Size(30, 21)
             };
             targetButton.Click += (s, ev) => OpenFileDialogForComboBox(targetComboBox);
-
+            sourceButton.Click += (s, ev) => OpenFileDialogForComboBox_Validating(sourceComboBox, null);
             Label targetRangeLabel = new Label
             {
                 Text = "Select Range:",
@@ -661,7 +660,7 @@ namespace PDFCompare
             sourceComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
             targetComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
 
-            ValidateSourceAndTarget();
+            //ValidateSourceAndTarget();
         }
 
         
@@ -670,6 +669,7 @@ namespace PDFCompare
         {
             string[] dummy = new string[] {};
             AddNewPanel(multipleSourceComboBox.Count, dummy, dummy);
+            ValidateSourceAndTarget();
         }
 
 
@@ -689,15 +689,14 @@ namespace PDFCompare
 
             for (int i = 0; i < multipleSourceComboBox.Count; i++)
             {
-
-                if (multipleSourceComboBox[$"sourceComboBox_{i}"] == null || multipleTargetComboBox[$"targetComboBox_{i}"] == null || 
+                if (multipleSourceComboBox[$"sourceComboBox_{i}"] == null || multipleTargetComboBox[$"targetComboBox_{i}"] == null ||
                     multipleSourceComboBox[$"sourceComboBox_{i}"].Items.Count == 0 || multipleTargetComboBox[$"targetComboBox_{i}"].Items.Count == 0)
                 {
                     allComboBoxesFilled = false;
                     continue;
                 }
 
-                if (multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem == null || multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem == null)
+                if ((multipleSourceComboBox[$"sourceComboBox_{i}"] != null) && multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem == null || multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem == null)
                 {
                     allComboBoxesFilled = false;
                 }
@@ -705,8 +704,6 @@ namespace PDFCompare
                 if (multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem.ToString() == multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem.ToString())
                 {
                     srcTrgtSame = true;
-                    multipleSourceComboBox[$"sourceComboBox_{i}"].ForeColor = Color.Red;
-                    multipleTargetComboBox[$"targetComboBox_{i}"].ForeColor = Color.Red;
                 }
                 else
                 {
@@ -714,7 +711,8 @@ namespace PDFCompare
                     multipleTargetComboBox[$"targetComboBox_{i}"].ForeColor = Color.Black;
                 }
             }
-            if (srcTrgtSame) 
+
+            if (srcTrgtSame)
             {
                 labelErrorMessage.Text = "Source and target cannot be same!!!";
                 labelErrorMessage.BackColor = Color.Red;
@@ -727,10 +725,12 @@ namespace PDFCompare
                 labelErrorMessage.Text = "Please select files for all comparisons.";
                 labelErrorMessage.BackColor = Color.Red;
                 labelErrorMessage.Visible = true;
-                btnCompare.Enabled = false;
+
+                //btnCompare.Enabled = false;
             }
             else
             {
+                allComboBoxesFilled = true;
                 labelErrorMessage.Text = string.Empty;
                 labelErrorMessage.Visible = false;
                 btnCompare.Enabled = true;
@@ -756,10 +756,15 @@ namespace PDFCompare
                     comboBox.Items.Add(selectedFile);
                 }
                 comboBox.SelectedItem = selectedFile;
+                labelErrorMessage.Text = string.Empty;
+                labelErrorMessage.Visible = false;
+                btnCompare.Enabled = true;
             }
         }
-
-
+        private void OpenFileDialogForComboBox_Validating(object sender, CancelEventArgs e)
+        {
+            ValidateSourceAndTarget();
+        }
         // Event handler for delete button in review tab
         private void DeletePanelButton_Click(Panel panel, int i)
         {
@@ -767,14 +772,21 @@ namespace PDFCompare
             panel.Controls.Clear();
             reviewContentPanel.Controls.Remove(panel);
 
+            // Remove the associated controls from the dictionaries
+            //multipleSourceComboBox.Remove($"sourceComboBox_{i}");
+            //multipleTargetComboBox.Remove($"targetComboBox_{i}");
+            //multipleSourceRangeTextBox.Remove($"sourceRangeTextBox_{i}");
+            //multipleTargetRangeTextBox.Remove($"targetRangeTextBox_{i}");
+
             // Make the associated controls from the dictionaries null
             multipleSourceComboBox[$"sourceComboBox_{i}"] = null;
             multipleTargetComboBox[$"targetComboBox_{i}"] = null;
             multipleSourceRangeTextBox[$"sourceRangeTextBox_{i}"] = null;
             multipleTargetRangeTextBox[$"targetRangeTextBox_{i}"] = null;
 
+            // Revalidate the source and target
+            //ValidateSourceAndTarget();
         }
-
 
         //************** Carousel Feature **************//
         private void ShowResult(int index)
@@ -968,5 +980,7 @@ namespace PDFCompare
                 MessageBox.Show("The specified folder does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+      
     }
 }
