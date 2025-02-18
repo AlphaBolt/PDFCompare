@@ -725,7 +725,6 @@ namespace PDFCompare
                 labelErrorMessage.Text = "Please select files for all comparisons.";
                 labelErrorMessage.BackColor = Color.Red;
                 labelErrorMessage.Visible = true;
-
                 //btnCompare.Enabled = false;
             }
             else
@@ -783,6 +782,9 @@ namespace PDFCompare
             multipleTargetComboBox[$"targetComboBox_{i}"] = null;
             multipleSourceRangeTextBox[$"sourceRangeTextBox_{i}"] = null;
             multipleTargetRangeTextBox[$"targetRangeTextBox_{i}"] = null;
+
+            labelErrorMessage.Text = string.Empty;
+            labelErrorMessage.Visible = false;
 
             // Revalidate the source and target
             //ValidateSourceAndTarget();
