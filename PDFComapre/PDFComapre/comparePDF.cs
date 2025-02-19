@@ -15,6 +15,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.Threading;
 using NPOI.SS.Formula.Functions;
+using System.Web.UI;
 
 namespace PDFCompare
 {
@@ -41,7 +42,7 @@ namespace PDFCompare
         private Dictionary<string, TextBox> multipleResultStatus = new Dictionary<string, TextBox>();
         private Dictionary<string, WebBrowser> multipleWebResults = new Dictionary<string, WebBrowser>();
         private Dictionary<string, DataGridView> multipleDatagridViews = new Dictionary<string, DataGridView>();
-
+        private string resultPath = ConfigurationManager.AppSettings["ResultPath"].ToString();
 
         private int currentResultIndex = 0;
         private int initialResultIndex = 0;
@@ -62,9 +63,9 @@ namespace PDFCompare
 
 
             //labelResultPath.Text = string.Empty;
-            var resultPath = ConfigurationManager.AppSettings["ResultPath"].ToString();
+            //var resultPath = ConfigurationManager.AppSettings["ResultPath"].ToString();
             
-            labelResultPath.Text = $"Results will be saved at: {resultPath}";
+            //labelResultPath.Text = $"Results will be saved at: {resultPath}";
  
             // Start comparing only if there is some file selected
             if (!backgroundWorker1.IsBusy && (multipleSourceComboBox.Count > 0 && multipleTargetComboBox.Count > 0))
@@ -162,6 +163,10 @@ namespace PDFCompare
 
             }
 
+            //string[] args = new string[] { resultPath };
+            //Program.Main(args);
+            
+
         }
 
         private void CompareFiles(int i)
@@ -195,7 +200,7 @@ namespace PDFCompare
 
                         if (result.Message.Split('|')[1] != "Page Numbers are Not Same" && result.Message.Split('|')[1] != "Both PDF are same." && result.Message.Split('|')[1] != "Please provide source and target same range to compare due to different number of pages.")
                         {
-                            string resultImage = Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"Reports");
+                            string resultImage = Path.Combine(resultPath, "Reports");
 
                             DirectoryInfo resultfolder = new DirectoryInfo(resultImage);
                             DirectoryInfo latestdir = resultfolder.GetDirectories().OrderByDescending(f => f.CreationTime).FirstOrDefault();
@@ -972,7 +977,7 @@ namespace PDFCompare
 
         private void labelResultPath_Click(object sender, EventArgs e)
         {
-            var resultPath = ConfigurationManager.AppSettings["ResultPath"].ToString();
+            //var resultPath = ConfigurationManager.AppSettings["ResultPath"].ToString();
             if (Directory.Exists(resultPath))
             {
                 System.Diagnostics.Process.Start("explorer.exe", resultPath);
@@ -983,6 +988,39 @@ namespace PDFCompare
             }
         }
 
-      
+        private void btnSelectResultPath_Click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                folderBrowserDialog.Description = "Select the folder to save the results";
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    resultPath = Path.Combine(folderBrowserDialog.SelectedPath, "CompareToolResult");
+                    //UpdateResultPathInConfig(resultPath);
+                    if (!Directory.Exists(resultPath))
+                    {
+                        Directory.CreateDirectory(resultPath);
+                    }
+                    labelResultPathDisplay.Text = $"Results will be saved at: {resultPath} ";
+                    labelResultPath.Text = $"Results saved at: {resultPath}";
+                    MessageBox.Show($"Results will be saved at: {resultPath}", "Result Path Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void UpdateResultPathInConfig(string newPath)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            if (config.AppSettings.Settings["Result Path"] != null)
+            {
+                config.AppSettings.Settings["Result Path"].Value = newPath;
+            }
+            else
+            {
+                config.AppSettings.Settings.Add("Result Path", newPath);
+            }
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+        }
     }
 }

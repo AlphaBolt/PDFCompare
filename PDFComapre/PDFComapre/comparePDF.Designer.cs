@@ -48,6 +48,8 @@ namespace PDFCompare
             this.panel4 = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.labelResultPathDisplay = new System.Windows.Forms.Label();
+            this.btnSelectResultPath = new System.Windows.Forms.Button();
             this.addSection = new System.Windows.Forms.Button();
             this.btnCompare = new System.Windows.Forms.Button();
             this.reviewContentPanel = new System.Windows.Forms.Panel();
@@ -63,6 +65,7 @@ namespace PDFCompare
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelErrorMessage = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.materialTabControl1.SuspendLayout();
             this.selectFilesTabPage.SuspendLayout();
             this.selectFilesContentPanel.SuspendLayout();
@@ -86,7 +89,7 @@ namespace PDFCompare
             this.materialTabControl1.Location = new System.Drawing.Point(0, 35);
             this.materialTabControl1.MouseState = MaterialWinforms.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 0;
+            this.materialTabControl1.SelectedIndex = 1;
             this.materialTabControl1.Size = new System.Drawing.Size(1260, 618);
             this.materialTabControl1.TabIndex = 5;
             this.materialTabControl1.TabsAreClosable = true;
@@ -288,6 +291,8 @@ namespace PDFCompare
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.labelResultPathDisplay);
+            this.panel3.Controls.Add(this.btnSelectResultPath);
             this.panel3.Controls.Add(this.addSection);
             this.panel3.Controls.Add(this.btnCompare);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -295,6 +300,26 @@ namespace PDFCompare
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1252, 165);
             this.panel3.TabIndex = 1;
+            // 
+            // labelResultPathDisplay
+            // 
+            this.labelResultPathDisplay.AutoSize = true;
+            this.labelResultPathDisplay.Location = new System.Drawing.Point(42, 83);
+            this.labelResultPathDisplay.Name = "labelResultPathDisplay";
+            this.labelResultPathDisplay.Size = new System.Drawing.Size(278, 20);
+            this.labelResultPathDisplay.TabIndex = 6;
+            this.labelResultPathDisplay.Text = "Default Path: C:\\\\CompareToolsResult";
+            // 
+            // btnSelectResultPath
+            // 
+            this.btnSelectResultPath.AutoSize = true;
+            this.btnSelectResultPath.Location = new System.Drawing.Point(207, 116);
+            this.btnSelectResultPath.Name = "btnSelectResultPath";
+            this.btnSelectResultPath.Size = new System.Drawing.Size(113, 30);
+            this.btnSelectResultPath.TabIndex = 5;
+            this.btnSelectResultPath.Text = "Select Folder";
+            this.btnSelectResultPath.UseVisualStyleBackColor = true;
+            this.btnSelectResultPath.Click += new System.EventHandler(this.btnSelectResultPath_Click);
             // 
             // addSection
             // 
@@ -304,7 +329,7 @@ namespace PDFCompare
             this.addSection.Name = "addSection";
             this.addSection.Size = new System.Drawing.Size(189, 40);
             this.addSection.TabIndex = 4;
-            this.addSection.Text = "Add Section";
+            this.addSection.Text = "Add More Files";
             this.addSection.UseVisualStyleBackColor = true;
             this.addSection.Click += new System.EventHandler(this.addSectionButton_Click);
             // 
@@ -436,15 +461,17 @@ namespace PDFCompare
             // 
             // labelResultPath
             // 
-            this.labelResultPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelResultPath.AutoSize = true;
+            this.labelResultPath.BackColor = System.Drawing.SystemColors.Control;
             this.labelResultPath.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelResultPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelResultPath.ForeColor = System.Drawing.Color.OrangeRed;
-            this.labelResultPath.Location = new System.Drawing.Point(716, 11);
+            this.labelResultPath.Location = new System.Drawing.Point(706, 8);
             this.labelResultPath.Name = "labelResultPath";
-            this.labelResultPath.Size = new System.Drawing.Size(470, 20);
+            this.labelResultPath.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelResultPath.Size = new System.Drawing.Size(0, 25);
             this.labelResultPath.TabIndex = 0;
-            this.labelResultPath.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelResultPath.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.labelResultPath.Visible = false;
             this.labelResultPath.Click += new System.EventHandler(this.labelResultPath_Click);
             // 
@@ -501,6 +528,7 @@ namespace PDFCompare
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.resultTabPage.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -544,5 +572,8 @@ namespace PDFCompare
         private System.Windows.Forms.TextBox labelErrorMessage;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button addSection;
+        private System.Windows.Forms.Button btnSelectResultPath;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Label labelResultPathDisplay;
     }
 }

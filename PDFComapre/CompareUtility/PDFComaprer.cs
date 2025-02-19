@@ -65,7 +65,6 @@ namespace CompareUtility
                     BoundingBoxColor = Color.Red,
                     BoundingBoxPadding = 5,
                     BoundingBoxMode = BoundingBoxModes.Multiple
-
                 };
 
                 if (Environment.Is64BitOperatingSystem)
@@ -84,7 +83,6 @@ namespace CompareUtility
                     foreach (XmlNode page in IgnoreCoordinatesPage)
                     {
                         int pagenumber = Convert.ToInt32(page.SelectSingleNode("@pagenumber").Value);
-                        //XmlNodeList Coordinates = page.ChildNodes("//Coordinates");
                         List<string> cordinatespoints = new List<string>();
                         foreach (XmlNode coordinate in page.ChildNodes)
                         {
@@ -105,7 +103,6 @@ namespace CompareUtility
 
                 _rasterizer = new GhostscriptRasterizer();
                 reportFolderpath = CreateReportFolder(ReportDirectoryPath, ReportDirectoryName);
-                //For Deleting junk image folders created in Reports Directory
                 DeleteTempPDFImageFolders(reportFolderpath);
                 differencesFolderPath = CreateFolder(reportFolderpath, DifferencesDirectoryName);
                 TempFolderPath = CreateFolder(reportFolderpath, TemporaryDirectoryName);
@@ -211,6 +208,7 @@ namespace CompareUtility
             }
         }
 
+
         public ComparisonReport Compare(string FileName1, string Filename2, XmlNode fileIgnorePixels, string reportResult, List<int> sourcePageRange = null, List<int> targetPageRange = null)
         {
             string differencesFolderPath = string.Empty, tempFolder1 = string.Empty, tempFolder2 = string.Empty, TempFolderPath = string.Empty, reportFolderpath = string.Empty;
@@ -296,7 +294,7 @@ namespace CompareUtility
 
                 if (File.Exists(FileName1) && File.Exists(Filename2) && numberofpagessame)
                 {
-                    int numberOfPages = NumberOfPages(FileName1);                    
+                    int numberOfPages = NumberOfPages(FileName1);
 
                     if (sourcePageRange != null && sourcePageRange.Count > 0 && targetPageRange != null && targetPageRange.Count > 0)
                     {
@@ -318,7 +316,7 @@ namespace CompareUtility
                             }
                         }
                     }
-                    else 
+                    else
                     {
                         sourcePageRange = null;
                         targetPageRange = null;
@@ -363,7 +361,8 @@ namespace CompareUtility
                                 report.IsPass = false;
                             }
                         }
-                        else {
+                        else
+                        {
                             report.ComparisonMessage = "Please provide source and target same range to compare due to different number of pages.";
                             report.IsPass = false;
                         }
