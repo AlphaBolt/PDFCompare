@@ -201,8 +201,6 @@ namespace PDFCompare
         [STAThread]
         static void Main(string[] args)
         {
-            string resultPath = args.Length > 0 ? Path.Combine(args[0], "CompareToolResult") : ConfigurationManager.AppSettings["ResultPath"].ToString();
-
             string SourceFilePath = "C:\\Users\\Arvind.1.Kumar\\Desktop\\PDF FILES\\FM 101.0.885 08 18.pdf"; //"Q:\\Automation & Performance\\duckqtp7~Source~2018-08-16 03-23-56src.pdf";
             string TargetFilePath = "C:\\Users\\Arvind.1.Kumar\\Desktop\\PDF FILES\\FM 101.0.885 08 18.pdf"; //"Q:\\Automation & Performance\\duckqtp7~target~2018-08-16 03-23-56targ.pdf";
 
@@ -210,12 +208,11 @@ namespace PDFCompare
             var currentDrive = Path.GetPathRoot(System.Reflection.Assembly.GetEntryAssembly().Location);
 
             var filePath = //"Q:\\Automation & Performance\\Pdf-Demo\\ComparisonReport\\New\\ComparisonReport.xls";
-                           //Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"ComparisonReport.xls");
-            Path.Combine(resultPath, "ComparisonReport.xls");
+                           Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"ComparisonReport.xls");
 
 
             comparePDF frm = new comparePDF();
-           frm.ShowDialog();
+            frm.ShowDialog();
 
             //fnPDFDiff_FormTemplate(SourceFilePath, TargetFilePath, filePath,"", true);
             //fnPDFDiff_FormTemplate(SourceFilePath, TargetFilePath, filePath, "1","1-2", false);

@@ -63,8 +63,6 @@ namespace PDFCompare
 
 
             //labelResultPath.Text = string.Empty;
-            //var resultPath = ConfigurationManager.AppSettings["ResultPath"].ToString();
-            
             //labelResultPath.Text = $"Results will be saved at: {resultPath}";
  
             // Start comparing only if there is some file selected
@@ -161,11 +159,7 @@ namespace PDFCompare
 
                 backgroundWorker1.RunWorkerAsync();
 
-            }
-
-            //string[] args = new string[] { resultPath };
-            //Program.Main(args);
-            
+            }            
 
         }
 
@@ -178,7 +172,8 @@ namespace PDFCompare
             }
 
             var currentDrive = Path.GetPathRoot(System.Reflection.Assembly.GetEntryAssembly().Location);
-            var ComparisonReportFile = Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"ComparisonReport.xls");
+            //var ComparisonReportFile = Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"ComparisonReport.xls");
+            var ComparisonReportFile = Path.Combine(resultPath, "ComparisonReport.xls");
             //"Q:\\Automation & Performance\\Functional Automation\\DCRegression\\Results\\Excess-Data\\PDF-Diff_Excel-Reports\\PDF_Comparator_Results\\ComparisonReport.xls";
 
             string File1diff = multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem.ToString();
@@ -188,7 +183,6 @@ namespace PDFCompare
             string targetPageRange = multipleTargetRangeTextBox[$"targetRangeTextBox_{i}"].Text;
 
 
-            //if (rdbImageCompare.Checked)
             if (text_OR_imageBtn.Checked)
             {
                 try
@@ -635,8 +629,6 @@ namespace PDFCompare
                 Location = new Point(1050, 10),
             };
 
-            //deleteButton.BackgroundImage = ;
-            //deleteButton.BackgroundImageLayout = ImageLayout.Zoom;
             deleteButton.Click += (s, e) => DeletePanelButton_Click(panel, i);
 
 
@@ -977,7 +969,6 @@ namespace PDFCompare
 
         private void labelResultPath_Click(object sender, EventArgs e)
         {
-            //var resultPath = ConfigurationManager.AppSettings["ResultPath"].ToString();
             if (Directory.Exists(resultPath))
             {
                 System.Diagnostics.Process.Start("explorer.exe", resultPath);
@@ -996,11 +987,7 @@ namespace PDFCompare
                 if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     resultPath = Path.Combine(folderBrowserDialog.SelectedPath, "CompareToolResult");
-                    //UpdateResultPathInConfig(resultPath);
-                    if (!Directory.Exists(resultPath))
-                    {
-                        Directory.CreateDirectory(resultPath);
-                    }
+
                     labelResultPathDisplay.Text = $"Results will be saved at: {resultPath} ";
                     labelResultPath.Text = $"Results saved at: {resultPath}";
                     MessageBox.Show($"Results will be saved at: {resultPath}", "Result Path Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1008,19 +995,5 @@ namespace PDFCompare
             }
         }
 
-        private void UpdateResultPathInConfig(string newPath)
-        {
-            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            if (config.AppSettings.Settings["Result Path"] != null)
-            {
-                config.AppSettings.Settings["Result Path"].Value = newPath;
-            }
-            else
-            {
-                config.AppSettings.Settings.Add("Result Path", newPath);
-            }
-            config.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection("appSettings");
-        }
     }
 }
