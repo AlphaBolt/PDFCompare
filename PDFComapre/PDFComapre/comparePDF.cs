@@ -63,8 +63,8 @@ namespace PDFCompare
 
 
             //labelResultPath.Text = string.Empty;
-            //labelResultPath.Text = $"Results will be saved at: {resultPath}";
- 
+            labelResultPath.Text = $"Results will be saved at: {resultPath}";
+
             // Start comparing only if there is some file selected
             if (!backgroundWorker1.IsBusy && (multipleSourceComboBox.Count > 0 && multipleTargetComboBox.Count > 0))
             {
@@ -520,7 +520,7 @@ namespace PDFCompare
                     AddNewPanel(i, sourceFiles, targetFiles);
                 }
 
-                //ValidateSourceAndTarget();
+                ValidateSourceAndTarget();
             }
 
         }
@@ -605,7 +605,7 @@ namespace PDFCompare
                 Size = new Size(30, 21)
             };
             targetButton.Click += (s, ev) => OpenFileDialogForComboBox(targetComboBox);
-            sourceButton.Click += (s, ev) => OpenFileDialogForComboBox_Validating(sourceComboBox, null);
+            targetButton.Click += (s, ev) => OpenFileDialogForComboBox_Validating(targetComboBox, null);
             Label targetRangeLabel = new Label
             {
                 Text = "Select Range:",
@@ -701,6 +701,8 @@ namespace PDFCompare
                 if (multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem.ToString() == multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem.ToString())
                 {
                     srcTrgtSame = true;
+                    multipleSourceComboBox[$"sourceComboBox_{i}"].ForeColor = Color.Red;
+                    multipleTargetComboBox[$"targetComboBox_{i}"].ForeColor = Color.Red;
                 }
                 else
                 {
@@ -711,9 +713,10 @@ namespace PDFCompare
 
             if (srcTrgtSame)
             {
-                labelErrorMessage.Text = "Source and target cannot be same!!!";
-                labelErrorMessage.BackColor = Color.Red;
-                labelErrorMessage.Visible = true;
+                MessageBox.Show("Source and target cannot be same!!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //labelErrorMessage.Text = "Source and target cannot be same!!!";
+                //labelErrorMessage.BackColor = Color.DarkOrange;
+                //labelErrorMessage.Visible = true;
                 btnCompare.Enabled = false;
 
             }
@@ -755,12 +758,15 @@ namespace PDFCompare
                 labelErrorMessage.Text = string.Empty;
                 labelErrorMessage.Visible = false;
                 btnCompare.Enabled = true;
+
+                //ValidateSourceAndTarget();
             }
         }
         private void OpenFileDialogForComboBox_Validating(object sender, CancelEventArgs e)
         {
             ValidateSourceAndTarget();
         }
+
         // Event handler for delete button in review tab
         private void DeletePanelButton_Click(Panel panel, int i)
         {
