@@ -19,8 +19,8 @@ namespace CompareUtility
 
     public class PDFComaprer
     {
-        private GhostscriptVersionInfo _lastInstalledVersion = null;
-        private GhostscriptRasterizer _rasterizer = null;
+        public GhostscriptVersionInfo _lastInstalledVersion;
+        public GhostscriptRasterizer _rasterizer = null;
         CompareOptions options;
 
         int desired_x_dpi = 150;
@@ -530,8 +530,9 @@ namespace CompareUtility
             return Directory.CreateDirectory(reportFolder + "\\" + val).FullName;
         }
 
-        private bool CheckNumberOfPagesSame(string pdfFilePath1, string pdfFilePath2)
+        public bool CheckNumberOfPagesSame(string pdfFilePath1, string pdfFilePath2)
         {
+            
             _rasterizer.Open(pdfFilePath1, _lastInstalledVersion, false);
             int pagecount1 = _rasterizer.PageCount;
             _rasterizer.Close();
