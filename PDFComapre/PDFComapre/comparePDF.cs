@@ -575,9 +575,10 @@ namespace PDFCompare
 				Location = new Point(300, 40),
 				Size = new Size(250, 21)
 			};
+            
 
-			//************ Target ************//
-			Label targetLabel = new Label
+            //************ Target ************//
+            Label targetLabel = new Label
 			{
 				Text = "Target:",
 				Location = new Point(610, 10),
@@ -632,9 +633,10 @@ namespace PDFCompare
 			};
 
 			deleteButton.Click += (s, e) => DeletePanelButton_Click(panel, i);
+            sourceRangeTextBox.TextChanged += (s, ev) => RangeTextBox_TextChanged(sourceComboBox, targetComboBox);
+            targetRangeTextBox.TextChanged += (s, ev) => RangeTextBox_TextChanged(sourceComboBox, targetComboBox);
 
-
-			panel.Controls.Add(sourceLabel);
+            panel.Controls.Add(sourceLabel);
 			panel.Controls.Add(sourceComboBox);
 			panel.Controls.Add(sourceButton);
 			panel.Controls.Add(sourceRangeLabel);
@@ -662,9 +664,16 @@ namespace PDFCompare
 			//ValidateSourceAndTarget();
 		}
 
-		
-		//Event handler for addSection button click
-		private void addSectionButton_Click(object sender, EventArgs e)
+        private void RangeTextBox_TextChanged(ComboBox sourceComboBox, ComboBox targetComboBox)
+        {
+            // Change the ForeColor of the corresponding ComboBox
+            sourceComboBox.ForeColor = Color.Black; // Change to the desired color
+			targetComboBox.ForeColor = Color.Black;
+		}
+
+
+        //Event handler for addSection button click
+        private void addSectionButton_Click(object sender, EventArgs e)
 		{
 			string[] dummy = new string[] {};
 			AddNewPanel(multipleSourceComboBox.Count, dummy, dummy);
@@ -731,13 +740,13 @@ namespace PDFCompare
                     }
                     pDFComaprer._rasterizer = new GhostscriptRasterizer();
 				}
-                //Check if the number of pages is the same
-                if (text_OR_imageBtn.Checked && !pDFComaprer.CheckNumberOfPagesSame(sourceFilePath, targetFilePath))
-                {
-                    pagesSame = false;
-                    multipleSourceComboBox[$"sourceComboBox_{i}"].ForeColor = Color.Red;
-                    multipleTargetComboBox[$"targetComboBox_{i}"].ForeColor = Color.Red;
-                }
+				//Check if the number of pages is the same
+				if (text_OR_imageBtn.Checked && !pDFComaprer.CheckNumberOfPagesSame(sourceFilePath, targetFilePath))
+				{
+					pagesSame = false;
+					multipleSourceComboBox[$"sourceComboBox_{i}"].ForeColor = Color.Red;
+					multipleTargetComboBox[$"targetComboBox_{i}"].ForeColor = Color.Red;
+				}
             }
 
 			if (srcTrgtSame)
