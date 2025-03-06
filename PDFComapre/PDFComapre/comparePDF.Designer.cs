@@ -133,7 +133,7 @@ namespace PDFCompare
             this.button1.Location = new System.Drawing.Point(830, 460);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.button1.Size = new System.Drawing.Size(107, 46);
+            this.button1.Size = new System.Drawing.Size(106, 46);
             this.button1.TabIndex = 18;
             this.button1.Text = "Reset";
             this.button1.UseVisualStyleBackColor = true;
@@ -160,7 +160,7 @@ namespace PDFCompare
             this.textBox2.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBox2.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.ForeColor = System.Drawing.Color.Black;
-            this.textBox2.Location = new System.Drawing.Point(801, 82);
+            this.textBox2.Location = new System.Drawing.Point(802, 82);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(136, 54);
             this.textBox2.TabIndex = 16;
@@ -188,7 +188,7 @@ namespace PDFCompare
             this.text_OR_imageBtn.Depth = 0;
             this.text_OR_imageBtn.EllipseBorderColor = "#3b73d1";
             this.text_OR_imageBtn.EllipseColor = "#508ef5";
-            this.text_OR_imageBtn.Location = new System.Drawing.Point(646, 102);
+            this.text_OR_imageBtn.Location = new System.Drawing.Point(647, 102);
             this.text_OR_imageBtn.MouseState = MaterialWinforms.MouseState.HOVER;
             this.text_OR_imageBtn.Name = "text_OR_imageBtn";
             this.text_OR_imageBtn.Size = new System.Drawing.Size(47, 19);
@@ -209,7 +209,7 @@ namespace PDFCompare
             // 
             this.txtSource.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtSource.Font = new System.Drawing.Font("Calibri", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSource.Location = new System.Drawing.Point(352, 366);
+            this.txtSource.Location = new System.Drawing.Point(353, 366);
             this.txtSource.Name = "txtSource";
             this.txtSource.Size = new System.Drawing.Size(100, 27);
             this.txtSource.TabIndex = 12;
@@ -237,7 +237,7 @@ namespace PDFCompare
             this.btnbrwSource.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnbrwSource.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnbrwSource.ForeColor = System.Drawing.Color.DimGray;
-            this.btnbrwSource.Location = new System.Drawing.Point(352, 205);
+            this.btnbrwSource.Location = new System.Drawing.Point(353, 205);
             this.btnbrwSource.Name = "btnbrwSource";
             this.btnbrwSource.Size = new System.Drawing.Size(222, 162);
             this.btnbrwSource.TabIndex = 10;
@@ -313,9 +313,9 @@ namespace PDFCompare
             // btnSelectResultPath
             // 
             this.btnSelectResultPath.AutoSize = true;
-            this.btnSelectResultPath.Location = new System.Drawing.Point(207, 116);
+            this.btnSelectResultPath.Location = new System.Drawing.Point(207, 115);
             this.btnSelectResultPath.Name = "btnSelectResultPath";
-            this.btnSelectResultPath.Size = new System.Drawing.Size(113, 30);
+            this.btnSelectResultPath.Size = new System.Drawing.Size(170, 46);
             this.btnSelectResultPath.TabIndex = 5;
             this.btnSelectResultPath.Text = "Select Folder";
             this.btnSelectResultPath.UseVisualStyleBackColor = true;
@@ -354,7 +354,7 @@ namespace PDFCompare
             this.reviewContentPanel.AutoSize = true;
             this.reviewContentPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.reviewContentPanel.Location = new System.Drawing.Point(0, 0);
-            this.reviewContentPanel.MaximumSize = new System.Drawing.Size(0, 650);
+            this.reviewContentPanel.MaximumSize = new System.Drawing.Size(0, 649);
             this.reviewContentPanel.Name = "reviewContentPanel";
             this.reviewContentPanel.Size = new System.Drawing.Size(1252, 0);
             this.reviewContentPanel.TabIndex = 0;
@@ -369,7 +369,7 @@ namespace PDFCompare
             this.resultTabPage.Location = new System.Drawing.Point(4, 29);
             this.resultTabPage.MouseState = MaterialWinforms.MouseState.HOVER;
             this.resultTabPage.Name = "resultTabPage";
-            this.resultTabPage.Size = new System.Drawing.Size(1252, 585);
+            this.resultTabPage.Size = new System.Drawing.Size(1252, 565);
             this.resultTabPage.TabIndex = 2;
             this.resultTabPage.Text = "Result";
             // 
@@ -378,7 +378,7 @@ namespace PDFCompare
             this.resultContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultContentPanel.Location = new System.Drawing.Point(70, 0);
             this.resultContentPanel.Name = "resultContentPanel";
-            this.resultContentPanel.Size = new System.Drawing.Size(1112, 585);
+            this.resultContentPanel.Size = new System.Drawing.Size(1112, 565);
             this.resultContentPanel.TabIndex = 1;
             // 
             // nextResult
@@ -389,7 +389,7 @@ namespace PDFCompare
             this.nextResult.Font = new System.Drawing.Font("Cooper Black", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextResult.Location = new System.Drawing.Point(1182, 0);
             this.nextResult.Name = "nextResult";
-            this.nextResult.Size = new System.Drawing.Size(70, 585);
+            this.nextResult.Size = new System.Drawing.Size(70, 565);
             this.nextResult.TabIndex = 0;
             this.nextResult.Text = ">";
             this.nextResult.UseVisualStyleBackColor = true;
@@ -403,7 +403,7 @@ namespace PDFCompare
             this.previousResult.Font = new System.Drawing.Font("Cooper Black", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previousResult.Location = new System.Drawing.Point(0, 0);
             this.previousResult.Name = "previousResult";
-            this.previousResult.Size = new System.Drawing.Size(70, 585);
+            this.previousResult.Size = new System.Drawing.Size(70, 565);
             this.previousResult.TabIndex = 0;
             this.previousResult.Text = "<";
             this.previousResult.UseVisualStyleBackColor = true;

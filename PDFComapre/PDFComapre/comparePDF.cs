@@ -454,7 +454,6 @@ namespace PDFCompare
 				btnbrwTarget.BackColor = Color.Gray;
 				btnbrwTarget.Text = "Files  Selected!";
 			}
-			Console.WriteLine(txtTarget.Text);
 		}
 
 
@@ -511,9 +510,6 @@ namespace PDFCompare
 			string[] sourceFiles = txtSource.Text.Split(';');
 			string[] targetFiles = txtTarget.Text.Split(';');
 			int minNoOfComarisons = Math.Min(sourceFiles.Length, targetFiles.Length);
-
-			Console.WriteLine(sourceFiles.Length);
-			Console.WriteLine(targetFiles.Length);
 
 			if (minNoOfComarisons > 0)
 			{
@@ -661,8 +657,8 @@ namespace PDFCompare
 			sourceComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
 			targetComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
 
-			//ValidateSourceAndTarget();
-		}
+            //ValidateSourceAndTarget();
+        }
 
         private void RangeTextBox_TextChanged(ComboBox sourceComboBox, ComboBox targetComboBox)
         {
@@ -699,22 +695,21 @@ namespace PDFCompare
 
 			for (int i = 0; i < multipleSourceComboBox.Count; i++)
 			{
-                
-
-                if (multipleSourceComboBox[$"sourceComboBox_{i}"] == null || multipleTargetComboBox[$"targetComboBox_{i}"] == null ||
-					multipleSourceComboBox[$"sourceComboBox_{i}"].Items.Count == 0 || multipleTargetComboBox[$"targetComboBox_{i}"].Items.Count == 0)
+                // If it is a deleted combobox, skip it
+                if (multipleSourceComboBox[$"sourceComboBox_{i}"] == null)
 				{
-					allComboBoxesFilled = false;
 					continue;
 				}
 
-				if ((multipleSourceComboBox[$"sourceComboBox_{i}"] != null) && multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem == null || multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem == null)
+                // The moment we find a combobox which is not filled, we break out of the loop
+                if ((multipleSourceComboBox[$"sourceComboBox_{i}"] != null) && multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem == null || multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem == null)
 				{
 					allComboBoxesFilled = false;
+					break;
 				}
 
 				string sourceFilePath = multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem.ToString();
-				string targetFilePath = multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem?.ToString();
+				string targetFilePath = multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem.ToString();
 
 
                 if (sourceFilePath == targetFilePath)
@@ -732,7 +727,6 @@ namespace PDFCompare
 					if (Environment.Is64BitOperatingSystem)
 					{
 						pDFComaprer._lastInstalledVersion = new GhostscriptVersionInfo(new Version(0, 0, 0), @"gsdll64.dll", string.Empty, GhostscriptLicense.GPL);
-
 					}
 					else
 					{
@@ -740,6 +734,7 @@ namespace PDFCompare
                     }
                     pDFComaprer._rasterizer = new GhostscriptRasterizer();
 				}
+
 				//Check if the number of pages is the same
 				if (text_OR_imageBtn.Checked && !pDFComaprer.CheckNumberOfPagesSame(sourceFilePath, targetFilePath))
 				{
@@ -832,12 +827,11 @@ namespace PDFCompare
 
 			// Revalidate the source and target
 			//ValidateSourceAndTarget();
-		}
+        }
 
 		//************** Carousel Feature **************//
 		private void ShowResult(int index)
 		{
-			Console.WriteLine(index);
 			if (multipleSourceComboBox[$"sourceComboBox_{index}"] == null || multipleTargetComboBox[$"targetComboBox_{index}"] == null)
 			{
 				return;
@@ -876,8 +870,6 @@ namespace PDFCompare
 		{
 			previousResult.Enabled = !(currentResultIndex == initialResultIndex);
 			nextResult.Enabled = !(currentResultIndex == lastResultIndex);
-			//previousResult.Enabled = currentResultIndex > 0;
-			//nextResult.Enabled = currentResultIndex < multipleSourceComboBox.Count - 1;
 		}
 
 		private void previousResult_Click(object sender, EventArgs e)
@@ -950,8 +942,6 @@ namespace PDFCompare
 		// Main logic to compare files inside do_work
 		private void background_DoWork(object sender, DoWorkEventArgs e)
 		{
-			Console.WriteLine("Background Worker Started");
-
 			for (int i = 0; i < multipleSourceComboBox.Count; i++)
 			{
 				if (multipleSourceComboBox[$"sourceComboBox_{i}"] == null || multipleTargetComboBox[$"targetComboBox_{i}"] == null)
@@ -960,9 +950,7 @@ namespace PDFCompare
 				}
 				backgroundWorker1.ReportProgress((i + 1) * 100 / multipleSourceComboBox.Count);
 				CompareFiles(i);
-				
 			}
-
 		}
 
 		private void background_ProgressChanged(object sender, ProgressChangedEventArgs e)
