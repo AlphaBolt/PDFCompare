@@ -519,7 +519,7 @@ namespace PDFCompare
             this.Controls.Add(this.materialTabSelector1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "comparePDF";
-            this.Text = "Forms Compare Tool";
+            this.Text = "Compare Forms 360";
             this.materialTabControl1.ResumeLayout(false);
             this.selectFilesTabPage.ResumeLayout(false);
             this.selectFilesContentPanel.ResumeLayout(false);

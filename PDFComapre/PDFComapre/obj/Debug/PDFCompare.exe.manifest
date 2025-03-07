@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LxFoKs5dFSvKPkFDWl6Dv+SfvoyB+BiYDq+rLVNf+Ys=</dsig:DigestValue>
+        <dsig:DigestValue>9uvE+sLGMUEpw4nFgs479DMQfl69LZfZ+LnxOGWZjJo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -210,14 +210,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PDFCompare.exe" size="87552">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PDFCompare.exe" size="87040">
       <assemblyIdentity name="PDFCompare" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BVj6AJZUW4iGx84Ocx1ilzLW6vmDgoStU2BRgfV/bfM=</dsig:DigestValue>
+        <dsig:DigestValue>OPeICtLyU7QljfVntrD3xKq9oIltBQ3ephT8qqF2kmc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
