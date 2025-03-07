@@ -63,7 +63,7 @@ namespace PDFCompare
             this.copyrightLabel = new System.Windows.Forms.Label();
             this.labelResultPath = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labelErrorMessage = new System.Windows.Forms.TextBox();
+            this.labelErrorMessage = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.materialTabControl1.SuspendLayout();
@@ -369,7 +369,7 @@ namespace PDFCompare
             this.resultTabPage.Location = new System.Drawing.Point(4, 29);
             this.resultTabPage.MouseState = MaterialWinforms.MouseState.HOVER;
             this.resultTabPage.Name = "resultTabPage";
-            this.resultTabPage.Size = new System.Drawing.Size(1252, 565);
+            this.resultTabPage.Size = new System.Drawing.Size(1252, 585);
             this.resultTabPage.TabIndex = 2;
             this.resultTabPage.Text = "Result";
             // 
@@ -378,7 +378,7 @@ namespace PDFCompare
             this.resultContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resultContentPanel.Location = new System.Drawing.Point(70, 0);
             this.resultContentPanel.Name = "resultContentPanel";
-            this.resultContentPanel.Size = new System.Drawing.Size(1112, 565);
+            this.resultContentPanel.Size = new System.Drawing.Size(1112, 585);
             this.resultContentPanel.TabIndex = 1;
             // 
             // nextResult
@@ -389,7 +389,7 @@ namespace PDFCompare
             this.nextResult.Font = new System.Drawing.Font("Cooper Black", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextResult.Location = new System.Drawing.Point(1182, 0);
             this.nextResult.Name = "nextResult";
-            this.nextResult.Size = new System.Drawing.Size(70, 565);
+            this.nextResult.Size = new System.Drawing.Size(70, 585);
             this.nextResult.TabIndex = 0;
             this.nextResult.Text = ">";
             this.nextResult.UseVisualStyleBackColor = true;
@@ -403,7 +403,7 @@ namespace PDFCompare
             this.previousResult.Font = new System.Drawing.Font("Cooper Black", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.previousResult.Location = new System.Drawing.Point(0, 0);
             this.previousResult.Name = "previousResult";
-            this.previousResult.Size = new System.Drawing.Size(70, 565);
+            this.previousResult.Size = new System.Drawing.Size(70, 585);
             this.previousResult.TabIndex = 0;
             this.previousResult.Text = "<";
             this.previousResult.UseVisualStyleBackColor = true;
@@ -489,14 +489,15 @@ namespace PDFCompare
             // 
             // labelErrorMessage
             // 
+            this.labelErrorMessage.Cursor = System.Windows.Forms.Cursors.Default;
             this.labelErrorMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelErrorMessage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelErrorMessage.Location = new System.Drawing.Point(0, 0);
-            this.labelErrorMessage.Multiline = true;
             this.labelErrorMessage.Name = "labelErrorMessage";
             this.labelErrorMessage.Size = new System.Drawing.Size(1260, 41);
             this.labelErrorMessage.TabIndex = 9;
-            this.labelErrorMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.labelErrorMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // backgroundWorker1
             // 
@@ -569,7 +570,7 @@ namespace PDFCompare
         private System.Windows.Forms.Label copyrightLabel;
         private System.Windows.Forms.Label labelResultPath;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox labelErrorMessage;
+        private System.Windows.Forms.Label labelErrorMessage;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button addSection;
         private System.Windows.Forms.Button btnSelectResultPath;

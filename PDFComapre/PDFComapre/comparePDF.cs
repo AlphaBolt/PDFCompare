@@ -18,6 +18,7 @@ using NPOI.SS.Formula.Functions;
 using System.Web.UI;
 using Ghostscript.NET;
 using Ghostscript.NET.Rasterizer;
+using MetroFramework.Controls;
 
 namespace PDFCompare
 {
@@ -41,7 +42,7 @@ namespace PDFCompare
 		private Dictionary<string, TextBox> multipleSourceRangeTextBox = new Dictionary<string, TextBox>();
 		private Dictionary<string, TextBox> multipleTargetRangeTextBox = new Dictionary<string, TextBox>();
 
-		private Dictionary<string, TextBox> multipleResultStatus = new Dictionary<string, TextBox>();
+		private Dictionary<string, Label> multipleResultStatus = new Dictionary<string, Label>();
 		private Dictionary<string, WebBrowser> multipleWebResults = new Dictionary<string, WebBrowser>();
 		private Dictionary<string, DataGridView> multipleDatagridViews = new Dictionary<string, DataGridView>();
 		private string resultPath = ConfigurationManager.AppSettings["ResultPath"].ToString();
@@ -88,15 +89,14 @@ namespace PDFCompare
 					}
 
 					// Create textbox for status message
-					TextBox resultStatus = new TextBox
+					Label resultStatus = new Label
 					{
 						Name = $"resultStatus_{i}",
-						ReadOnly = true,
 						BorderStyle = BorderStyle.None,
 						//Size = new Size(30, 100),
 						Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))),
-						TextAlign = HorizontalAlignment.Center,
-						Visible = false,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Visible = false,
 						
 					};
 
@@ -424,7 +424,7 @@ namespace PDFCompare
 		private void btnbrwSource_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog fileChooser = new OpenFileDialog();
-			fileChooser.Filter = "Pdf Files|*.pdf";
+			fileChooser.Filter = "Pdf Files|*.pdf| Word Files|*.doc; *.docx";
 			fileChooser.Multiselect = true;
 			fileChooser.Title = "Select Source File(s)";
 
@@ -442,7 +442,7 @@ namespace PDFCompare
 		private void btnbrwTarget_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog fileChooser = new OpenFileDialog();
-			fileChooser.Filter = "Pdf Files|*.pdf";
+			fileChooser.Filter = "Pdf Files|*.pdf| Word Files|*.doc; *.docx";
 			fileChooser.Multiselect = true;
 			fileChooser.Title = "Select Target File(s)";
 
@@ -546,17 +546,17 @@ namespace PDFCompare
 				Location = new Point(300, 10),
 				Size = new Size(250, 21),
 				DropDownStyle = ComboBoxStyle.DropDownList,
-			};
+            };
 			sourceComboBox.Items.AddRange(sourceFiles);
 
-			Button sourceButton = new Button
+			MetroButton sourceButton = new MetroButton
 			{
-				Text = "...",
+				Text = ". . .",
 				Location = new Point(560, 10),
-				Size = new Size(30, 21)
-			};
+				Size = new Size(24, 24),
+            };
 			sourceButton.Click += (s, ev) => OpenFileDialogForComboBox(sourceComboBox);
-			sourceButton.Click += (s, ev) => OpenFileDialogForComboBox_Validating(sourceComboBox, null);
+			//sourceButton.Click += (s, ev) => OpenFileDialogForComboBox_Validating(sourceComboBox, null);
 			Label sourceRangeLabel = new Label
 			{
 				Text = "Select Range:",
@@ -569,8 +569,9 @@ namespace PDFCompare
 			{
 				Name = $"sourceRangeTextBox_{i}",
 				Location = new Point(300, 40),
-				Size = new Size(250, 21)
-			};
+				Size = new Size(250, 21),
+                BorderStyle = BorderStyle.FixedSingle,
+            };
             
 
             //************ Target ************//
@@ -586,8 +587,8 @@ namespace PDFCompare
 				Name = $"targetComboBox_{i}",
 				Location = new Point(700, 10),
 				Size = new Size(250, 21),
-				DropDownStyle = ComboBoxStyle.DropDownList
-			};
+				DropDownStyle = ComboBoxStyle.DropDownList,
+            };
 			targetComboBox.Items.AddRange(targetFiles);
 
 			if (sourceFiles.Length > 0 && targetFiles.Length > 0)
@@ -597,27 +598,28 @@ namespace PDFCompare
 			}
 
 
-			Button targetButton = new Button
+			MetroButton targetButton = new MetroButton
 			{
-				Text = "...",
+				Text = ". . .",
 				Location = new Point(960, 10),
-				Size = new Size(30, 21)
-			};
+				Size = new Size(24, 24),
+            };
 			targetButton.Click += (s, ev) => OpenFileDialogForComboBox(targetComboBox);
-			targetButton.Click += (s, ev) => OpenFileDialogForComboBox_Validating(targetComboBox, null);
+			//targetButton.Click += (s, ev) => OpenFileDialogForComboBox_Validating(targetComboBox, null);
 			Label targetRangeLabel = new Label
 			{
 				Text = "Select Range:",
 				Location = new Point(610, 40),
-				AutoSize = true
+				AutoSize = true,
 			};
 
 			TextBox targetRangeTextBox = new TextBox
 			{
 				Name = $"targetRangeTextBox_{i}",
 				Location = new Point(700, 40),
-				Size = new Size(250, 21)
-			};
+				Size = new Size(250, 29),
+                BorderStyle = BorderStyle.FixedSingle,
+            };
 
 			Button deleteButton = new Button
 			{
@@ -657,7 +659,6 @@ namespace PDFCompare
 			sourceComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
 			targetComboBox.SelectedIndexChanged += (s, ev) => combobox_SelectedIndexChanged();
 
-            //ValidateSourceAndTarget();
         }
 
         private void RangeTextBox_TextChanged(ComboBox sourceComboBox, ComboBox targetComboBox)
@@ -790,17 +791,14 @@ namespace PDFCompare
 					comboBox.Items.Add(selectedFile);
 				}
 				comboBox.SelectedItem = selectedFile;
-				labelErrorMessage.Text = string.Empty;
-				labelErrorMessage.Visible = false;
-				btnCompare.Enabled = true;
 
 				//ValidateSourceAndTarget();
 			}
 		}
-		private void OpenFileDialogForComboBox_Validating(object sender, CancelEventArgs e)
-		{
-			ValidateSourceAndTarget();
-		}
+		//private void OpenFileDialogForComboBox_Validating(object sender, CancelEventArgs e)
+		//{
+		//	ValidateSourceAndTarget();
+		//}
 
 		// Event handler for delete button in review tab
 		private void DeletePanelButton_Click(Panel panel, int i)
@@ -808,12 +806,6 @@ namespace PDFCompare
 			// Remove the panel from the form
 			panel.Controls.Clear();
 			reviewContentPanel.Controls.Remove(panel);
-
-			// Remove the associated controls from the dictionaries
-			//multipleSourceComboBox.Remove($"sourceComboBox_{i}");
-			//multipleTargetComboBox.Remove($"targetComboBox_{i}");
-			//multipleSourceRangeTextBox.Remove($"sourceRangeTextBox_{i}");
-			//multipleTargetRangeTextBox.Remove($"targetRangeTextBox_{i}");
 
 			// Make the associated controls from the dictionaries null
 			multipleSourceComboBox[$"sourceComboBox_{i}"] = null;
@@ -824,9 +816,6 @@ namespace PDFCompare
 			labelErrorMessage.Text = string.Empty;
 			labelErrorMessage.Visible = false;
 			btnCompare.Enabled = true;
-
-			// Revalidate the source and target
-			//ValidateSourceAndTarget();
         }
 
 		//************** Carousel Feature **************//
@@ -929,7 +918,7 @@ namespace PDFCompare
 			multipleSourceRangeTextBox.Clear();
 			multipleTargetRangeTextBox.Clear();
 			multipleResultStatus.Clear();
-			labelErrorMessage.Clear();
+			//labelErrorMessage.Clear();
 			labelErrorMessage.Visible = false;
 		}
 		// Reset everything
