@@ -1,0 +1,5 @@
+# Ignore all .vs folders
+.vs/
+
+# NuGet Packages
+packages/
