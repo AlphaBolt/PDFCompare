@@ -180,7 +180,7 @@ namespace PDFCompare
             //PDFUtility.ComparePdf
             try
             {
-                PDFComaprer pdfcomparer = new PDFComaprer();
+                PDFComparer pdfcomparer = new PDFComparer();
                 XmlDocument ignorecoordinatesxml = new XmlDocument();
                 ignorecoordinatesxml.Load(ignorecoordinatesfilepath);
                 XmlNode fileXML = ignorecoordinatesxml.SelectSingleNode("//PDFFile[@filepath='" + destination.ToLower().Trim() + "']");
@@ -300,7 +300,7 @@ namespace PDFCompare
             //PDFUtility.ComparePdf
             try
             {
-                PDFComaprer pdfcomparer = new PDFComaprer();
+                PDFComparer pdfcomparer = new PDFComparer();
                 XmlDocument ignorecoordinatesxml = new XmlDocument();
                 ignorecoordinatesxml.Load(ignorecoordinatesfilepath);
                 XmlNode fileXML = ignorecoordinatesxml.SelectSingleNode("//PDFFile[@filepath='" + destination.ToLower().Trim() + "']");
@@ -311,13 +311,31 @@ namespace PDFCompare
                 throw ex;
             }
         }
+
+        public static ComparisonReport CompareWord(string source, string destination, string ignorecoordinatesfilepath, string reportResult, List<int> sourcePageRangeList, List<int> targetPageRangeList)
+        {
+            try
+            {
+                WordComparer wordComparer = new WordComparer();
+                XmlDocument ignorecoordinatesxml = new XmlDocument();
+                ignorecoordinatesxml.Load(ignorecoordinatesfilepath);
+                XmlNode fileXML = ignorecoordinatesxml.SelectSingleNode("//PDFFile[@filepath='" + destination.ToLower().Trim() + "']");
+                return wordComparer.Compare(source, destination, fileXML, reportResult, sourcePageRangeList, targetPageRangeList);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public static ComparisonReport ComaprePDFText(string source, string destination, List<int> sourcePageRange=null, List<int> targetPageRange=null, string reportResult = "")
         {
             // need to change the access level 
             //PDFUtility.ComparePdf
             try
             {
-                PDFComaprer pdfcomparer = new PDFComaprer();
+                PDFComparer pdfcomparer = new PDFComparer();
                 return pdfcomparer.CompareTwoPDF(source, destination, sourcePageRange, targetPageRange, reportResult);
             }
             catch (Exception ex)
@@ -326,6 +344,18 @@ namespace PDFCompare
             }
         }
 
+        public static ComparisonReport CompareWordText(string source, string destination, List<int> sourcePageRange = null, List<int> targetPageRange = null, string reportResult = "")
+        {
+            try
+            {
+                WordComparer wordComparer = new WordComparer();
+                return wordComparer.CompareTwoWordDocs(source, destination, sourcePageRange, targetPageRange, reportResult);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public static void CreateReport(List<ComparisonReport> Report, string ComparisonReportFile, List<PolicyNumberData> policynumbers)
         {

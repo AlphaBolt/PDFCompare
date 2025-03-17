@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CompareUtility.dll" size="28672">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CompareUtility.dll" size="40960">
       <assemblyIdentity name="CompareUtility" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>tjuea85F4EB/Jt9qMOD+q6AeMBankjfpzQHivZmvVzA=</dsig:DigestValue>
+        <dsig:DigestValue>tqGJqEifSH3pYyos+VystxjpZMC1qLl+5VJ/YLENaHQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -78,6 +78,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HarfBuzzSharp.dll" size="216136">
+      <assemblyIdentity name="HarfBuzzSharp" version="1.0.0.0" publicKeyToken="0738EB9F132ED756" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>CVukSwanNdEX4hyLJWXzFMYDyXtdoHycy4fbHepJ8V8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ICSharpCode.SharpZipLib.dll" size="196096">
       <assemblyIdentity name="ICSharpCode.SharpZipLib" version="1.0.0.999" publicKeyToken="1B03E6ACF1164F73" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -97,7 +109,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4oOWDMnbcyromcOWdQzlLavLtix110KuQs4umm+x+AE=</dsig:DigestValue>
+        <dsig:DigestValue>fI5AuJCq5+Fc7PcW8A7tfNYUB+inyI6ZedqT2I1PP2w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -210,38 +222,62 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PDFCompare.exe" size="87040">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="PDFCompare.exe" size="87552">
       <assemblyIdentity name="PDFCompare" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nChNWiENUePk3SJHIpliK3rt7KWmM3qStpbXkWkvV28=</dsig:DigestValue>
+        <dsig:DigestValue>JbE8efZnJEMjGxVE46NJo2fbl7+LAcWt+oQRiRqJ+yE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Syncfusion.Compression.Base.dll" size="77824">
-      <assemblyIdentity name="Syncfusion.Compression.Base" version="16.3450.0.36" publicKeyToken="3D67ED1F87D44C89" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spire.Doc.dll" size="20388832">
+      <assemblyIdentity name="Spire.Doc" version="13.3.5.0" publicKeyToken="663F351905198CB3" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2OMyOkLzjnEj2cICuPUZBXSOi8VMdHAq57M3DWE3Fs0=</dsig:DigestValue>
+        <dsig:DigestValue>S4Y6Kf80gYrZt05dDzN2Gt9gfc3Z3l1hZqN7yEDN2oA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Syncfusion.Licensing.dll" size="815104">
-      <assemblyIdentity name="Syncfusion.Licensing" version="16.3450.0.36" publicKeyToken="632609B4D040F6B4" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Syncfusion.Compression.Base.dll" size="397312">
+      <assemblyIdentity name="Syncfusion.Compression.Base" version="28.2462.11.0" publicKeyToken="3D67ED1F87D44C89" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dYOU/3msuJhBUXZfqfAlyRgVQvLCAXXeYoYuzzs2xew=</dsig:DigestValue>
+        <dsig:DigestValue>muKRKtV4e2hbSSkHWXCITXW5iVWqrsT1fNtcrUtw5E0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Syncfusion.Licensing.dll" size="442368">
+      <assemblyIdentity name="Syncfusion.Licensing" version="28.2462.11.0" publicKeyToken="632609B4D040F6B4" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>8k+ecKy5BRHMdJ0+Lb+x/JqxavMG19E/+Pa0bVvMEBw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Syncfusion.OfficeChart.Base.dll" size="2985984">
+      <assemblyIdentity name="Syncfusion.OfficeChart.Base" version="28.2462.11.0" publicKeyToken="3D67ED1F87D44C89" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>mNLB82eE9OhMyiiW0azvaDrCi4YBjGnEgCwecjQyf7w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -257,6 +293,54 @@
       </hash>
     </dependentAssembly>
   </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Buffers.dll" size="20856">
+      <assemblyIdentity name="System.Buffers" version="4.0.3.0" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>rMzPvkXZ8I/+7ZkW43sz6YxlvgEs//bn+ntnIQzh/vs=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Memory.dll" size="142240">
+      <assemblyIdentity name="System.Memory" version="4.0.1.2" publicKeyToken="CC7B13FFCD2DDD51" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>vz+4RmT0CX8aipvHGlHc+M8akF1AgKTSkNoXMIZuhW8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Numerics.Vectors.dll" size="115856">
+      <assemblyIdentity name="System.Numerics.Vectors" version="4.1.4.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>HT74aYKB589zcdFVSv71hys5+Wwm2nciEKM9oEG6EYM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Runtime.CompilerServices.Unsafe.dll" size="16768">
+      <assemblyIdentity name="System.Runtime.CompilerServices.Unsafe" version="4.0.4.1" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ZkCfZwMVr+hhDxek06HuUtcrakbFRM7JdUToOF+QrXQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
   <file name="IgnoreCoordinatesXML.xml" size="26955" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
@@ -266,13 +350,13 @@
       <dsig:DigestValue>3ZkURwJhxVVb4BXiBzHRXo8aljst97e3XngqH2Lud2w=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="PDFCompare.exe.config" size="3609">
+  <file name="PDFCompare.exe.config" size="4599">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>1a/gXuhs2OV9xcMQP+4IBObO39JKq6kY/DXWCiyUrwg=</dsig:DigestValue>
+      <dsig:DigestValue>wEKdyVeWgouvQThFsMJGZlP5ISaUFlsoGXxtiYnpWZg=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

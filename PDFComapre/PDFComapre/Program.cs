@@ -211,7 +211,7 @@ namespace PDFCompare
                            Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"ComparisonReport.xls");
 
 
-            comparePDF frm = new comparePDF();
+            compareForm frm = new compareForm();
             frm.ShowDialog();
 
             //fnPDFDiff_FormTemplate(SourceFilePath, TargetFilePath, filePath,"", true);
@@ -231,18 +231,38 @@ namespace PDFCompare
 
             try
             {
+                string extension1 = Path.GetExtension(SourceFilePath).ToLower();
+                string extension2 = Path.GetExtension(TargetFilePath).ToLower();
+
                 if (boolImageCompare)
                 {
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "IgnoreCoordinatesXML.xml");
-                    result = Common.ComaprePDF(SourceFilePath, TargetFilePath, filePath, ComparisonReportFile, sourcePageRangeList, targetPageRangeList);
-                    
-                        result.Message = result.Result + "|" + result.ComparisonMessage + "|" + Convert.ToString(result.IsPass);
-                        Report.Add(result);            
+
+                    if (extension1 == ".pdf" && extension2 == ".pdf")
+                    {
+                        result = Common.ComaprePDF(SourceFilePath, TargetFilePath, filePath, ComparisonReportFile, sourcePageRangeList, targetPageRangeList);
+                    }
+                    else if ((extension1 == ".docx" || extension1 == ".doc") && (extension2 == ".docx" || extension2 == ".doc"))
+                    {
+                        result = Common.CompareWord(SourceFilePath, TargetFilePath, filePath, ComparisonReportFile, sourcePageRangeList, targetPageRangeList);
+                    }
+
+                    result.Message = result.Result + "|" + result.ComparisonMessage + "|" + Convert.ToString(result.IsPass);
+                    Report.Add(result);            
                     
                 }
+
                 else
                 {
-                    result = Common.ComaprePDFText(SourceFilePath, TargetFilePath, sourcePageRangeList, targetPageRangeList, ComparisonReportFile);
+                    if (extension1 == ".pdf" && extension2 == ".pdf")
+                    {
+                        result = Common.ComaprePDFText(SourceFilePath, TargetFilePath, sourcePageRangeList, targetPageRangeList, ComparisonReportFile);
+                    }
+                    else if ((extension1 == ".docx" || extension1 == ".doc") && (extension2 == ".docx" || extension2 == ".doc"))
+                    {
+                        result = Common.CompareWordText(SourceFilePath, TargetFilePath, sourcePageRangeList, targetPageRangeList, ComparisonReportFile);
+                    }
+
                     result.Message = result.Result + "|" + result.ComparisonMessage + "|" + Convert.ToString(result.IsPass);
                     Report.Add(result);
                 }
@@ -266,7 +286,7 @@ namespace PDFCompare
             }
             catch (Exception ex)
             {
-                 result.Message= ex.ToString();
+                result.Message= ex.ToString();
                 return result;
             }
         }
