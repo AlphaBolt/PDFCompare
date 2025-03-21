@@ -428,7 +428,7 @@ namespace CompareUtility
                 bool result = ComparePage(tempFolder1 + "\\Page" + sourceRange + ".jpg", tempFolder2 + "\\Page" + targetRange + ".jpg", differencesFolderPath, sourceRange);
                 if (result)
                 {
-                    report.AddPageReport(sourceRange, Difference, "Passed", "Pages are same.", "");
+                    report.AddPageReport(sourceRange, Difference, "Passed", "Pages are same.", differencesFolderPath + "\\CombinedDiff" + sourceRange + ".jpg");
                     report.IsPass = true;
                 }
                 else
@@ -446,7 +446,7 @@ namespace CompareUtility
                 bool result = ComparePage(tempFolder1 + "\\Page" + sourceRange + ".jpg", tempFolder2 + "\\Page" + sourceRange + ".jpg", differencesFolderPath, sourceRange);
                 if (result)
                 {
-                    report.AddPageReport(sourceRange, Difference, "Passed", "Pages are same.", "");
+                    report.AddPageReport(sourceRange, Difference, "Passed", "Pages are same.", differencesFolderPath + "\\CombinedDiff" + sourceRange + ".jpg");
                     report.IsPass = true;
                 }
                 else
@@ -633,18 +633,25 @@ namespace CompareUtility
                 IsDifferentImage(source, destination);
                 using (Bitmap diff = GetDifference(source, destination))
                 {
+                    string combinedDiffPath;
                     if (Difference > 0)
                     {
+                        // Save the difference image with red boxes
                         diff.Save(reportDiffPath + "\\Page" + pageNum + ".jpg", ImageFormat.Jpeg);
-                        string CombinedDiff = CombineImages(PagePath1, reportDiffPath + "\\Page" + pageNum + ".jpg", reportDiffPath, pageNum);
-                        return false;
+                        combinedDiffPath = CombineImages(PagePath1, reportDiffPath + "\\Page" + pageNum + ".jpg", reportDiffPath, pageNum);
+                        source.Dispose();
+                        destination.Dispose();
+                        return false; // Images are different
                     }
                     else
-                        return true;
+                    {
+                        // When images are the same, combine the two original images (no diff image needed)
+                        combinedDiffPath = CombineImages(PagePath1, Pagepath2, reportDiffPath, pageNum);
+                        source.Dispose();
+                        destination.Dispose();
+                        return true; // Images are the same
+                    }
                 }
-
-                source.Dispose();
-                destination.Dispose();
             }
 
             return true;

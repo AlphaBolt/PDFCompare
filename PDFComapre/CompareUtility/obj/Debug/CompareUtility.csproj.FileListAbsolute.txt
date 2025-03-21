@@ -293,7 +293,6 @@ C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\Compare
 C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\CompareUtility\bin\Debug\Ghostscript.NET.dll
 C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\CompareUtility\bin\Debug\GhostscriptSharp.dll
 C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\CompareUtility\bin\Debug\ImageDiff.dll
-C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\CompareUtility\bin\Debug\itextsharp.dll
 C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\CompareUtility\bin\Debug\Syncfusion.Compression.Base.dll
 C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\CompareUtility\bin\Debug\Syncfusion.Licensing.dll
 C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\CompareUtility\bin\Debug\Syncfusion.Pdf.Base.dll

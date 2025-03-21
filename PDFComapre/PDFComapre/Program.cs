@@ -211,7 +211,7 @@ namespace PDFCompare
                            Path.Combine(ConfigurationManager.AppSettings["ResultPath"].ToString(), @"ComparisonReport.xls");
 
 
-            comparePDF frm = new comparePDF();
+            FormsCompare360 frm = new FormsCompare360();
             frm.ShowDialog();
 
             //fnPDFDiff_FormTemplate(SourceFilePath, TargetFilePath, filePath,"", true);

@@ -22,9 +22,9 @@ using MetroFramework.Controls;
 
 namespace PDFCompare
 {
-	public partial class comparePDF : Form
+	public partial class FormsCompare360 : Form
 	{
-		public comparePDF()
+		public FormsCompare360()
 		{
 			InitializeComponent();
 			this.WindowState = FormWindowState.Maximized;
@@ -118,8 +118,6 @@ namespace PDFCompare
 							AllowUserToResizeRows = false,
 							AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
 							ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize,
-							Dock = DockStyle.Top,
-							//Location = new Point(0, i * 300),
 							MinimumSize = new Size(30, 31),
 							Margin = new System.Windows.Forms.Padding(4, 5, 4, 5),
 							Size = new Size(300, 300),
@@ -128,8 +126,8 @@ namespace PDFCompare
 							ShowCellToolTips = false,
 							ShowEditingIcon = false,
 							ShowRowErrors = false,
-
-						};
+                            RowHeadersVisible = false,
+                        };
 
 						resultContentPanel.Controls.Add(datagridview);
 						datagridview.Dock = DockStyle.Fill;
@@ -143,12 +141,9 @@ namespace PDFCompare
 						WebBrowser webResult = new WebBrowser
 						{
 							Name = $"webResult_{i}",
-							Dock = DockStyle.Top,
-							//Location = new Point(0, i * 300),
 							MinimumSize = new Size(30, 31),
 							Margin = new System.Windows.Forms.Padding(4, 5, 4, 5),
-							//Size = new Size(300, 300),
-
+							
 						};
 
 						resultContentPanel.Controls.Add(webResult);
@@ -189,52 +184,62 @@ namespace PDFCompare
 			{
 				try
 				{
-					if (!string.IsNullOrEmpty(File1diff.Trim()) && !string.IsNullOrEmpty(File2diff.Trim()))
-					{
+                    if (!string.IsNullOrEmpty(File1diff.Trim()) && !string.IsNullOrEmpty(File2diff.Trim()))
+                    {
+                        var result = Program.fnPDFDiff_FormTemplate(File1diff, File2diff, ComparisonReportFile, sourcePageRange, targetPageRange, true);
 
-						var result = Program.fnPDFDiff_FormTemplate(File1diff, File2diff, ComparisonReportFile, sourcePageRange, targetPageRange, true);
+                        // Always attempt to show images if the comparison completed successfully
+                        string resultImage = Path.Combine(resultPath, "Reports");
+                        DirectoryInfo resultfolder = new DirectoryInfo(resultImage);
+                        DirectoryInfo latestdir = resultfolder.GetDirectories().OrderByDescending(f => f.CreationTime).FirstOrDefault();
 
-						if (result.Message.Split('|')[1] != "Page Numbers are Not Same" && result.Message.Split('|')[1] != "Both PDF are same." && result.Message.Split('|')[1] != "Please provide source and target same range to compare due to different number of pages.")
-						{
-							string resultImage = Path.Combine(resultPath, "Reports");
+                        if (latestdir != null)
+                        {
+                            ImageList imageList = new ImageList();
+                            string imagePath = Path.Combine(latestdir.FullName, "Differences");
 
-							DirectoryInfo resultfolder = new DirectoryInfo(resultImage);
-							DirectoryInfo latestdir = resultfolder.GetDirectories().OrderByDescending(f => f.CreationTime).FirstOrDefault();
+                            if (Directory.Exists(imagePath))
+                            {
+                                string[] filePaths = Directory.GetFiles(imagePath, "*.jpg").Where(x => x.Contains("CombinedDiff")).ToArray();
+                                if (filePaths.Length > 0)
+                                {
+                                    ShowImages(filePaths, i);
+                                }
+                            }
+                        }
 
-							ImageList imageList = new ImageList();
-							string imagePath = Path.Combine(latestdir.FullName, "Differences");
-
-							if (Directory.Exists(imagePath))
-							{
-								string[] filePaths = Directory.GetFiles(imagePath, "*.jpg").Where(x => x.Contains("CombinedDiff")).ToArray();
-								ShowImages(filePaths, i);
-							}
-						}
-
-						if (result.Message.Split('|')[1] == "Please provide source and target same range to compare due to different number of pages.")
-						{
-							labelErrorMessage.Text = "Please provide source and target same range to compare due to different number of pages.";
-							labelErrorMessage.BackColor = Color.Red;
-							labelErrorMessage.Visible = true;
-							labelResultPath.Visible = false;
-
-						}
-
-						if (result.Message.Split('|')[2] != string.Empty && result.Message.Split('|')[2] == "True" && result.Message.Split('|')[1] != "Please provide source and target same range to compare due to different number of pages.")
-						{
-							multipleResultStatus[$"resultStatus_{i}"].Text = "Pass";
-							multipleResultStatus[$"resultStatus_{i}"].BackColor = Color.Green;
-							multipleResultStatus[$"resultStatus_{i}"].Visible = true;
-						}
-						else if (result.Message.Split('|')[2] != string.Empty && result.Message.Split('|')[2] == "False" && result.Message.Split('|')[1] != "Please provide source and target same range to compare due to different number of pages.")
-						{
-							multipleResultStatus[$"resultStatus_{i}"].Text = "Fail";
-							multipleResultStatus[$"resultStatus_{i}"].BackColor = Color.Red;
-							multipleResultStatus[$"resultStatus_{i}"].Visible = true;
-						}
-
-					}
-					else
+                        if (result.Message.Split('|')[1] == "Please provide source and target same range to compare due to different number of pages.")
+                        {
+                            labelErrorMessage.Text = "Please provide source and target same range to compare due to different number of pages.";
+                            labelErrorMessage.BackColor = Color.Red;
+                            labelErrorMessage.Visible = true;
+                            labelResultPath.Visible = false;
+                        }
+                        else if (result.Message.Split('|')[1] == "Page Numbers are Not Same")
+                        {
+                            labelErrorMessage.Text = "Page numbers are not the same.";
+                            labelErrorMessage.BackColor = Color.Red;
+                            labelErrorMessage.Visible = true;
+                            labelResultPath.Visible = false;
+                        }
+                        else
+                        {
+                            // Update status regardless of differences
+                            if (result.Message.Split('|')[2] != string.Empty && result.Message.Split('|')[2] == "True")
+                            {
+                                multipleResultStatus[$"resultStatus_{i}"].Text = "Pass";
+                                multipleResultStatus[$"resultStatus_{i}"].BackColor = Color.Green;
+                                multipleResultStatus[$"resultStatus_{i}"].Visible = true;
+                            }
+                            else if (result.Message.Split('|')[2] != string.Empty && result.Message.Split('|')[2] == "False")
+                            {
+                                multipleResultStatus[$"resultStatus_{i}"].Text = "Fail";
+                                multipleResultStatus[$"resultStatus_{i}"].BackColor = Color.Red;
+                                multipleResultStatus[$"resultStatus_{i}"].Visible = true;
+                            }
+                        }
+                    }
+                    else
 					{
 						labelErrorMessage.Text = "Files does not exist.";
 						labelErrorMessage.BackColor = Color.Red;
@@ -737,7 +742,7 @@ namespace PDFCompare
 				}
 
 				//Check if the number of pages is the same
-				if (text_OR_imageBtn.Checked && !pDFComaprer.CheckNumberOfPagesSame(sourceFilePath, targetFilePath))
+				if (text_OR_imageBtn.Checked)
 				{
 					pagesSame = false;
 					multipleSourceComboBox[$"sourceComboBox_{i}"].ForeColor = Color.Red;
@@ -758,11 +763,11 @@ namespace PDFCompare
 				labelErrorMessage.Visible = true;
 				btnCompare.Enabled = false;
 			}
-			else if (!pagesSame)
-			{
-				MessageBox.Show("Source and target files must have the same number of pages!!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				//btnCompare.Enabled = false;
-			}
+			//else if (!pagesSame)
+			//{
+			//	MessageBox.Show("Source and target files must have the same number of pages!!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			//	//btnCompare.Enabled = false;
+			//}
 			else
 			{
 				allComboBoxesFilled = true;
@@ -778,7 +783,7 @@ namespace PDFCompare
 		{
 			OpenFileDialog fileChooser = new OpenFileDialog
 			{
-				Filter = "Pdf Files|*.pdf",
+				Filter = "Pdf Files|*.pdf| Word Files|*.doc; *.docx",
 				Multiselect = false,
 				Title = "Select File"
 			};

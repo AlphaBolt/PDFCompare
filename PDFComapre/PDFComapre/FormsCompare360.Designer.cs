@@ -1,7 +1,7 @@
 ﻿using System;
 namespace PDFCompare
 {
-    partial class comparePDF
+    partial class FormsCompare360
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace PDFCompare
         private void InitializeComponent()
         {
             System.Drawing.Drawing2D.GraphicsPath graphicsPath1 = new System.Drawing.Drawing2D.GraphicsPath();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(comparePDF));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormsCompare360));
             this.materialTabControl1 = new MaterialWinforms.Controls.MaterialTabControl();
             this.selectFilesTabPage = new MaterialWinforms.Controls.MaterialTabPage();
             this.selectFilesContentPanel = new System.Windows.Forms.Panel();

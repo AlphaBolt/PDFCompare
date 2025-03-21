@@ -7,8 +7,8 @@
     <ProjectGuid>{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PDFCompare</RootNamespace>
-    <AssemblyName>PDFCompare</AssemblyName>
+    <RootNamespace>FormsCompare360</RootNamespace>
+    <AssemblyName>Forms Compare 360</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -182,11 +182,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
-    <Compile Include="comparePDF.cs">
+    <Compile Include="FormsCompare360.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="comparePDF.Designer.cs">
-      <DependentUpon>comparePDF.cs</DependentUpon>
+    <Compile Include="FormsCompare360.Designer.cs">
+      <DependentUpon>FormsCompare360.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Licencing.cs" />
@@ -240,8 +240,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="comparePDF.resx">
-      <DependentUpon>comparePDF.cs</DependentUpon>
+    <EmbeddedResource Include="FormsCompare360.resx">
+      <DependentUpon>FormsCompare360.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
