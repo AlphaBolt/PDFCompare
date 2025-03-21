@@ -217,6 +217,6 @@ C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\Library
 C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\LibraryTest\obj\Debug\LibraryT.314A797A.Up2Date
 C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\LibraryTest\obj\Debug\LibraryTest.dll
 C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\LibraryTest\obj\Debug\LibraryTest.pdb
-C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\LibraryTest\bin\Debug\Forms Compare 360.exe
-C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\LibraryTest\bin\Debug\Forms Compare 360.pdb
-C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\LibraryTest\bin\Debug\Forms Compare 360.exe.config
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\LibraryTest\bin\Debug\FormsCompare360.exe
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\LibraryTest\bin\Debug\FormsCompare360.pdb
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\LibraryTest\bin\Debug\FormsCompare360.exe.config

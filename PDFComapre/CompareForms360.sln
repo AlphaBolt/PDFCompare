@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFComapre", "PDFComapre\PDFComapre.csproj", "{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsCompare360", "PDFComapre\FormsCompare360.csproj", "{62F6B8F8-9D0C-4D56-AE2C-72B2D889DC9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareUtility", "CompareUtility\CompareUtility.csproj", "{507377A9-2375-43C8-BCDC-5D6492ECE25A}"
 EndProject

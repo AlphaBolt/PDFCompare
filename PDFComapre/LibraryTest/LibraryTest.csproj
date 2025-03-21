@@ -48,9 +48,9 @@
       <Project>{507377a9-2375-43c8-bcdc-5d6492ece25a}</Project>
       <Name>CompareUtility</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PDFComapre\PDFComapre.csproj">
+    <ProjectReference Include="..\PDFComapre\FormsCompare360.csproj">
       <Project>{62f6b8f8-9d0c-4d56-ae2c-72b2d889dc9a}</Project>
-      <Name>PDFComapre</Name>
+      <Name>FormsCompare360</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
