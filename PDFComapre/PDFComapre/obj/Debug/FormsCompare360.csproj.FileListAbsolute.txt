@@ -39,3 +39,44 @@ C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\PDFComa
 C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\PDFComapre\obj\Debug\FormsCom.8F623394.Up2Date
 C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\PDFComapre\obj\Debug\FormsCompare360.exe
 C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\PDFCompare\PDFComapre\PDFComapre\obj\Debug\FormsCompare360.pdb
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\IgnoreCoordinatesXML.xml
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\ComparisonReport\ComparisonReport.xls
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\FormsCompare360.exe.config
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\FormsCompare360.exe.manifest
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\FormsCompare360.application
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\FormsCompare360.exe
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\FormsCompare360.pdb
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\CompareUtility.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\Ghostscript.NET.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\GhostscriptSharp.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\MaterialWinforms.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\MetroFramework.Design.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\MetroFramework.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\NPOI.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\NPOI.OOXML.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\NPOI.OpenXml4Net.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\NPOI.OpenXmlFormats.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\Syncfusion.Compression.Base.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\Syncfusion.Licensing.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\ImageDiff.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\Syncfusion.Pdf.Base.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\itextsharp.dll
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\CompareUtility.pdb
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\Ghostscript.NET.xml
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\ICSharpCode.SharpZipLib.xml
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\NPOI.xml
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\Syncfusion.Compression.Base.xml
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\ImageDiff.pdb
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\bin\Debug\Syncfusion.Pdf.Base.xml
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\obj\Debug\FormsCompare360.csproj.AssemblyReference.cache
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\obj\Debug\PDFCompare.FormsCompare360.resources
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\obj\Debug\FormsCompare360.Properties.Resources.resources
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\obj\Debug\FormsCompare360.csproj.GenerateResource.cache
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\obj\Debug\FormsCompare360.csproj.CoreCompileInputs.cache
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\obj\Debug\FormsCompare360.exe.manifest
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\obj\Debug\FormsCompare360.application
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\obj\Debug\FormsCom.8F623394.Up2Date
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\obj\Debug\FormsCompare360.exe
+C:\Users\KIIT\Desktop\c sharp\PDF Compare - Github\New folder\PDFCompare\PDFComapre\PDFComapre\obj\Debug\FormsCompare360.pdb

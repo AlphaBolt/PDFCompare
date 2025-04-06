@@ -17,7 +17,7 @@ using Syncfusion.Pdf.Parsing;
 namespace CompareUtility
 {
 
-    public class PDFComaprer
+    public class PDFComparer
     {
         public GhostscriptVersionInfo _lastInstalledVersion;
         public GhostscriptRasterizer _rasterizer = null;
@@ -34,7 +34,7 @@ namespace CompareUtility
         Dictionary<int, List<string>> imgCoordinate = null;
         ComparisonReport report;
 
-        public PDFComaprer()
+        public PDFComparer()
         {
             ReportDirectoryName = "Reports";
             DifferencesDirectoryName = "Differences";
@@ -42,7 +42,7 @@ namespace CompareUtility
             report = new ComparisonReport();
         }
 
-        public PDFComaprer(string reportDirectoryPath, string reportDirectoryName, string differencesDirectoryName, string temporaryDirectoryName)
+        public PDFComparer(string reportDirectoryPath, string reportDirectoryName, string differencesDirectoryName, string temporaryDirectoryName)
         {
             ReportDirectoryPath = reportDirectoryPath;
             ReportDirectoryName = reportDirectoryName;
@@ -236,6 +236,12 @@ namespace CompareUtility
                     _lastInstalledVersion = new GhostscriptVersionInfo(new Version(0, 0, 0), @"gsdll64.dll", string.Empty, GhostscriptLicense.GPL);
                 else
                     _lastInstalledVersion = new GhostscriptVersionInfo(new Version(0, 0, 0), @"gsdll32.dll", string.Empty, GhostscriptLicense.GPL);
+
+                // Verify the DLL path
+                if (!File.Exists(_lastInstalledVersion.DllPath))
+                {
+                    throw new DllNotFoundException($"Ghostscript native library could not be found at path: {_lastInstalledVersion.DllPath}");
+                }
 
                 imgCoordinate = new Dictionary<int, List<string>>();
 

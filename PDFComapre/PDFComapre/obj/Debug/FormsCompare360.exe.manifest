@@ -42,26 +42,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CompareUtility.dll" size="28672">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CompareUtility.dll" size="38912">
       <assemblyIdentity name="CompareUtility" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>36SvCEGvfj8eNR5spsQMawr9xY9x55aEuqUm2aR2D4c=</dsig:DigestValue>
+        <dsig:DigestValue>JezDdSv7rgLLNwcIhLTeNyyH00tRhZ7H54UrSlV/dro=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FormsCompare360.exe" size="87040">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FormsCompare360.exe" size="88064">
       <assemblyIdentity name="FormsCompare360" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+4buqzG8y6ehlEL2TXGnwliFqHgSO50Eje5LvzJ+f6c=</dsig:DigestValue>
+        <dsig:DigestValue>uJXfmAoOsQLUv5SnmtmSkqOIHDdyv4Py158NPPhdMgQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -109,7 +109,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>uG2zGKNx3mpS0PbyYDeGHJBAcbtx3BBGfoDVVnKUTkw=</dsig:DigestValue>
+        <dsig:DigestValue>BqduuQM47r6kipk4yGV5Ta50owa/qTNwJES3JgP0gFk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

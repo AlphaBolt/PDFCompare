@@ -261,7 +261,7 @@ namespace PDFCompare
 				{
 					if (!string.IsNullOrEmpty(File1diff.Trim()) && !string.IsNullOrEmpty(File2diff.Trim()))
 					{
-						PDFComaprer pdfcompare = new PDFComaprer();
+						PDFComparer pdfcompare = new PDFComparer();
 						//List<int> list = Common.PagesToCompare(pagesToCompare);
 
 						var result = Program.fnPDFDiff_FormTemplate(File1diff, File2diff, ComparisonReportFile, sourcePageRange, targetPageRange, false);
@@ -697,7 +697,7 @@ namespace PDFCompare
 			bool srcTrgtSame = false;
 			bool allComboBoxesFilled = true;
 			bool pagesSame = true;
-			PDFComaprer pDFComaprer = new PDFComaprer();
+			PDFComparer pDFComaprer = new PDFComparer();
 
 			for (int i = 0; i < multipleSourceComboBox.Count; i++)
 			{

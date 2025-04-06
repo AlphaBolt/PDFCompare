@@ -180,7 +180,7 @@ namespace PDFCompare
             //PDFUtility.ComparePdf
             try
             {
-                PDFComaprer pdfcomparer = new PDFComaprer();
+                PDFComparer pdfcomparer = new PDFComparer();
                 XmlDocument ignorecoordinatesxml = new XmlDocument();
                 ignorecoordinatesxml.Load(ignorecoordinatesfilepath);
                 XmlNode fileXML = ignorecoordinatesxml.SelectSingleNode("//PDFFile[@filepath='" + destination.ToLower().Trim() + "']");
@@ -300,7 +300,7 @@ namespace PDFCompare
             //PDFUtility.ComparePdf
             try
             {
-                PDFComaprer pdfcomparer = new PDFComaprer();
+                PDFComparer pdfcomparer = new PDFComparer();
                 XmlDocument ignorecoordinatesxml = new XmlDocument();
                 ignorecoordinatesxml.Load(ignorecoordinatesfilepath);
                 XmlNode fileXML = ignorecoordinatesxml.SelectSingleNode("//PDFFile[@filepath='" + destination.ToLower().Trim() + "']");
@@ -311,13 +311,42 @@ namespace PDFCompare
                 throw ex;
             }
         }
+
+        public static ComparisonReport CompareWord(string source, string destination, string ignorecoordinatesfilepath, string reportResult, List<int> sourcePageRangeList, List<int> targetPageRangeList)
+        {
+            try
+            {
+                WordComparer wordComparer = new WordComparer();
+                PDFComparer pdfcomparer = new PDFComparer();
+                XmlDocument ignorecoordinatesxml = new XmlDocument();
+                ignorecoordinatesxml.Load(ignorecoordinatesfilepath);
+                XmlNode fileXML = ignorecoordinatesxml.SelectSingleNode("//PDFFile[@filepath='" + destination.ToLower().Trim() + "']");
+
+                //First convert word to pdf
+                wordComparer.WordToPDF(source, destination, reportResult, out string sourcePDFfilepath, out string targetPDFfilepath);
+
+                //Then perform pdf image comparison using existing code
+                var result = pdfcomparer.Compare(sourcePDFfilepath, targetPDFfilepath, fileXML, reportResult, sourcePageRangeList, targetPageRangeList);
+
+                //Delete the temporary pdf folder
+                wordComparer.DeleteTempPdfFolder(reportResult);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public static ComparisonReport ComaprePDFText(string source, string destination, List<int> sourcePageRange=null, List<int> targetPageRange=null, string reportResult = "")
         {
             // need to change the access level 
             //PDFUtility.ComparePdf
             try
             {
-                PDFComaprer pdfcomparer = new PDFComaprer();
+                PDFComparer pdfcomparer = new PDFComparer();
                 return pdfcomparer.CompareTwoPDF(source, destination, sourcePageRange, targetPageRange, reportResult);
             }
             catch (Exception ex)
@@ -326,6 +355,18 @@ namespace PDFCompare
             }
         }
 
+        public static ComparisonReport CompareWordText(string source, string destination, List<int> sourcePageRange = null, List<int> targetPageRange = null, string reportResult = "")
+        {
+            try
+            {
+                WordComparer wordComparer = new WordComparer();
+                return wordComparer.CompareTwoWordDocs(source, destination, sourcePageRange, targetPageRange, reportResult);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public static void CreateReport(List<ComparisonReport> Report, string ComparisonReportFile, List<PolicyNumberData> policynumbers)
         {
