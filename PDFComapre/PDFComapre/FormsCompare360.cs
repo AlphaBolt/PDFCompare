@@ -64,7 +64,6 @@ namespace PDFCompare
 				}
 			}
 
-
 			//labelResultPath.Text = string.Empty;
 			labelResultPath.Text = $"Results will be saved at: {resultPath}";
 
@@ -693,7 +692,7 @@ namespace PDFCompare
 		//Function to check whether source and target are same or not
 		private void ValidateSourceAndTarget()
 		{
-
+			
 			bool srcTrgtSame = false;
 			bool allComboBoxesFilled = true;
 			bool pagesSame = true;
@@ -717,6 +716,16 @@ namespace PDFCompare
 				string sourceFilePath = multipleSourceComboBox[$"sourceComboBox_{i}"].SelectedItem.ToString();
 				string targetFilePath = multipleTargetComboBox[$"targetComboBox_{i}"].SelectedItem.ToString();
 
+                // Check if source and target file types are the same
+                string sourceFileExtension = Path.GetExtension(sourceFilePath).ToLower();
+                string targetFileExtension = Path.GetExtension(targetFilePath).ToLower();
+
+                if (sourceFileExtension != targetFileExtension)
+                {
+                    MessageBox.Show("Source and target files should be of the same type (both .pdf or both .doc/.docx).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnCompare.Enabled = false;
+                    return;
+                }
 
                 if (sourceFilePath == targetFilePath)
 				{

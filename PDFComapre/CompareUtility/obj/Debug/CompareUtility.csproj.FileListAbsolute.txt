@@ -275,7 +275,6 @@ D:\PDFCompare - Git\PDFComapre\CompareUtility\bin\Debug\CompareUtility.pdb
 D:\PDFCompare - Git\PDFComapre\CompareUtility\bin\Debug\Ghostscript.NET.dll
 D:\PDFCompare - Git\PDFComapre\CompareUtility\bin\Debug\GhostscriptSharp.dll
 D:\PDFCompare - Git\PDFComapre\CompareUtility\bin\Debug\ImageDiff.dll
-D:\PDFCompare - Git\PDFComapre\CompareUtility\bin\Debug\itextsharp.dll
 D:\PDFCompare - Git\PDFComapre\CompareUtility\bin\Debug\Syncfusion.Compression.Base.dll
 D:\PDFCompare - Git\PDFComapre\CompareUtility\bin\Debug\Syncfusion.Licensing.dll
 D:\PDFCompare - Git\PDFComapre\CompareUtility\bin\Debug\Syncfusion.Pdf.Base.dll
