@@ -16,8 +16,6 @@ using System.Drawing.Drawing2D;
 using System.Threading;
 using NPOI.SS.Formula.Functions;
 using System.Web.UI;
-using Ghostscript.NET;
-using Ghostscript.NET.Rasterizer;
 using MetroFramework.Controls;
 
 namespace PDFCompare
@@ -737,17 +735,6 @@ namespace PDFCompare
 				{
 					multipleSourceComboBox[$"sourceComboBox_{i}"].ForeColor = Color.Black;
 					multipleTargetComboBox[$"targetComboBox_{i}"].ForeColor = Color.Black;
-
-					//Initialize GhostscriptVersionInfo and Rasterizer
-					if (Environment.Is64BitOperatingSystem)
-					{
-						pDFComaprer._lastInstalledVersion = new GhostscriptVersionInfo(new Version(0, 0, 0), @"gsdll64.dll", string.Empty, GhostscriptLicense.GPL);
-					}
-					else
-					{
-                        pDFComaprer._lastInstalledVersion = new GhostscriptVersionInfo(new Version(0, 0, 0), @"gsdll32.dll", string.Empty, GhostscriptLicense.GPL);
-                    }
-                    pDFComaprer._rasterizer = new GhostscriptRasterizer();
 				}
 
 				//Check if the number of pages is the same
