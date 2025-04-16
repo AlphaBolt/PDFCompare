@@ -49,19 +49,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>H2Cg9XEgmPZCc0xQL7nb5u9rN0ykiQTEwH+gAS+u0yw=</dsig:DigestValue>
+        <dsig:DigestValue>Q5feIKViVeHTA4rF0empLYlBdp/ySU5dhbjsp2yu/Kw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FormsCompare360.exe" size="87552">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FormsCompare360.exe" size="87040">
       <assemblyIdentity name="FormsCompare360" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>89MoIrCmZABkaC1xK8K11WDJuxSSQmuQx6kverR6lpo=</dsig:DigestValue>
+        <dsig:DigestValue>ZaMiRtJlK6PsISCRIgSGgmD/2Aqyt0XRna1nNklvDV4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -109,7 +109,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qIh0BzW11/aEToMBAzct24t86a/Bkh3lKUNtlbuZids=</dsig:DigestValue>
+        <dsig:DigestValue>EyYKqPWKjouFOYx8xi1zqhe/kAFuFFravRwiD5bTooc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -718,7 +718,7 @@ namespace PDFCompare
                 string sourceFileExtension = Path.GetExtension(sourceFilePath).ToLower();
                 string targetFileExtension = Path.GetExtension(targetFilePath).ToLower();
 
-                if (sourceFileExtension != targetFileExtension)
+                if ((sourceFileExtension == ".pdf" && (targetFileExtension == ".docx" || targetFileExtension == ".doc")) || (targetFileExtension == ".pdf" && (sourceFileExtension == ".docx" || sourceFileExtension == ".doc")))
                 {
                     MessageBox.Show("Source and target files should be of the same type (both .pdf or both .doc/.docx).", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     btnCompare.Enabled = false;
